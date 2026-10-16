@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {cleanState,emptyState} from '../lib/progress.mjs';
+test('server derives XP and daily counts rather than trusting client totals',()=>{const s=cleanState({...emptyState(),xp:99999,days:{'2026-01-01':999},done:{'linux-0':{date:'2026-10-15'},u001:{date:'2026-10-15'}}});assert.equal(s.xp,40);assert.deepEqual(s.days,{'2026-10-15':2});});
+test('invalid lesson, calendar date and oversized draft are rejected',()=>{assert.throws(()=>cleanState({done:{u999:{date:'2026-10-15'}}}));assert.throws(()=>cleanState({done:{u001:{date:'2026-02-31'}}}));assert.throws(()=>cleanState({drafts:{u001:'x'.repeat(20001)}}));});
+test('unknown review IDs removed and arbitrary profile fields not persisted',()=>{const s=cleanState({review:['u000','u000','u999','__proto__'],userId:'other-person',last:'invalid'});assert.deepEqual(s.review,['u000']);assert.equal(s.last,null);assert.equal(s.userId,undefined)});

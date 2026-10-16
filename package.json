@@ -1,0 +1,16 @@
+{
+  "name": "aurora-sre-academy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.cjs",
+    "test": "node --test tests.cjs tests/*.test.mjs",
+    "db:migrate": "node --env-file=.env.local scripts/migrate.mjs",
+    "test:integration": "node --env-file=.env.local tests/integration.mjs"
+  },
+  "dependencies": {
+    "better-auth": "^1.7.10",
+    "pg": "^8.23.1",
+    "sql.js": "1.15.0"
+  }
+}

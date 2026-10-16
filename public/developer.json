@@ -1,0 +1,1021 @@
+{
+  "tracks": [
+    {
+      "id": "DEV-API",
+      "name": "APIs e contratos HTTP",
+      "icon": "⇄",
+      "description": "Desenhe contratos, trate erros e proteja recursos.",
+      "formation": "DEV",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+    },
+    {
+      "id": "DEV-TEST",
+      "name": "Testes automatizados",
+      "icon": "✓",
+      "description": "Escreva testes de unidade, integração, contrato e jornada.",
+      "formation": "DEV",
+      "source": "https://playwright.dev/docs/best-practices"
+    },
+    {
+      "id": "DEV-SOLID",
+      "name": "SOLID",
+      "icon": "◇",
+      "description": "Pratique os cinco princípios com decisões de código.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "DEV-PAT",
+      "name": "Design Patterns",
+      "icon": "⌘",
+      "description": "Aplique padrões onde há um problema concreto.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "DEV-MVC",
+      "name": "Arquitetura MVC",
+      "icon": "▦",
+      "description": "Separe entrada, apresentação e regras da aplicação.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+    },
+    {
+      "id": "DEV-MVVM",
+      "name": "Arquitetura MVVM",
+      "icon": "◫",
+      "description": "Modele estado de tela, bindings e comandos testáveis.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+    },
+    {
+      "id": "DEV-CLEAN",
+      "name": "Clean Architecture",
+      "icon": "◎",
+      "description": "Proteja regras de negócio das dependências externas.",
+      "formation": "DEV",
+      "source": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "id": "DEV-TENANT",
+      "name": "Arquitetura Multi Tenant",
+      "icon": "▧",
+      "description": "Isole organizações em dados, cache, filas e operação.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+    },
+    {
+      "id": "DEV-DDD",
+      "name": "Domain Driven Design",
+      "icon": "⬡",
+      "description": "Modele linguagem, contextos, agregados e eventos.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+    },
+    {
+      "id": "DEV-MICRO",
+      "name": "Microsserviços",
+      "icon": "⤴",
+      "description": "Entenda limites, falhas parciais e consistência distribuída.",
+      "formation": "DEV",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+    },
+    {
+      "id": "DEV-SQL",
+      "name": "SQL na prática",
+      "icon": "▱",
+      "description": "Execute consultas e transações em um banco de laboratório.",
+      "formation": "DEV",
+      "source": "https://www.sqlite.org/lang.html"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "dev-api-01",
+      "track": "DEV-API",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Recursos, requisições e respostas",
+      "theory": "Uma API define como dois programas conversam. Em HTTP, o cliente envia método, endereço, cabeçalhos e, quando necessário, um corpo. O servidor devolve status, cabeçalhos e representação. Modele o recurso e seu contrato antes de escolher o framework. Uma coleção de pedidos pode ser consultada sem que essa consulta crie novos pedidos.",
+      "code": "GET /pedidos?status=aberto\nAccept: application/json\n\nHTTP/1.1 200 OK\n{\"items\": [{\"id\": 42, \"status\": \"aberto\"}]}",
+      "scenario": "A Loja Horizonte precisa listar pedidos abertos sem modificar nenhum dado.",
+      "question": "Qual contrato representa melhor essa operação?",
+      "options": [
+        "POST /pedidos para listar e criar ao mesmo tempo",
+        "GET /criar-pedido para aproveitar o cache",
+        "GET /pedidos?status=aberto"
+      ],
+      "correct": 2,
+      "explanation": "GET expressa leitura. Misturar criação com consulta dificulta retries, cache e compreensão do contrato.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+    },
+    {
+      "id": "dev-api-02",
+      "track": "DEV-API",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Criação e erros que ajudam o cliente",
+      "theory": "O status HTTP comunica a categoria do resultado; o corpo explica o caso. Uma criação síncrona pode responder 201 e indicar o recurso em Location. Valide os dados no servidor. Um erro de regra não deve virar um 200 com uma mensagem escondida no corpo, nem expor stack traces ou segredos.",
+      "code": "POST /pedidos\n{\"produtoId\": 7, \"quantidade\": 2}\n\nHTTP/1.1 201 Created\nLocation: /pedidos/42",
+      "scenario": "Um pedido foi validado e gravado antes da resposta.",
+      "question": "Qual resposta comunica que um recurso foi criado?",
+      "options": [
+        "500 com o stack trace para qualquer erro de entrada",
+        "201 Created com identificação do pedido",
+        "200 OK sempre, inclusive se a gravação falhar"
+      ],
+      "correct": 1,
+      "explanation": "201 comunica criação. O cliente precisa de um identificador estável. Erros de entrada e falhas do servidor devem ter contratos distintos.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+    },
+    {
+      "id": "dev-api-03",
+      "track": "DEV-API",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Idempotência e retries",
+      "theory": "Repetir uma chamada pode acontecer porque a resposta se perdeu. Idempotência trata do efeito pretendido após repetições, não de respostas idênticas. Um POST de cobrança precisa de uma estratégia adicional: chave associada ao cliente, armazenamento atômico do resultado e rejeição de reuso com outro conteúdo. A validade da chave deve ser definida.",
+      "code": "POST /cobrancas\nIdempotency-Key: compra-42\n{\"valorCentavos\": 12990}",
+      "scenario": "O pagamento foi aprovado, mas o cliente recebeu timeout e quer tentar novamente.",
+      "question": "Como evitar uma cobrança duplicada?",
+      "options": [
+        "Reusar uma chave e consultar atomicamente o resultado da operação original",
+        "Gerar uma chave diferente em cada retry",
+        "Fazer retries ilimitados até receber 200"
+      ],
+      "correct": 0,
+      "explanation": "A mesma intenção usa a mesma chave. Uma nova chave representa outra operação e não permite deduplicar a cobrança anterior.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+    },
+    {
+      "id": "dev-api-04",
+      "track": "DEV-API",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Autenticação não basta: autorize o recurso",
+      "theory": "Autenticação identifica quem faz a chamada. Autorização decide se essa identidade pode executar a ação sobre aquele recurso. Um ID válido na URL não concede acesso. Busque o pedido no escopo permitido pela sessão, e não por um userId livre enviado pelo cliente. Esconder um botão não protege a API.",
+      "code": "// Exemplo conceitual: identidade vem da sessão\nSELECT * FROM pedidos\nWHERE id = :pedido AND dono_id = :usuarioAutenticado;",
+      "scenario": "Um aluno altera /pedidos/42 para /pedidos/43 e encontra o pedido de outra pessoa.",
+      "question": "Qual correção resolve a falha de acesso?",
+      "options": [
+        "Ocultar o ID na tela",
+        "Trocar IDs numéricos por UUIDs sem verificar permissão",
+        "Verificar no servidor a relação entre a sessão e o pedido solicitado"
+      ],
+      "correct": 2,
+      "explanation": "IDs difíceis de adivinhar ajudam pouco se faltar autorização. Toda leitura ou alteração precisa respeitar o proprietário ou a política de acesso.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+    },
+    {
+      "id": "dev-api-05",
+      "track": "DEV-API",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Paginação e evolução de contratos",
+      "theory": "Uma API precisa limitar a quantidade de trabalho por chamada. Use tamanho máximo de página e uma ordenação estável. Em listas mutáveis, um cursor com chave de desempate reduz problemas de deslocamento. Mudar ou remover um campo consumido por clientes é uma quebra de contrato; planeje compatibilidade e período de migração.",
+      "code": "GET /pedidos?limit=20&after=cursor-opaco\n{\"items\": [], \"nextCursor\": null}",
+      "scenario": "A listagem tem milhares de pedidos, novos registros chegam a cada segundo e vários pedidos têm o mesmo horário.",
+      "question": "Qual desenho torna a paginação mais previsível?",
+      "options": [
+        "Ordenar apenas pelo horário, sem critério para empates",
+        "Limite de página e ordenação por horário mais ID, refletida no cursor",
+        "Retornar todos os pedidos de uma vez"
+      ],
+      "correct": 1,
+      "explanation": "O desempate estabiliza a ordem. Cursores também precisam de validação e documentação; não substituem autorização nem garantem um snapshot imutável.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+    },
+    {
+      "id": "dev-test-01",
+      "track": "DEV-TEST",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Arrange, Act, Assert",
+      "theory": "Um teste precisa de preparação controlada, uma ação e uma verificação observável. Testar o comportamento público permite refatorar a implementação sem reescrever todos os testes. Um nome útil descreve a regra e o resultado. Não basta chamar a função: sem uma asserção relevante, uma regressão pode passar despercebida.",
+      "code": "// JavaScript ilustrativo\nconst pedido = { total: 100, cupom: 10 }; // Arrange\nconst resultado = calcularTotal(pedido); // Act\nassert.equal(resultado, 90);             // Assert",
+      "scenario": "Uma função aplica um desconto fixo de 10 sobre um total de 100.",
+      "question": "Qual teste detecta uma regressão no cálculo?",
+      "options": [
+        "Verificar que o resultado público é 90",
+        "Verificar somente que a função foi chamada",
+        "Aguardar dois segundos e encerrar o teste"
+      ],
+      "correct": 0,
+      "explanation": "A asserção verifica a regra. Um teste que apenas executa código pode passar mesmo quando o valor calculado está incorreto.",
+      "source": "https://playwright.dev/docs/best-practices"
+    },
+    {
+      "id": "dev-test-02",
+      "track": "DEV-TEST",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Limites, classes de equivalência e falhas",
+      "theory": "Entradas parecidas podem pertencer à mesma classe de comportamento. Escolha representantes e explore fronteiras: vazio, limite mínimo, máximo, valor logo abaixo e logo acima. Teste também rejeições. Cobertura de linhas indica execução, mas não prova que as regras foram verificadas.",
+      "code": "// Regra: idade mínima de 18 anos\nassert.equal(podeCadastrar(17), false);\nassert.equal(podeCadastrar(18), true);\nassert.equal(podeCadastrar(19), true);",
+      "scenario": "Um cadastro deve aceitar pessoas a partir de 18 anos.",
+      "question": "Qual conjunto procura diretamente um erro de fronteira?",
+      "options": [
+        "Apenas 30, 40 e 50",
+        "Somente verificar 100% de linhas executadas",
+        "17, 18 e 19"
+      ],
+      "correct": 2,
+      "explanation": "Os valores próximos à mudança de comportamento detectam >= trocado por >. Entradas inválidas, como números negativos, merecem uma regra própria.",
+      "source": "https://playwright.dev/docs/best-practices"
+    },
+    {
+      "id": "dev-test-03",
+      "track": "DEV-TEST",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Unidade, integração, contrato e ponta a ponta",
+      "theory": "Testes de unidade isolam uma regra pequena. Integração verifica componentes reais trabalhando juntos, como SQL e o driver. Contrato verifica o acordo entre consumidores e provedores. Ponta a ponta percorre uma jornada observável. Combine-os pelo risco: muitos E2E lentos não substituem testes rápidos das regras.",
+      "code": "Regra de preço → unidade\nRepository + PostgreSQL → integração\nFormato de /pedidos → contrato\nCadastro até compra → ponta a ponta",
+      "scenario": "O código gera uma consulta incompatível com PostgreSQL, mas os testes com um repositório falso passam.",
+      "question": "Que teste faltou?",
+      "options": [
+        "Um teste que apenas verifica o nome da função",
+        "Integração com PostgreSQL e o esquema usados pela aplicação",
+        "Mais mocks do mesmo repositório"
+      ],
+      "correct": 1,
+      "explanation": "O falso não interpreta SQL como o banco real. Um teste de integração detecta problemas de tipos, constraints e dialeto que o teste de unidade não observa.",
+      "source": "https://playwright.dev/docs/best-practices"
+    },
+    {
+      "id": "dev-test-04",
+      "track": "DEV-TEST",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Mocks nas fronteiras e relógio controlado",
+      "theory": "Substitua dependências externas quando precisar controlar tempo, rede ou resultados. Injete um relógio em regras de expiração, em vez de depender da hora real. Muitos mocks de detalhes internos produzem testes frágeis. Um fake deve respeitar o contrato, e integrações reais devem verificar que esse contrato continua válido.",
+      "code": "const clock = { now: () => 1000 };\nconst valido = tokenValido({ expiraEm: 1001 }, clock);\nassert.equal(valido, true);",
+      "scenario": "O teste de expiração falha ocasionalmente perto da virada do segundo.",
+      "question": "Qual mudança remove a dependência do tempo real?",
+      "options": [
+        "Injetar um relógio controlável e testar os dois lados da expiração",
+        "Aumentar o tempo de espera para um minuto",
+        "Executar o teste até passar"
+      ],
+      "correct": 0,
+      "explanation": "Controle o relógio e defina a fronteira de expiração. Repetir até passar esconde a instabilidade e não valida a regra.",
+      "source": "https://playwright.dev/docs/best-practices"
+    },
+    {
+      "id": "dev-test-05",
+      "track": "DEV-TEST",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Isolamento e pipeline confiável",
+      "theory": "Testes devem poder rodar sozinhos e em ordem diferente. Use dados próprios por caso e limpe recursos criados. Para uma interface, aguarde um estado observável em vez de um sleep arbitrário. No pipeline, falhas precisam impedir a promoção da versão; retries limitados servem para diagnóstico, não para mascarar regressões.",
+      "code": "// Exemplo Playwright\nawait page.getByRole(\"button\", { name: \"Salvar\" }).click();\nawait expect(page.getByText(\"Salvo\")).toBeVisible();",
+      "scenario": "Um E2E só passa se outro teste tiver criado o usuário antes.",
+      "question": "Qual correção torna a suíte independente da ordem?",
+      "options": [
+        "Fixar a ordem dos arquivos para sempre",
+        "Ignorar o teste quando o usuário não existir",
+        "Preparar o usuário na fixture do próprio teste e isolar seus dados"
+      ],
+      "correct": 2,
+      "explanation": "Uma fixture explícita remove a dependência oculta. Uma suíte confiável também define limpeza e evita compartilhar estado mutável entre execuções paralelas.",
+      "source": "https://playwright.dev/docs/best-practices"
+    },
+    {
+      "id": "dev-solid-01",
+      "track": "DEV-SOLID",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "S · Responsabilidade única",
+      "theory": "Responsabilidade única organiza código em torno de razões de mudança relacionadas. Não significa que toda classe só pode ter um método. Uma política de preço muda por regras comerciais; a formatação de um PDF muda por apresentação. Separar essas responsabilidades permite testar e alterar uma sem arrastar a outra.",
+      "code": "calcularTotal(pedido)\ngerarRecibo(total, template)\nenviarRecibo(destinatario, documento)",
+      "scenario": "A mesma classe calcula impostos, desenha PDFs e conecta ao SMTP.",
+      "question": "Qual separação responde às diferentes razões de mudança?",
+      "options": [
+        "Mover tudo para uma classe chamada Utils",
+        "Extrair cálculo, apresentação e entrega em componentes coesos",
+        "Criar uma classe por linha de código"
+      ],
+      "correct": 1,
+      "explanation": "Separar por decisões que mudam juntas reduz acoplamento. Um Utils genérico apenas muda o endereço do problema.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-solid-02",
+      "track": "DEV-SOLID",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "O · Aberto para extensão",
+      "theory": "Procure um ponto de variação real antes de criar abstrações. Uma política de frete pode ser substituída sem reescrever o fluxo de checkout. Isso não proíbe alterar código existente; orienta a proteger regras estáveis de variações recorrentes. Uma interface sem variação conhecida pode ser custo desnecessário.",
+      "code": "function checkout(carrinho, politicaFrete) {\n  return carrinho.total + politicaFrete.calcular(carrinho);\n}",
+      "scenario": "Toda nova transportadora exige editar vários ifs espalhados pelo checkout.",
+      "question": "Qual mudança concentra a variação?",
+      "options": [
+        "Encapsular o cálculo de frete atrás de uma política substituível",
+        "Duplicar o checkout para cada transportadora",
+        "Adicionar mais condicionais em todas as telas"
+      ],
+      "correct": 0,
+      "explanation": "O checkout depende do comportamento de cálculo. Cada política resolve uma variação; a seleção deve ficar num ponto de composição explícito.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-solid-03",
+      "track": "DEV-SOLID",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "L · Substituição de Liskov",
+      "theory": "Um subtipo precisa preservar o contrato esperado pelo consumidor: entradas aceitas, resultados garantidos e invariantes. A herança sintática não garante substituição. Se um tipo anuncia gravar(), mas uma variante sempre lança erro por ser somente leitura, o contrato provavelmente está amplo demais.",
+      "code": "interface Leitor { ler(id): Documento }\ninterface Gravador { gravar(doc): void }",
+      "scenario": "Um serviço recebe um Gravador, mas uma implementação somente leitura lança “não suportado” em qualquer gravação.",
+      "question": "Como expressar melhor os contratos?",
+      "options": [
+        "Manter Gravador e ignorar todos os erros",
+        "Verificar o nome concreto de cada classe em todos os consumidores",
+        "Usar um contrato de leitura para o componente que não oferece gravação"
+      ],
+      "correct": 2,
+      "explanation": "A capacidade anunciada precisa existir. Separar contratos evita promessas falsas e condicionais baseadas no tipo concreto.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-solid-04",
+      "track": "DEV-SOLID",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "I · Segregação de interfaces",
+      "theory": "Consumidores não deveriam depender de operações de que não precisam. Interfaces menores são desenhadas em torno do uso, não de uma regra de quantidade de métodos. Um relatório pode precisar apenas consultar pedidos, sem conhecer cancelamento, cobrança e exportação administrativa.",
+      "code": "interface ConsultaPedidos { listar(filtro): Pedido[] }\ninterface CancelaPedido { cancelar(id): void }",
+      "scenario": "Um relatório precisa implementar cancelarPedido porque depende de uma interface gigante.",
+      "question": "Qual mudança atende à segregação de interfaces?",
+      "options": [
+        "Fazer o relatório acessar diretamente todas as tabelas",
+        "Depender somente do contrato de consulta usado pelo relatório",
+        "Implementar cancelarPedido vazio para compilar"
+      ],
+      "correct": 1,
+      "explanation": "O contrato de consulta expressa a necessidade real. Implementações vazias escondem incompatibilidades e ampliam o acoplamento.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-solid-05",
+      "track": "DEV-SOLID",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "D · Inversão de dependência",
+      "theory": "Regras de alto nível devem depender de abstrações apropriadas ao problema, e detalhes devem implementá-las. Injetar uma dependência é uma técnica; não basta injetar uma classe concreta acoplada ao fornecedor. O contrato deve descrever o que o caso de uso precisa e não expor objetos do driver.",
+      "code": "class FinalizarCompra {\n  constructor(pagamentos) { this.pagamentos = pagamentos; }\n  executar(compra) { return this.pagamentos.cobrar(compra.total); }\n}",
+      "scenario": "Trocar o gateway de pagamento exige alterar regras do domínio porque elas usam tipos do SDK do fornecedor.",
+      "question": "Qual limite reduz esse acoplamento?",
+      "options": [
+        "Um contrato de cobrança do caso de uso, implementado por um adaptador do gateway",
+        "Renomear a variável do SDK para interface",
+        "Importar o SDK em mais classes para padronizar"
+      ],
+      "correct": 0,
+      "explanation": "O contrato pertence à necessidade da aplicação. O adaptador traduz os tipos externos; a regra não precisa conhecer o fornecedor.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-pat-01",
+      "track": "DEV-PAT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Strategy: algoritmos intercambiáveis",
+      "theory": "Strategy encapsula maneiras alternativas de executar uma tarefa por um contrato comum. A escolha pode ser feita na composição ou conforme o contexto. É útil quando a política varia independentemente do fluxo principal. Evite usar o padrão só para transformar um if simples em muitas classes sem ganho.",
+      "code": "const estrategias = { normal: freteNormal, expresso: freteExpresso };\nconst valor = estrategias[tipo].calcular(pacote);",
+      "scenario": "Você precisa escolher frete normal ou expresso mantendo o mesmo checkout.",
+      "question": "Qual padrão encaixa a política variável?",
+      "options": [
+        "Singleton global para todos os cálculos",
+        "Observer para substituir um algoritmo síncrono",
+        "Strategy"
+      ],
+      "correct": 2,
+      "explanation": "Strategy oferece implementações alternativas do mesmo comportamento. Observer trata notificações, não a escolha de uma política de cálculo.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-pat-02",
+      "track": "DEV-PAT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Factory: isole a construção",
+      "theory": "Uma fábrica centraliza a decisão de criar um objeto e montar suas dependências. Uma função fábrica simples não é necessariamente o padrão GoF Factory Method, que delega a criação por uma hierarquia. Escolha o mecanismo mais simples que resolva a variação de construção.",
+      "code": "function criarGateway(config) {\n  return config.modo === \"teste\" ? new GatewayFake() : new GatewayReal(config);\n}",
+      "scenario": "Todas as telas conhecem as chaves e os construtores específicos de gateways.",
+      "question": "Onde deve ficar essa construção?",
+      "options": [
+        "Dentro de todas as entidades de domínio",
+        "Em um ponto de composição/fábrica que fornece o contrato esperado",
+        "Em cada botão da interface"
+      ],
+      "correct": 1,
+      "explanation": "Centralizar a montagem evita espalhar detalhes do fornecedor. A fábrica não deve virar um local para todas as regras comerciais.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-pat-03",
+      "track": "DEV-PAT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Adapter: traduza contratos incompatíveis",
+      "theory": "Adapter converte um contrato externo para o contrato que a aplicação entende. Ele traduz nomes, formatos e erros sem espalhar o SDK por todo o sistema. Não esconda diferenças essenciais: se o fornecedor não garante idempotência, o adaptador não pode fingir que garante sem implementar um mecanismo adicional.",
+      "code": "class PagamentoAdapter {\n  cobrar(centavos) { return sdk.charge({ amount: centavos, currency: \"BRL\" }); }\n}",
+      "scenario": "O domínio trabalha em centavos, mas o fornecedor exige um objeto amount/currency.",
+      "question": "Qual responsabilidade cabe ao Adapter?",
+      "options": [
+        "Traduzir o pedido de cobrança para o contrato do SDK",
+        "Decidir o limite de crédito do cliente",
+        "Armazenar a senha de todos os clientes numa variável global"
+      ],
+      "correct": 0,
+      "explanation": "O Adapter protege a fronteira de integração. Política de crédito pertence ao domínio; conversão de unidades deve ser explícita e testada.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-pat-04",
+      "track": "DEV-PAT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Decorator: componha comportamentos",
+      "theory": "Decorator envolve um componente mantendo seu contrato e adiciona responsabilidades como medição ou cache. A ordem importa: cache por fora da medição mede algo diferente de medição por fora do cache. Uma implementação precisa preservar semântica de erros, autenticação e cancelamento.",
+      "code": "const consulta = comMetricas(comCache(repositorio));\nconst pedido = await consulta.buscar(id);",
+      "scenario": "Você quer medir consultas sem alterar cada implementação de repositório.",
+      "question": "Qual desenho permite envolver o contrato existente?",
+      "options": [
+        "Copiar todo o repositório para adicionar um cronômetro",
+        "Adicionar um parâmetro de métricas a cada entidade de domínio",
+        "Decorator de métricas delegando a operação ao componente interno"
+      ],
+      "correct": 2,
+      "explanation": "O envoltório mantém o contrato e centraliza uma responsabilidade transversal. Decida se cache hits entram na medição e preserve os erros originais.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-pat-05",
+      "track": "DEV-PAT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Observer e eventos: acoplamento com limites",
+      "theory": "Observer notifica assinantes quando um evento acontece. Em memória, isso não fornece durabilidade nem entrega após uma queda do processo. Eventos de integração duráveis precisam de armazenamento e uma estratégia de publicação. Evite depender de uma ordem oculta de assinantes para validar invariantes de uma transação.",
+      "code": "pedidoConfirmado.subscribe(enviarNotificacao);\npedidoConfirmado.publish({ pedidoId: 42 });",
+      "scenario": "Um processo cai depois de gravar o pedido e antes de notificar os assinantes em memória.",
+      "question": "O que o Observer sozinho garante nesse caso?",
+      "options": [
+        "Rollback automático do pedido gravado",
+        "Não garante entrega após a queda; é preciso um mecanismo durável",
+        "Entrega exatamente uma vez em qualquer rede"
+      ],
+      "correct": 1,
+      "explanation": "Notificações em memória se perdem com o processo. Uma outbox transacional é uma opção para registrar a intenção de publicar junto com o pedido.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+    },
+    {
+      "id": "dev-mvc-01",
+      "track": "DEV-MVC",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Model, View e Controller",
+      "theory": "MVC separa responsabilidades de apresentação e interação. O Controller recebe a entrada e coordena o caso de uso. O Model representa dados e comportamento relevantes, não apenas uma tabela. A View apresenta o resultado. A forma exata varia entre frameworks; o objetivo é evitar regras importantes duplicadas nas telas.",
+      "code": "requisição → Controller → caso de uso / Model\nresposta  ← View       ← resultado",
+      "scenario": "Um controller calcula descontos, gera SQL e constrói HTML em uma função de 400 linhas.",
+      "question": "Qual primeiro passo melhora a separação?",
+      "options": [
+        "Extrair a regra de desconto para um componente testável e deixar o controller coordenar",
+        "Mover toda a função para a View",
+        "Criar três pastas mantendo a mesma função intacta"
+      ],
+      "correct": 0,
+      "explanation": "Pastas não produzem separação por si. Uma regra extraída pode servir à API, à interface e a tarefas agendadas, sem depender do HTTP.",
+      "source": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+    },
+    {
+      "id": "dev-mvc-02",
+      "track": "DEV-MVC",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Validação de entrada e regra de negócio",
+      "theory": "Validação de formato pertence à fronteira: campo obrigatório, tipo e limite de tamanho. Regras como “pedido pago não pode ser cancelado desta forma” precisam existir no domínio ou caso de uso, mesmo quando a chamada não vem da tela. Uma View pode ajudar o usuário, mas nunca é a única barreira.",
+      "code": "Controller: valida formato do pedidoId\nCaso de uso: carrega pedido e autoriza ação\nDomínio: verifica se o estado permite cancelar",
+      "scenario": "O botão cancelar está escondido para pedidos pagos, mas uma chamada direta à API consegue cancelá-los.",
+      "question": "Onde deve existir a regra que proíbe a transição?",
+      "options": [
+        "Somente no CSS que esconde o botão",
+        "Somente na documentação do frontend",
+        "No servidor, no caso de uso/domínio responsável pelo cancelamento"
+      ],
+      "correct": 2,
+      "explanation": "O cliente pode ser alterado ou substituído. O servidor é responsável por autorizar a ação e preservar a regra em qualquer entrada.",
+      "source": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+    },
+    {
+      "id": "dev-mvc-03",
+      "track": "DEV-MVC",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "DTOs e testes do Controller",
+      "theory": "Um DTO transporta dados de uma fronteira; não precisa reproduzir todos os campos de uma entidade. Separe o que o cliente pode enviar do que o sistema controla. Teste a tradução entre HTTP e caso de uso e mantenha testes próprios da regra. Evite retornar um objeto que inclui hash de senha por conveniência.",
+      "code": "Entrada: { nome, email }\nControlado pelo servidor: { id, perfil, criadoEm }\nSaída: { id, nome }",
+      "scenario": "Um endpoint de cadastro converte automaticamente todo o JSON recebido em campos da entidade, inclusive perfil=admin.",
+      "question": "Qual contrato de entrada é mais adequado?",
+      "options": [
+        "Confiar que o cliente oficial nunca envia perfil",
+        "Um DTO com lista explícita dos campos editáveis e autorização separada",
+        "Aceitar todos os campos e esconder perfil no formulário"
+      ],
+      "correct": 1,
+      "explanation": "O servidor precisa limitar campos e permissões. Um DTO ajuda a expressar o limite, mas só funciona se o mapeamento realmente ignorar ou rejeitar campos não permitidos.",
+      "source": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+    },
+    {
+      "id": "dev-mvvm-01",
+      "track": "DEV-MVVM",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "ViewModel como estado de apresentação",
+      "theory": "MVVM usa uma View que observa um ViewModel. O ViewModel expõe estado e ações da tela e depende de contratos de serviços; não precisa conhecer elementos visuais concretos. O Model contém regras e dados do problema. Binding conecta a representação ao estado, mas não elimina a necessidade de definir fluxos de atualização.",
+      "code": "View → binding → ViewModel\nViewModel: itens, carregando, erro, comandoBuscar\nViewModel → serviço → domínio",
+      "scenario": "Uma tela precisa mostrar carregamento, erro e lista vazia durante uma busca.",
+      "question": "Onde modelar esses estados para testá-los sem renderizar a tela?",
+      "options": [
+        "No ViewModel, por propriedades e transições explícitas",
+        "Em variáveis soltas dentro de cada elemento visual",
+        "Em uma tabela de banco chamada cor_do_botao"
+      ],
+      "correct": 0,
+      "explanation": "O estado da apresentação pertence ao ViewModel. Regras de negócio e persistência continuam em componentes próprios.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+    },
+    {
+      "id": "dev-mvvm-02",
+      "track": "DEV-MVVM",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Comandos e disponibilidade de ações",
+      "theory": "Um comando representa uma ação do usuário e pode expor se pode executar. Desabilitar o botão durante uma operação evita duplicação acidental na interface, mas não substitui idempotência e validação no servidor. Use try/finally para restaurar o estado de carregamento também quando a operação falha.",
+      "code": "async salvar() {\n  if (this.salvando) return;\n  this.salvando = true;\n  try { await servico.salvar(this.formulario); }\n  finally { this.salvando = false; }\n}",
+      "scenario": "A API falha e o botão Salvar fica desabilitado para sempre.",
+      "question": "Qual ajuste corrige a transição da tela?",
+      "options": [
+        "Recarregar o banco de dados toda vez",
+        "Marcar salvando=false apenas quando o HTTP retornar sucesso",
+        "Restaurar salvando em finally e expor o erro ao usuário"
+      ],
+      "correct": 2,
+      "explanation": "finally executa em sucesso e erro. O estado deve permitir uma tentativa posterior sem ocultar a causa da falha.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+    },
+    {
+      "id": "dev-mvvm-03",
+      "track": "DEV-MVVM",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Resultados assíncronos fora de ordem",
+      "theory": "Duas buscas podem terminar em ordem diferente da inicialização. Se o resultado mais antigo substituir o mais recente, a tela mente sobre o filtro atual. Use cancelamento quando suportado e um identificador de geração para aceitar apenas a resposta correspondente à intenção vigente.",
+      "code": "const versao = ++this.buscaAtual;\nconst itens = await buscar(texto);\nif (versao === this.buscaAtual) this.itens = itens;",
+      "scenario": "A pessoa busca “ana” e logo “anabela”; a resposta de “ana” chega por último.",
+      "question": "Qual atualização deve ser aplicada?",
+      "options": [
+        "Misturar as duas listas sem indicar a origem",
+        "Somente a resposta vinculada à busca atual por anabela",
+        "Sempre a última resposta que chegar, independentemente da busca"
+      ],
+      "correct": 1,
+      "explanation": "Ordem de chegada não é ordem de intenção. Um contador por busca permite descartar respostas obsoletas mesmo quando o transporte não consegue cancelar.",
+      "source": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+    },
+    {
+      "id": "dev-clean-01",
+      "track": "DEV-CLEAN",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Direção das dependências",
+      "theory": "Clean Architecture organiza dependências de código para que políticas centrais não dependam de detalhes externos. Interfaces nas fronteiras permitem que adaptadores de banco, HTTP ou mensageria se conectem à aplicação. As camadas não precisam ser processos separados. O valor está nos limites, não em desenhar círculos ou criar dezenas de projetos.",
+      "code": "HTTP adapter → casos de uso → domínio\nSQL adapter  → contrato de repositório do núcleo",
+      "scenario": "Uma entidade importa o framework HTTP para obter o usuário da requisição.",
+      "question": "Qual alteração respeita a direção das dependências?",
+      "options": [
+        "Passar ao caso de uso a identidade já validada, sem importar HTTP no domínio",
+        "Importar também o driver SQL para centralizar tudo na entidade",
+        "Mover o import HTTP para uma pasta chamada domain/infra"
+      ],
+      "correct": 0,
+      "explanation": "O domínio deve receber conceitos relevantes, não uma requisição inteira. A fronteira traduz o protocolo em uma entrada adequada ao caso de uso.",
+      "source": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "id": "dev-clean-02",
+      "track": "DEV-CLEAN",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Caso de uso e invariantes",
+      "theory": "O caso de uso coordena uma intenção: autorizar, carregar estado, aplicar regras e persistir. Entidades e objetos de valor protegem invariantes do domínio. Nem toda aplicação precisa de um modelo complexo; escolha a estrutura que torna as regras explícitas. Evite duplicar a mesma regra em controller, job e consumidor de eventos.",
+      "code": "confirmarPedido(identidade, pedidoId)\n  → carregar pedido\n  → verificar permissão\n  → pedido.confirmar()\n  → salvar",
+      "scenario": "A confirmação de pedido pode ocorrer por API ou por processamento de uma fila.",
+      "question": "Como manter a regra consistente?",
+      "options": [
+        "Reescrever a regra em cada consumidor",
+        "Permitir que cada entrada altere diretamente status no banco",
+        "Reusar o mesmo caso de uso e invariantes, com adaptadores de entrada diferentes"
+      ],
+      "correct": 2,
+      "explanation": "Entradas diferentes traduzem seus formatos, mas convergem para a mesma intenção de negócio. Isso reduz divergências sem obrigar todas as entradas a usar HTTP.",
+      "source": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "id": "dev-clean-03",
+      "track": "DEV-CLEAN",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Ports, adapters e composição",
+      "theory": "Um port é um contrato pelo qual o núcleo conversa com o exterior. Um adapter implementa ou chama esse contrato usando uma tecnologia concreta. A composição liga as peças em runtime. Essa separação permite testar uma regra com um fake e verificar o adaptador real com testes de integração.",
+      "code": "const repo = new SqlPedidos(pool);\nconst confirmar = new ConfirmarPedido(repo);\nconst controller = new PedidoController(confirmar);",
+      "scenario": "Você quer testar a regra de confirmação sem rede nem banco.",
+      "question": "Qual dependência usar no teste de unidade?",
+      "options": [
+        "O controller HTTP como substituto da entidade",
+        "Um repositório fake que respeita o contrato, com testes separados do adapter SQL",
+        "Um PostgreSQL obrigatório em cada teste de cálculo"
+      ],
+      "correct": 1,
+      "explanation": "O fake reduz o escopo do teste de regra. Ele não prova que SQL ou mapeamento funcionam; isso exige um teste de integração complementar.",
+      "source": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "id": "dev-clean-04",
+      "track": "DEV-CLEAN",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Transações atravessam decisões de arquitetura",
+      "theory": "Uma transação precisa abranger as alterações que devem ser atômicas dentro do mesmo banco. O caso de uso define essa necessidade; a infraestrutura fornece o mecanismo. Chamadas externas, como envio de e-mail, não voltam no tempo quando o banco faz rollback. Registre uma intenção durável se o efeito externo deve acompanhar o commit.",
+      "code": "transação {\n  salvarPedido(pedido);\n  registrarOutbox(\"PedidoConfirmado\", pedido.id);\n}\n// publicação ocorre depois, com retries",
+      "scenario": "O banco confirma o pedido, mas a publicação do evento falha.",
+      "question": "Qual desenho evita perder a intenção de publicar?",
+      "options": [
+        "Gravar pedido e outbox na mesma transação e publicar depois",
+        "Publicar primeiro e presumir que o commit sempre funcionará",
+        "Fazer um rollback no banco após enviar o e-mail e considerar tudo desfeito"
+      ],
+      "correct": 0,
+      "explanation": "A outbox mantém o evento pendente de forma durável. O consumidor ainda deve lidar com duplicatas; a publicação posterior pode ocorrer mais de uma vez.",
+      "source": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "id": "dev-tenant-01",
+      "track": "DEV-TENANT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Tenant, usuário e isolamento",
+      "theory": "Um tenant é uma fronteira de cliente ou organização, não necessariamente um único usuário. Uma pessoa pode participar de vários tenants com permissões diferentes. A aplicação deve validar a associação e a ação no tenant ativo. Um tenantId enviado pelo navegador representa uma escolha a validar, não uma autoridade.",
+      "code": "sessão autenticada + tenant escolhido\n  → verificar associação e papel\n  → criar contexto autorizado\n  → executar caso de uso",
+      "scenario": "Uma pessoa da empresa Azul troca tenantId para o ID da empresa Verde.",
+      "question": "O que o servidor deve fazer antes de consultar dados?",
+      "options": [
+        "Aceitar o tenantId porque o usuário está autenticado",
+        "Validar apenas se o ID tem formato UUID",
+        "Verificar se a identidade tem acesso ao tenant Verde e à ação solicitada"
+      ],
+      "correct": 2,
+      "explanation": "Autenticação não prova associação a todas as organizações. O contexto do tenant precisa ser autorizado antes da consulta e propagado com limites claros.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+    },
+    {
+      "id": "dev-tenant-02",
+      "track": "DEV-TENANT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Modelos de armazenamento e trade-offs",
+      "theory": "Tabelas compartilhadas com tenant_id favorecem consolidação, mas exigem filtragem consistente. Schemas ou bancos separados podem facilitar isolamento e restauração por cliente, com maior custo operacional. A escolha depende do nível de isolamento, migrações, escala e recuperação. Nenhum modelo dispensa autorização da aplicação.",
+      "code": "Compartilhado: pedidos(tenant_id, id, total)\nSeparado: banco_azul.pedidos / banco_verde.pedidos",
+      "scenario": "Um cliente exige restauração independente e isolamento operacional forte; a equipe aceita maior custo de operação.",
+      "question": "Qual opção merece avaliação?",
+      "options": [
+        "Apenas acrescentar o nome da empresa no título da tela",
+        "Banco separado por tenant, considerando migrações e custo",
+        "Uma única tabela sem tenant_id"
+      ],
+      "correct": 1,
+      "explanation": "Separar bancos pode atender à recuperação e ao isolamento, mas não elimina custos de migração, conexões, monitoramento e autorização.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+    },
+    {
+      "id": "dev-tenant-03",
+      "track": "DEV-TENANT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Escopo também em cache e jobs",
+      "theory": "O tenant precisa acompanhar cada fronteira: consulta, chave de cache, mensagem, arquivo e tarefa agendada. Um cache pedido:42 pode devolver dados de outra organização se IDs forem locais ao tenant. Workers devem validar o contexto da tarefa e usar credenciais/consultas compatíveis com esse escopo.",
+      "code": "chave = `tenant:${tenantId}:pedido:${pedidoId}`;\njob = { tenantId, pedidoId, operacao: \"emitirRecibo\" };",
+      "scenario": "Duas empresas têm um pedido 42, mas o cache usa somente pedido:42.",
+      "question": "Qual correção elimina a colisão entre tenants?",
+      "options": [
+        "Incluir o tenant autorizado na chave e manter a autorização na leitura",
+        "Aumentar o TTL do cache",
+        "Usar uma variável global com o último tenant acessado"
+      ],
+      "correct": 0,
+      "explanation": "O cache deve refletir o escopo do recurso. Uma variável global causa vazamentos entre requisições; a chave correta não substitui a verificação de permissão.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+    },
+    {
+      "id": "dev-tenant-04",
+      "track": "DEV-TENANT",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Testes negativos e noisy neighbor",
+      "theory": "Isolamento deve ser testado com pelo menos dois tenants e tentativas de acesso cruzado. Inclua listagem, exportação, cache e tarefas em segundo plano. Além de confidencialidade, pense em recursos: um cliente pode consumir todas as conexões. Limites, filas justas e métricas por tenant ajudam a conter esse impacto.",
+      "code": "Teste: usuário Azul tenta ler pedido Verde → negado\nTeste: exportação Azul → nenhum registro Verde\nMétrica: tempo de fila por tenant",
+      "scenario": "Uma empresa dispara milhares de relatórios e deixa todas as outras sem conexões.",
+      "question": "Qual medida trata esse problema de compartilhamento?",
+      "options": [
+        "Permitir acesso aos dados de outros tenants para agilizar",
+        "Apenas mudar o logotipo de cada cliente",
+        "Cotas e concorrência limitada por tenant, com observação da fila"
+      ],
+      "correct": 2,
+      "explanation": "Noisy neighbor é disputa por recursos. Limites e agendamento por tenant controlam o impacto; também é preciso dimensionar capacidade e monitorar o comportamento.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+    },
+    {
+      "id": "dev-ddd-01",
+      "track": "DEV-DDD",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Linguagem ubíqua e descoberta do domínio",
+      "theory": "DDD começa pela compreensão do negócio com as pessoas que o conhecem. Linguagem ubíqua significa usar termos consistentes em conversas, exemplos, testes e código dentro de um contexto. Um glossário não basta se o código ignora as regras. Pergunte por eventos, exceções e decisões antes de desenhar entidades.",
+      "code": "PedidoRascunho → confirmar() → PedidoConfirmado\nExemplo: pedido sem itens não pode ser confirmado.",
+      "scenario": "Especialistas dizem “reserva”, mas o código chama a mesma coisa de “compra finalizada”, causando erros de cobrança.",
+      "question": "Qual ação inicia uma modelagem melhor?",
+      "options": [
+        "Copiar as tabelas atuais e chamar isso de domínio",
+        "Alinhar o significado dos termos com exemplos e regras antes de renomear/modelar",
+        "Criar um microsserviço para cada substantivo"
+      ],
+      "correct": 1,
+      "explanation": "Os nomes precisam refletir o comportamento real. Entender quando uma reserva vira compra evita unificar conceitos com ciclos de vida diferentes.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+    },
+    {
+      "id": "dev-ddd-02",
+      "track": "DEV-DDD",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Bounded Context e significados locais",
+      "theory": "Um bounded context delimita onde um modelo e sua linguagem têm significado consistente. O mesmo termo pode representar coisas diferentes em contextos distintos. “Cliente” em faturamento e atendimento não precisa ser uma entidade universal gigante. A integração exige um contrato e tradução explícita quando os modelos diferem.",
+      "code": "Faturamento: ClienteFiscal(documento, endereçoFiscal)\nAtendimento: Contato(preferências, canais)",
+      "scenario": "Faturamento precisa de dados fiscais; atendimento precisa de preferências de contato.",
+      "question": "Qual desenho evita um modelo universal cheio de regras incompatíveis?",
+      "options": [
+        "Modelos próprios por contexto com integração explícita",
+        "Uma tabela única obrigatória para todo significado de cliente",
+        "Um contexto por coluna de banco"
+      ],
+      "correct": 0,
+      "explanation": "O limite protege o significado do modelo. Contextos podem existir no mesmo processo; não obrigam uma implantação distribuída.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+    },
+    {
+      "id": "dev-ddd-03",
+      "track": "DEV-DDD",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Entidade e objeto de valor",
+      "theory": "Uma entidade mantém identidade ao longo de mudanças. Um objeto de valor é definido por seus atributos e normalmente é tratado como imutável. Dinheiro precisa de valor e moeda; somar moedas diferentes sem conversão deve ser impedido. Escolha o modelo pelas regras, não pela presença de uma chave na tabela.",
+      "code": "Dinheiro(1000, \"BRL\") + Dinheiro(500, \"BRL\")\n→ Dinheiro(1500, \"BRL\")\n// BRL + USD exige uma política de conversão",
+      "scenario": "Dois endereços com exatamente os mesmos campos não precisam ser distinguidos por identidade no seu domínio.",
+      "question": "Qual modelagem é uma boa candidata?",
+      "options": [
+        "Entidade global com identidade obrigatória em todos os sistemas",
+        "String sem validação, mesmo com regras de endereço",
+        "Objeto de valor comparado pelos atributos"
+      ],
+      "correct": 2,
+      "explanation": "Objeto de valor expressa igualdade pelo conteúdo e pode validar invariantes. Em outro domínio um endereço poderia ter identidade; a decisão depende do significado.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+    },
+    {
+      "id": "dev-ddd-04",
+      "track": "DEV-DDD",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Agregados e consistência",
+      "theory": "Um agregado define um limite de consistência e tem uma raiz que controla alterações relevantes. O tamanho deve ser suficiente para preservar invariantes, sem carregar todo o sistema numa transação. Referências a outros agregados costumam usar identidade. Concorrência ainda exige estratégia, como versão otimista ou bloqueio adequado.",
+      "code": "pedido.adicionarItem(produtoId, quantidade)\npedido.confirmar() // verifica itens e total\nrepository.salvar(pedido, versaoEsperada)",
+      "scenario": "Um pedido confirmado não pode ter quantidade negativa em seus itens.",
+      "question": "Qual papel cabe à raiz Pedido?",
+      "options": [
+        "Carregar todos os clientes e produtos em um único agregado",
+        "Controlar alterações dos itens e validar a invariante no limite do agregado",
+        "Permitir atualizações independentes irrestritas em qualquer item"
+      ],
+      "correct": 1,
+      "explanation": "A raiz oferece operações válidas em vez de setters sem restrição. A persistência precisa detectar conflitos para preservar as regras sob concorrência.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+    },
+    {
+      "id": "dev-ddd-05",
+      "track": "DEV-DDD",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Eventos de domínio e tradução externa",
+      "theory": "Um evento de domínio descreve algo relevante que aconteceu, geralmente no passado. Ele pode disparar reações internas. Um evento de integração cruza uma fronteira e precisa de contrato estável, versionamento e estratégia de entrega. Não publique toda a entidade interna: isso acopla consumidores a detalhes e pode expor dados indevidos.",
+      "code": "PedidoConfirmado { pedidoId, confirmadoEm }\n// Contrato externo seleciona somente dados necessários.",
+      "scenario": "Um time quer publicar o objeto Pedido inteiro para todos os sistemas porque é mais fácil serializar.",
+      "question": "Qual alternativa reduz acoplamento e exposição?",
+      "options": [
+        "Definir um evento de integração explícito com os dados necessários aos consumidores",
+        "Enviar também credenciais para facilitar o consumo",
+        "Obrigar consumidores a ler as tabelas internas"
+      ],
+      "correct": 0,
+      "explanation": "O contrato externo precisa ser deliberado. Mudanças no modelo interno não deveriam quebrar todos os consumidores ou revelar informação que eles não precisam.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+    },
+    {
+      "id": "dev-micro-01",
+      "track": "DEV-MICRO",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Quando distribuir e quando manter módulos",
+      "theory": "Microsserviços separam unidades de implantação e responsabilidade. Isso pode permitir evolução e escala independentes, mas adiciona rede, observabilidade, versionamento e falhas parciais. Um monólito modular permite limites claros sem esses custos iniciais. DDD não obriga um serviço por entidade nem por contexto em qualquer situação.",
+      "code": "Monólito modular: catálogo | pedidos | cobrança\nExtração possível: cobrança, quando houver motivo operacional",
+      "scenario": "Um time de três pessoas está descobrindo o produto e não tem necessidade comprovada de deploy independente.",
+      "question": "Qual ponto de partida merece consideração?",
+      "options": [
+        "Dezenas de serviços desde o primeiro dia por padrão",
+        "Um serviço separado para cada coluna do banco",
+        "Monólito modular com limites explícitos e possibilidade de extração futura"
+      ],
+      "correct": 2,
+      "explanation": "Separar módulos preserva opções sem antecipar todos os custos de distribuição. A extração deve responder a uma necessidade concreta de operação ou evolução.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+    },
+    {
+      "id": "dev-micro-02",
+      "track": "DEV-MICRO",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Comunicação e falhas parciais",
+      "theory": "Uma chamada remota pode falhar depois que o destino executou a operação. Defina timeouts, limites de concorrência e retries somente quando a repetição for adequada. Backoff com jitter reduz sincronização das tentativas. Cadeias síncronas longas aumentam dependências de disponibilidade e latência.",
+      "code": "pedido → cobrança (timeout definido)\nretry: limitado + backoff + idempotência\nobservação: resultado pode ser desconhecido",
+      "scenario": "Uma cobrança remota dá timeout depois que a conexão já enviou o pedido ao serviço de pagamentos.",
+      "question": "Qual conclusão é correta?",
+      "options": [
+        "É seguro repetir indefinidamente com nova chave",
+        "O resultado pode ser desconhecido; é preciso consultar ou repetir de forma idempotente",
+        "A cobrança certamente não aconteceu"
+      ],
+      "correct": 1,
+      "explanation": "Timeout diz que o cliente não obteve a resposta a tempo. Não prova que o servidor não concluiu; a estratégia deve contemplar esse estado intermediário.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+    },
+    {
+      "id": "dev-micro-03",
+      "track": "DEV-MICRO",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Dados pertencem a um serviço",
+      "theory": "Quando todos os serviços alteram as mesmas tabelas, mudanças de esquema exigem coordenação e enfraquecem autonomia. Cada serviço deve controlar seu modelo e expor contratos apropriados. Relatórios podem usar projeções ou pipelines de dados, com atraso explícito. Não prometa consistência instantânea se a atualização é assíncrona.",
+      "code": "Pedidos → publica PedidoConfirmado\nRelatórios → atualiza projeção de vendas\nTela → informa horário de atualização",
+      "scenario": "O serviço de relatório atualiza diretamente tabelas privadas de cobrança.",
+      "question": "Que limite deve ser restabelecido?",
+      "options": [
+        "Cobrança controla as escritas; integração usa contratos ou projeções apropriadas",
+        "Todos os serviços recebem a senha de superusuário do banco",
+        "Remover constraints para qualquer escrita ser aceita"
+      ],
+      "correct": 0,
+      "explanation": "Propriedade de dados organiza responsabilidade e evolução. Projeções podem servir leituras sem transferir a autoridade de alterar o estado de cobrança.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+    },
+    {
+      "id": "dev-micro-04",
+      "track": "DEV-MICRO",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Saga e compensação",
+      "theory": "Uma saga coordena etapas locais com ações de compensação quando necessário. Compensar não é um rollback mágico: pode haver efeitos irreversíveis, custos e intervenção humana. Cada etapa precisa de idempotência, identificação e estado observável. Defina o que fazer quando a própria compensação falha.",
+      "code": "reservar estoque → cobrar → confirmar pedido\nfalha na cobrança → liberar reserva\nfalha na liberação → registrar pendência e tentar novamente",
+      "scenario": "O estoque foi reservado, mas o pagamento foi recusado.",
+      "question": "Qual reação faz sentido numa saga de compra?",
+      "options": [
+        "Presumir rollback automático em todos os bancos",
+        "Apagar silenciosamente os logs da reserva",
+        "Executar uma compensação de liberação, com registro e retries limitados"
+      ],
+      "correct": 2,
+      "explanation": "A compensação é uma operação de negócio que pode falhar. Estado e histórico permitem recuperar o fluxo sem fingir atomicidade global.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+    },
+    {
+      "id": "dev-micro-05",
+      "track": "DEV-MICRO",
+      "formation": "DEV",
+      "kind": "quiz",
+      "title": "Outbox, duplicatas e rastreamento",
+      "theory": "A outbox grava o evento junto com a mudança de negócio numa transação local. Um publicador entrega depois; se a confirmação se perde, pode publicar novamente. Consumidores precisam de deduplicação ou operações idempotentes. Correlation IDs ajudam a seguir o fluxo, mas não substituem métricas de resultado nem decisões de consistência.",
+      "code": "transação: salvarPedido + outbox(eventId)\npublicador: enviar → marcar como enviado\nconsumidor: aplicar uma vez por eventId no escopo correto",
+      "scenario": "O publicador envia um evento e cai antes de marcar a outbox como enviada.",
+      "question": "Como o consumidor deve lidar com a nova entrega?",
+      "options": [
+        "Gerar um novo pedido para cada mensagem recebida",
+        "Reconhecer a identidade do evento e evitar repetir o efeito indevidamente",
+        "Assumir entrega exatamente uma vez por usar uma fila"
+      ],
+      "correct": 1,
+      "explanation": "Entrega repetida é esperada nesse desenho. O registro de deduplicação e o efeito precisam ter consistência adequada, evitando marcar processado antes de concluir a operação.",
+      "source": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+    },
+    {
+      "id": "dev-sql-01",
+      "track": "DEV-SQL",
+      "formation": "DEV",
+      "kind": "sql",
+      "title": "SELECT: escolha as colunas",
+      "theory": "SELECT projeta as colunas que você quer ler. FROM escolhe a tabela. A ordem das linhas não é garantida sem ORDER BY. Escolher colunas explicitamente deixa o contrato da consulta mais claro do que depender de SELECT *. Neste laboratório, os valores monetários são inteiros didáticos.",
+      "code": "SELECT id, nome FROM clientes ORDER BY id;",
+      "scenario": "Você precisa mostrar o nome dos clientes em ordem alfabética.",
+      "question": "Retorne somente a coluna nome de todos os clientes, em ordem alfabética crescente.",
+      "solution": "SELECT nome FROM clientes ORDER BY nome;",
+      "checkQuery": null,
+      "source": "https://www.sqlite.org/lang.html",
+      "explanation": "Confira os nomes das colunas, a ordenação e todas as linhas do resultado. Cada execução começa com o banco original; suas consultas nunca acessam contas do Aurora."
+    },
+    {
+      "id": "dev-sql-02",
+      "track": "DEV-SQL",
+      "formation": "DEV",
+      "kind": "sql",
+      "title": "WHERE: filtre antes de apresentar",
+      "theory": "WHERE seleciona linhas com base numa condição. Combine AND e OR com parênteses para expressar prioridade. Valores vindos de usuários devem ser parâmetros do driver em uma aplicação real; concatenar entrada em SQL pode permitir injeção. Aqui os dados do exercício são fixos.",
+      "code": "SELECT id FROM pedidos WHERE status = 'aberto' ORDER BY id;",
+      "scenario": "O financeiro quer identificar os pedidos pagos de pelo menos 100 unidades.",
+      "question": "Retorne id e total dos pedidos com status pago e total >= 100, em ordem de id crescente.",
+      "solution": "SELECT id, total FROM pedidos WHERE status = 'pago' AND total >= 100 ORDER BY id;",
+      "checkQuery": null,
+      "source": "https://www.sqlite.org/lang.html",
+      "explanation": "Confira os nomes das colunas, a ordenação e todas as linhas do resultado. Cada execução começa com o banco original; suas consultas nunca acessam contas do Aurora."
+    },
+    {
+      "id": "dev-sql-03",
+      "track": "DEV-SQL",
+      "formation": "DEV",
+      "kind": "sql",
+      "title": "JOIN: relacione clientes e pedidos",
+      "theory": "INNER JOIN combina linhas conforme uma condição. Use a chave de relacionamento; esquecer a condição pode multiplicar linhas em um produto cartesiano. Qualifique colunas quando houver nomes iguais. Uma chave estrangeira protege referências, mas não define automaticamente a consulta que você precisa.",
+      "code": "SELECT p.id, c.nome\nFROM pedidos p JOIN clientes c ON c.id = p.cliente_id;",
+      "scenario": "O suporte precisa identificar quem fez cada pedido pago.",
+      "question": "Retorne id do pedido (coluna id) e nome do cliente (coluna nome) para pedidos pagos, em ordem de id do pedido.",
+      "solution": "SELECT p.id AS id, c.nome AS nome FROM pedidos p JOIN clientes c ON c.id=p.cliente_id WHERE p.status='pago' ORDER BY p.id;",
+      "checkQuery": null,
+      "source": "https://www.sqlite.org/lang.html",
+      "explanation": "Confira os nomes das colunas, a ordenação e todas as linhas do resultado. Cada execução começa com o banco original; suas consultas nunca acessam contas do Aurora."
+    },
+    {
+      "id": "dev-sql-04",
+      "track": "DEV-SQL",
+      "formation": "DEV",
+      "kind": "sql",
+      "title": "GROUP BY e HAVING: agregue resultados",
+      "theory": "GROUP BY define grupos para agregações como SUM e COUNT. WHERE filtra linhas antes do agrupamento; HAVING filtra os grupos calculados. Ao selecionar colunas não agregadas, inclua as chaves apropriadas no agrupamento. Não confie em permissividades específicas de um dialeto para escolher um valor arbitrário.",
+      "code": "SELECT cliente_id, SUM(total) AS total_pago\nFROM pedidos WHERE status = 'pago'\nGROUP BY cliente_id;",
+      "scenario": "Você quer clientes com pelo menos 100 unidades em pedidos pagos.",
+      "question": "Retorne cliente_id e SUM(total) com alias total_pago; considere somente pagos, mantenha grupos >= 100 e ordene por cliente_id.",
+      "solution": "SELECT cliente_id,SUM(total) AS total_pago FROM pedidos WHERE status='pago' GROUP BY cliente_id HAVING SUM(total)>=100 ORDER BY cliente_id;",
+      "checkQuery": null,
+      "source": "https://www.sqlite.org/lang.html",
+      "explanation": "Confira os nomes das colunas, a ordenação e todas as linhas do resultado. Cada execução começa com o banco original; suas consultas nunca acessam contas do Aurora."
+    },
+    {
+      "id": "dev-sql-05",
+      "track": "DEV-SQL",
+      "formation": "DEV",
+      "kind": "sql",
+      "title": "LEFT JOIN e NULL: encontre ausências",
+      "theory": "LEFT JOIN preserva linhas da tabela à esquerda mesmo sem correspondência à direita. Quando não há correspondência, as colunas da direita são NULL. Use IS NULL para verificar ausência; = NULL não é uma comparação verdadeira. Filtrar a tabela da direita em WHERE pode eliminar linhas que você pretendia preservar.",
+      "code": "SELECT c.nome, p.id\nFROM clientes c LEFT JOIN pedidos p ON p.cliente_id=c.id;",
+      "scenario": "A equipe quer convidar os clientes que ainda não fizeram nenhum pedido.",
+      "question": "Retorne apenas nome dos clientes sem pedidos, em ordem alfabética.",
+      "solution": "SELECT c.nome AS nome FROM clientes c LEFT JOIN pedidos p ON p.cliente_id=c.id WHERE p.id IS NULL ORDER BY c.nome;",
+      "checkQuery": null,
+      "source": "https://www.sqlite.org/lang.html",
+      "explanation": "Confira os nomes das colunas, a ordenação e todas as linhas do resultado. Cada execução começa com o banco original; suas consultas nunca acessam contas do Aurora."
+    },
+    {
+      "id": "dev-sql-06",
+      "track": "DEV-SQL",
+      "formation": "DEV",
+      "kind": "sql",
+      "title": "Transações: altere e reverta com intenção",
+      "theory": "BEGIN inicia uma transação; COMMIT confirma e ROLLBACK desfaz suas alterações ainda não confirmadas. Uma transferência precisa debitar e creditar no mesmo limite atômico. Constraints e checagem de saldo protegem invariantes. O laboratório usa SQLite; níveis de isolamento e concorrência variam entre bancos.",
+      "code": "BEGIN;\nUPDATE contas SET saldo = saldo - 10 WHERE id = 1;\nUPDATE contas SET saldo = saldo + 10 WHERE id = 2;\nCOMMIT;",
+      "scenario": "Transfira 30 unidades da conta 1 para a 2. Em seguida simule um débito adicional de 10 na conta 1 e desfaça apenas essa segunda operação.",
+      "question": "Execute duas transações: confirme a transferência de 30 e reverta o débito de teste. O verificador lerá id e saldo das contas; o estado final deve ser 70 e 80.",
+      "solution": "BEGIN; UPDATE contas SET saldo=saldo-30 WHERE id=1; UPDATE contas SET saldo=saldo+30 WHERE id=2; COMMIT; BEGIN; UPDATE contas SET saldo=saldo-10 WHERE id=1; ROLLBACK;",
+      "checkQuery": "SELECT id,saldo FROM contas ORDER BY id;",
+      "source": "https://www.sqlite.org/lang.html",
+      "explanation": "Confira os nomes das colunas, a ordenação e todas as linhas do resultado. Cada execução começa com o banco original; suas consultas nunca acessam contas do Aurora."
+    }
+  ],
+  "sqlSetup": "PRAGMA foreign_keys=ON;\nCREATE TABLE clientes(id INTEGER PRIMARY KEY,nome TEXT NOT NULL,tenant_id TEXT NOT NULL);\nCREATE TABLE pedidos(id INTEGER PRIMARY KEY,cliente_id INTEGER REFERENCES clientes(id),total INTEGER NOT NULL CHECK(total>=0),status TEXT NOT NULL);\nCREATE TABLE contas(id INTEGER PRIMARY KEY,saldo INTEGER NOT NULL CHECK(saldo>=0));\nINSERT INTO clientes VALUES(1,'Ana','azul'),(2,'Bruno','azul'),(3,'Carla','verde'),(4,'Davi','verde');\nINSERT INTO pedidos VALUES(101,1,120,'pago'),(102,1,80,'aberto'),(103,2,200,'pago'),(104,3,50,'pago'),(105,3,150,'aberto');\nINSERT INTO contas VALUES(1,100),(2,50);\n"
+}

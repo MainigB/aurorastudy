@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('tests/integration.mjs');s=p.read_text(encoding='utf-8-sig');s=s.replace("origin=base){", "origin=base,expectedUser=null){");s=s.replace("Origin:origin,...(cookie", "Origin:origin,...(expectedUser?{'X-Aurora-User':expectedUser}:{}),...(cookie");s=s.replace("assert.notEqual(aid,bid);", "assert.notEqual(aid,bid);\n assert.equal((await request('/api/progress','GET',null,b.cookie,base,aid)).status,401);\n assert.equal((await request('/api/auth/sign-out','POST',{},b.cookie,base,aid)).status,401);");p.write_text(s,encoding='utf-8')
