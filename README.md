@@ -60,3 +60,13 @@ Os 347 tópicos preservam todas as seções do manuscrito, sem truncar explicaç
 `node scripts/build_linux.mjs` gera `public/linux.json` com 18 laboratórios autorais: cenário operacional, teoria, sintaxe, dicas progressivas, interpretação com feedback por alternativa e extensão comentada. Um comando correto libera a interpretação; XP só é concedido após as duas etapas. A simulação não executa Linux e aceita apenas variantes previstas. Os IDs e os 20 XP históricos foram mantidos: atividades já concluídas continuam concluídas, e sua revisão não gera XP adicional. Rascunhos de comandos e respostas continuam salvos pelo mecanismo existente. A etapa intermediária de interpretação reinicia ao reabrir o laboratório.
 
 `public/sre-learning.js` renderiza um subconjunto seguro de Markdown: HTML bruto vira texto, e links aceitam somente HTTP/HTTPS. `tests/sre.test.mjs` verifica cobertura, pré-requisitos, trechos de código preservados, conclusão em duas etapas e escape de conteúdo.
+
+## Jornada na empresa fictícia
+
+Toda a formação SRE tem um contexto de trabalho: 17 rotações com colegas recorrentes, responsabilidades, impacto, restrições e uma passagem de turno esperada. As 365 atividades possuem tickets estáveis derivados dos IDs originais, vinculados aos IDs de progresso originais. A ordem sugerida começa por integração, mas nenhuma rotação é bloqueada. Estados A fazer, Rascunho, Em revisão e Concluída são derivados do progresso existente; revisão tem precedência visual sobre conclusão.
+
+`scripts/company_arcs.json` contém as narrativas e os ensaios de decisão por rotação. `node scripts/build_company.mjs` combina esses contextos com o conteúdo específico de cada aula e gera `public/company.json`. Execute esse gerador depois de alterar/regenerar o currículo ou Linux. Os chamados apresentam evidências e perguntas do próprio exercício; não transferem números nem simulam efeitos de infraestrutura entre missões. Decisões na conversa da rotação exibem consequências didáticas, não dão XP e não são persistidas.
+
+O caderno de bordo reúne rascunhos, revisões e conclusões SRE e pode ser baixado como Markdown. Usa a sincronização autenticada já existente; não cria tabela ou campo adicional. O botão de modelo de registro só preenche respostas vazias e preserva rascunhos existentes. Um modelo sem preenchimento não libera a comparação. Em Linux, o comando é salvo; a alternativa de interpretação não é armazenada. O encerramento informa explicitamente que nenhum colega real revisou ou recebeu o registro.
+
+`tests/company.test.mjs` verifica cobertura integral, identidade dos tickets, sequência dentro das rotações, fases, decisões e preservação dos estados históricos.

@@ -1,0 +1,172 @@
+{
+  "PRE": {
+    "title":"Seu primeiro dia na Aurora", "team":"Engenharia de confiabilidade", "owner":"Marina · liderança SRE", "role":"SRE em integração", "service":"Plano de formação da equipe",
+    "brief":"Você entra na Aurora, uma plataforma fictícia de pedidos para lojistas. Marina precisa entender o que você já consegue explicar e onde ainda precisa de acompanhamento. Seu primeiro trabalho é produzir evidências de aprendizado, sem inventar experiência profissional.",
+    "stakes":"A equipe precisa delegar tarefas com segurança. Conhecer um termo não basta para assumir uma mudança de produção.",
+    "constraints":["Experimentos começam no laboratório descartável.","Declare quando sua conclusão depende de ajuda ou consulta."],
+    "phases":["Conhecer o produto e o método","Construir evidências de aprendizado","Combinar um plano de autonomia"],
+    "deliverable":"Registro de aprendizado com uma evidência reproduzível e uma lacuna assumida",
+    "handoff":"Marina usará seu registro para escolher a próxima atividade acompanhada.",
+    "decision":{"prompt":"Marina pergunta se você já pode assumir sozinho uma mudança que apenas leu no livro. O que comunica?","options":["Digo que sim, pois reconheço a explicação.","Explico o que compreendi, mostro um exercício e peço acompanhamento no que ainda não executei."],"best":1,"feedback":["A equipe pode delegar uma tarefa para a qual sua evidência ainda não é suficiente. Separe compreensão, execução e experiência.","Você torna a delegação mais informada: a evidência sustenta o que já domina e a lacuna orienta o acompanhamento."]}
+  },
+  "SYS": {
+    "title":"O primeiro plantão acompanhado", "team":"Operações de plataforma", "owner":"Rafa · SRE de plantão", "role":"Investigador do host e da rede", "service":"Hosts, DNS e caminho da API",
+    "brief":"Rafa recebe alertas de lentidão e falhas intermitentes. Você assume a coleta inicial: identificar o contexto da sessão, observar recursos e seguir o caminho de uma requisição. Cada chamado entrega um recorte próprio do ambiente para que você aprenda a distinguir sinais de hipóteses.",
+    "stakes":"Uma intervenção precipitada pode perder evidências ou ampliar o impacto dos pedidos que já estão lentos.",
+    "constraints":["Comece pelas consultas de leitura previstas no chamado.","Uma saída isolada não prova a causa; identifique host, horário e escopo."],
+    "phases":["Reconhecer o ambiente","Investigar recursos e conexões","Defender o diagnóstico e passar o turno"],
+    "deliverable":"Nota de diagnóstico com observação, hipótese, próxima verificação e limite da conclusão",
+    "handoff":"Rafa precisa conseguir repetir sua consulta e entender o que ela confirma e o que ainda falta investigar.",
+    "decision":{"prompt":"A API está lenta e alguém sugere reiniciar o host antes da coleta. Qual orientação você dá?","options":["Reinicio e considero resolvido se o processo voltar.","Delimito o impacto, coleto o mínimo útil e avalio uma mitigação com critério de recuperação."],"best":1,"feedback":["O processo voltar não demonstra recuperação da jornada, e o reinício pode apagar pistas importantes.","Você preserva a capacidade de investigar sem ignorar a urgência de mitigar; a decisão depende do impacto observado."]}
+  },
+  "AUT": {
+    "title":"A automação entra no plantão", "team":"Ferramentas de operação", "owner":"Caio · engenharia de plataforma", "role":"Responsável por uma automação revisável", "service":"Jobs, clientes e rotinas operacionais",
+    "brief":"O time repete consultas e tarefas manuais durante os plantões. Caio pede que você transforme uma dessas rotinas em uma entrega previsível. O chamado da aula define o mecanismo a revisar: entradas, erros, concorrência, prazo ou efeitos externos.",
+    "stakes":"Uma rotina rápida também pode repetir uma escrita, sobrecarregar dependências ou executar no ambiente errado.",
+    "constraints":["Defina o contrato antes de implementar.","Separe simulação, teste e execução com efeitos; não use dados reais nos exemplos."],
+    "phases":["Definir contrato e entradas","Implementar limites e testes","Preparar uso e manutenção"],
+    "deliverable":"Proposta de automação com contrato, casos de falha e teste que demonstre o limite",
+    "handoff":"Caio revisará o comportamento em falhas antes de entregar a rotina aos plantonistas.",
+    "decision":{"prompt":"O job falhou depois de enviar uma escrita, sem confirmar o resultado. Qual decisão leva para revisão?","options":["Repetir com uma nova identidade de operação até funcionar.","Encerrar definitivamente qualquer tentativa sem investigar.","Tratar o resultado como desconhecido e verificar estado ou o contrato de idempotência antes de repetir."],"best":2,"feedback":["Uma nova identidade pode transformar uma repetição em outro efeito de negócio.","Parar pode ser necessário, mas ainda é preciso descobrir o resultado para reconciliar o trabalho.","Você evita assumir que timeout equivale a ausência de efeito e torna a recuperação parte do contrato."]}
+  },
+  "OBS": {
+    "title":"O painel que precisa responder ao incidente", "team":"Telemetria", "owner":"Bia · engenharia de observabilidade", "role":"Responsável pela evidência operacional", "service":"Métricas, logs e traces da jornada de pedidos",
+    "brief":"Bia recebeu dois painéis com conclusões diferentes sobre o mesmo serviço. Você precisa revisar o significado dos sinais, como foram agregados e quais perguntas ajudam a responder. O objetivo é orientar decisões durante o plantão, não apenas preencher gráficos.",
+    "stakes":"Um indicador mal definido pode esconder usuários afetados ou acionar a equipe sem uma ação útil.",
+    "constraints":["Declare janela, unidade e origem de cada sinal.","Não exponha identificadores sensíveis nem crie dimensões ilimitadas para explicar um gráfico."],
+    "phases":["Definir perguntas e instrumentação","Revisar consultas e recortes","Entregar um painel acionável"],
+    "deliverable":"Ficha de indicador com pergunta, cálculo, limitações e ação orientada pelo resultado",
+    "handoff":"Bia entrega sua ficha ao plantão; a equipe de SLOs usará os sinais elegíveis para discutir objetivos.",
+    "decision":{"prompt":"O agregado está normal, mas lojistas de uma região relatam falhas. Como você conduz a análise?","options":["Investigo o recorte afetado, o denominador e a cobertura dos dados.","Descarto os relatos porque o gráfico global está verde."],"best":0,"feedback":["A investigação considera distribuição e cobertura; um agregado pode diluir um grupo com impacto alto.","Você pode encerrar o incidente enquanto um subconjunto de usuários continua sem conseguir operar."]}
+  },
+  "SLO": {
+    "title":"Um acordo de confiabilidade com produto", "team":"Produto e confiabilidade", "owner":"Lia · gerente de produto", "role":"Facilitador do contrato de serviço", "service":"Objetivos da jornada de pedidos",
+    "brief":"Lia quer uma forma clara de decidir entre novas funcionalidades e trabalho de confiabilidade. Você traz indicadores que representem a experiência dos lojistas e explica o que cada meta aceita e exclui. Os números de cada exercício pertencem ao recorte daquele chamado.",
+    "stakes":"Uma meta que parece rigorosa pode medir a coisa errada ou criar compromissos que ninguém consegue operar.",
+    "constraints":["Defina eventos bons, denominador e janela antes da conta.","Políticas de mudança precisam de acordo; saldo de orçamento não é uma garantia de ausência de risco."],
+    "phases":["Definir a experiência medida","Calcular consumo e velocidade","Negociar política e resposta"],
+    "deliverable":"Minuta de SLO com cálculo reproduzível, exclusões justificadas e consequência operacional",
+    "handoff":"Lia e o plantão usarão a minuta para decidir prioridades e reconhecer quando a política precisa ser acionada.",
+    "decision":{"prompt":"Há saldo de error budget e um deploy sem reversão simples. Qual posição você defende?","options":["Aprovar automaticamente porque ainda existe saldo.","Avaliar impacto, tendência de consumo, detecção e reversibilidade conforme a política acordada."],"best":1,"feedback":["O saldo não substitui a avaliação do risco de uma mudança específica.","Você usa o orçamento como entrada da decisão e mantém explícitas as condições do lançamento."]}
+  },
+  "RES": {
+    "title":"O pedido atravessa mais de um serviço", "team":"Arquitetura distribuída", "owner":"Davi · arquitetura de software", "role":"Revisor de garantias entre serviços", "service":"Pedidos, pagamentos e notificações",
+    "brief":"O fluxo de pedidos passa a depender de componentes que podem falhar separadamente. Davi pede que você desenhe o que o cliente observa quando há atraso, duplicação ou perda de resposta. Cada aula coloca uma garantia sob pressão.",
+    "stakes":"Repetir trabalho ou perder uma confirmação pode produzir cobrança duplicada, pedido inconsistente ou fila que não se recupera.",
+    "constraints":["Diferencie ausência de resposta de ausência de efeito.","Explicite a fronteira de cada garantia e o que acontece em falhas parciais."],
+    "phases":["Mapear contratos e dependências","Simular falhas parciais","Defender consistência e recuperação"],
+    "deliverable":"Análise de falha com linha do tempo, invariantes e estratégia de recuperação",
+    "handoff":"Davi precisa saber quais garantias dependem de cada componente antes de aprovar o desenho.",
+    "decision":{"prompt":"Uma requisição expirou, mas o serviço remoto pode ter concluído a operação. Como você descreve o estado?","options":["A operação certamente não aconteceu.","O resultado é desconhecido; precisamos de uma forma de consultar ou reconciliar a operação."],"best":1,"feedback":["O timeout mede a espera do cliente, não desfaz um possível efeito remoto.","A descrição mantém a incerteza visível e permite projetar recuperação em vez de criar uma garantia falsa."]}
+  },
+  "CLOUD": {
+    "title":"Capacidade para crescer e sobreviver a falhas", "team":"Infraestrutura cloud", "owner":"Nina · engenharia cloud", "role":"Responsável pelo desenho de capacidade", "service":"Regiões, rede e serviços gerenciados",
+    "brief":"A Aurora vai atender novos lojistas. Nina precisa de um desenho que explique capacidade, custo e falhas, incluindo dependências do provedor. Você transforma os requisitos de cada chamado em hipóteses verificáveis, sem tratar um serviço gerenciado como ilimitado.",
+    "stakes":"Capacidade aparente pode desaparecer quando uma zona falha, uma quota é atingida ou uma dependência compartilhada satura.",
+    "constraints":["Não invente preços ou quotas atuais; use os números didáticos do exercício.","Documente dependências e capacidade no cenário de falha, não apenas no funcionamento normal."],
+    "phases":["Mapear requisitos e fronteiras","Dimensionar e analisar custos","Planejar falha e expansão"],
+    "deliverable":"Registro de arquitetura com premissas, gargalos, estimativa e validação de capacidade",
+    "handoff":"Nina usará o registro para revisar o provisionamento junto ao time de infraestrutura como código.",
+    "decision":{"prompt":"O desenho usa duas zonas, mas ambas dependem de um componente único. O que você comunica?","options":["A independência precisa ser analisada nesse componente; duas zonas não eliminam todas as falhas comuns.","A arquitetura já tolera qualquer falha por ser multizona."],"best":0,"feedback":["Você identifica a fronteira real de resiliência e evita prometer mais do que o desenho oferece.","A dependência comum pode afetar as duas zonas ao mesmo tempo."]}
+  },
+  "IAC": {
+    "title":"A mudança que precisa de revisão", "team":"Infraestrutura como código", "owner":"Nina · responsável pela mudança", "role":"Revisor de plano e estado", "service":"Configuração e estado da infraestrutura",
+    "brief":"O provisionamento deixou de caber em procedimentos manuais. Nina entrega planos, divergências e execuções interrompidas para você revisar. Sua responsabilidade é explicar o que a mudança propõe, o que já ocorreu e como preservar coordenação entre operadores.",
+    "stakes":"Uma alteração aparentemente pequena pode substituir um recurso com dados ou fazer dois jobs disputarem o mesmo estado.",
+    "constraints":["A revisão precisa considerar o plano e o estado observado, não só o diff do código.","Não remova mecanismos de coordenação sem investigar quem ainda está atuando."],
+    "phases":["Entender recursos e estado","Revisar mudança e divergência","Recuperar execução e passar a operação"],
+    "deliverable":"Parecer de mudança com efeitos, riscos, verificações e recuperação viável",
+    "handoff":"Nina aguarda seu parecer para coordenar uma única execução e confirmar o resultado no provedor.",
+    "decision":{"prompt":"O pipeline parou de emitir logs e outro job encontrou um lock. Qual encaminhamento você registra?","options":["Remover o lock imediatamente para recuperar velocidade.","Confirmar a atividade da execução e a identidade do lock antes de decidir como retomar."],"best":1,"feedback":["Silêncio não prova término; liberar concorrência pode produzir alterações incompatíveis.","Você investiga se o bloqueio é órfão e preserva a proteção enquanto essa hipótese não foi confirmada."]}
+  },
+  "CONT": {
+    "title":"A plataforma passa pela manutenção", "team":"Plataforma Kubernetes", "owner":"Joana · engenharia de plataforma", "role":"Revisor da saúde do workload", "service":"Imagens, workloads e cluster",
+    "brief":"Joana precisa atualizar a plataforma enquanto pedidos continuam chegando. Você acompanha o caminho da imagem até o processo em execução, identifica o que readiness significa e verifica se as restrições de disponibilidade combinam com a capacidade real.",
+    "stakes":"Um rollout pode manter pods prontos e ainda reduzir a capacidade abaixo da demanda ou interromper trabalho em andamento.",
+    "constraints":["Distinga estado do pod, saúde da aplicação e experiência do usuário.","Considere aquecimento, drenagem, limites e dependências antes de reduzir réplicas."],
+    "phases":["Conhecer o workload","Investigar agendamento e recursos","Preparar manutenção e reversão"],
+    "deliverable":"Plano de operação do workload com capacidade, critérios de parada e verificação da jornada",
+    "handoff":"Joana usará o plano durante a janela de manutenção; o plantão precisa saber quando interrompê-la.",
+    "decision":{"prompt":"O PDB permite remover um pod. Como você avalia a manutenção?","options":["Começo porque a autorização do PDB comprova capacidade.","Verifico capacidade remanescente, demanda, drenagem e readiness antes de prosseguir."],"best":1,"feedback":["Uma restrição de quantidade de pods não mede toda a capacidade da jornada.","Você conecta a proteção de disponibilidade ao comportamento que realmente precisa ser sustentado."]}
+  },
+  "DATA": {
+    "title":"O dado precisa continuar correto", "team":"Confiabilidade de dados", "owner":"Ivo · engenharia de dados", "role":"Investigador de integridade e recuperação", "service":"Banco de pedidos, cache e fila",
+    "brief":"Ivo acompanha consultas lentas, transações concorrentes e reprocessamentos. Você precisa proteger invariantes de negócio e explicar como recuperar o estado certo quando uma operação falha. Um serviço responder rapidamente não basta se entrega um pedido incorreto.",
+    "stakes":"Uma recuperação sem validação pode perder escritas recentes, repetir efeitos ou promover uma cópia que já contém o erro.",
+    "constraints":["Declare quais dados podem ser perdidos e qual tempo de recuperação foi realmente medido.","Teste a recuperação em ambiente isolado antes de tratar a existência de um backup como garantia."],
+    "phases":["Entender consultas e invariantes","Investigar contenção e repetição","Recuperar e reconciliar dados"],
+    "deliverable":"Plano de diagnóstico ou recuperação com invariantes, evidências e validação de negócio",
+    "handoff":"Ivo e a equipe de pedidos precisam concordar sobre o estado recuperado antes do retorno ao tráfego.",
+    "decision":{"prompt":"Uma exclusão acidental já chegou à réplica. Qual proposta evita uma falsa recuperação?","options":["Promover essa réplica, pois replicação sempre desfaz exclusões.","Investigar um ponto de recuperação anterior ao erro e validar o estado restaurado de forma isolada."],"best":1,"feedback":["A réplica pode conter a mesma exclusão; replicação não equivale a histórico recuperável.","Você separa disponibilidade de recuperação do conteúdo e inclui validação antes de redirecionar usuários."]}
+  },
+  "CD": {
+    "title":"A release chega aos lojistas", "team":"Entrega de software", "owner":"Caio · responsável pelo pipeline", "role":"Revisor do lançamento", "service":"Pipeline, artefatos e rollout",
+    "brief":"Caio prepara uma versão que muda aplicação e dados. Você precisa tornar a promoção observável, definir o que interrompe o rollout e mostrar que o artefato testado é o que será entregue. Cada missão acrescenta uma verificação ao processo de mudança.",
+    "stakes":"Um rollback de código pode não reverter dados; uma promoção sem comparação adequada pode expandir uma regressão.",
+    "constraints":["Defina critérios antes de observar o resultado do canário.","Considere compatibilidade de esquema, identidade do artefato e concorrência entre deploys."],
+    "phases":["Preparar artefato e contrato","Comparar sinais durante o rollout","Encerrar, interromper ou reverter"],
+    "deliverable":"Plano de release com evidências de promoção, critérios de parada e reversão compatível",
+    "handoff":"Caio e o plantão usarão os mesmos critérios para evitar decisões contraditórias durante o deploy.",
+    "decision":{"prompt":"O canário melhorou a mediana, mas piorou erros e cauda. Qual é sua decisão inicial?","options":["Pausar a ampliação e investigar os recortes e o contrato da jornada.","Promover porque a maioria das respostas ficou mais rápida."],"best":0,"feedback":["Você evita expandir uma regressão enquanto verifica comparabilidade e impacto.","A mediana pode esconder piora nos casos que violam o objetivo do serviço."]}
+  },
+  "SEC": {
+    "title":"A confiança precisa de fronteiras", "team":"Segurança e plataforma", "owner":"Sara · engenharia de segurança", "role":"Revisor de acesso e cadeia de entrega", "service":"Identidades, segredos e artefatos",
+    "brief":"Sara pede uma revisão dos caminhos pelos quais pessoas e workloads alcançam dados de pedidos. Você deve associar cada controle a uma ameaça concreta e preparar recuperação de acesso, rotação e auditoria sem inventar uma declaração de conformidade.",
+    "stakes":"Uma credencial com permissões excessivas pode transformar o comprometimento de um componente em acesso a muitos clientes.",
+    "constraints":["Use apenas credenciais e dados fictícios nos exercícios.","Separe intenção da política, acesso efetivo e evidência de aplicação do controle."],
+    "phases":["Mapear ativos e identidades","Revisar controles e procedência","Preparar rotação e resposta"],
+    "deliverable":"Análise de ameaça com caminho de abuso, controle, teste permitido/negado e recuperação",
+    "handoff":"Sara revisará o teste e as permissões efetivas; os donos das aplicações precisam conhecer o procedimento de rotação.",
+    "decision":{"prompt":"Um token foi exposto e as permissões do arquivo foram corrigidas. Como você encerra a análise?","options":["Considero a exposição resolvida, pois o arquivo ficou restrito.","Trato as cópias possíveis, a revogação/rotação e a investigação de uso, além das permissões."],"best":1,"feedback":["Mudar o arquivo não invalida material que já tenha sido copiado.","Você diferencia o controle de acesso local da validade da credencial no serviço emissor."]}
+  },
+  "INC": {
+    "title":"Você coordena o incidente", "team":"Resposta a incidentes", "owner":"Rafa · coordenação de incidente", "role":"Coordenador em exercício", "service":"Checkout e dependências críticas",
+    "brief":"O checkout apresenta falhas e várias pessoas propõem intervenções ao mesmo tempo. Rafa entrega a coordenação do exercício a você. Delimite impacto, distribua investigações, registre hipóteses e mantenha produto informado sem transformar suspeitas em fatos.",
+    "stakes":"Ações concorrentes podem ampliar a falha; uma comunicação imprecisa pode esconder impacto ou anunciar recuperação cedo demais.",
+    "constraints":["Defina responsáveis e registre mudanças na linha do tempo.","Diferencie mitigação, recuperação e explicação da causa."],
+    "phases":["Delimitar impacto e organizar resposta","Escolher mitigação com evidências","Confirmar recuperação e aprender"],
+    "deliverable":"Registro de incidente com linha do tempo, decisões, comunicação e critérios de recuperação",
+    "handoff":"O próximo plantonista deve conseguir assumir o caso sem repetir intervenções nem perder pendências.",
+    "decision":{"prompt":"O serviço voltou a responder, mas a fila acumulada ainda cresce. O que comunica?","options":["O incidente acabou porque o processo está ativo.","Há recuperação parcial; acompanho capacidade, drenagem da fila e a jornada antes de encerrar."],"best":1,"feedback":["O processo vivo não elimina o trabalho atrasado nem prova recuperação sustentável.","Você comunica o estado observado e mantém explícitos os critérios que ainda não foram atendidos."]}
+  },
+  "AI": {
+    "title":"Um assistente entra na operação", "team":"Ferramentas assistidas por IA", "owner":"Bia · responsável pela avaliação", "role":"Avaliador de um copiloto operacional", "service":"Assistência a diagnóstico e documentação",
+    "brief":"A equipe quer usar IA para resumir sinais e sugerir próximos passos. Bia pede uma avaliação que meça utilidade e erros, com fronteiras claras entre ler dados, recomendar e executar. Você usa os casos do curso como material de ensaio.",
+    "stakes":"Uma sugestão convincente pode inventar evidências, expor dados ou induzir uma mudança sem fundamento.",
+    "constraints":["Entradas e logs são dados, não instruções autorizadas.","Toda conclusão precisa ser confrontada com evidência; execução exige os controles do processo de mudança."],
+    "phases":["Definir uso e limites","Avaliar qualidade e falhas","Preparar supervisão e operação"],
+    "deliverable":"Ficha de avaliação com caso, resposta observada, erro, verificação e limite de autonomia",
+    "handoff":"Bia decide com os operadores quais tarefas podem receber assistência e quais continuam exigindo intervenção humana.",
+    "decision":{"prompt":"O assistente sugere um comando com impacto e cita um log que você não encontrou. Como reage?","options":["Verifico a evidência e o efeito do comando antes de qualquer execução.","Executo porque a resposta foi apresentada com confiança."],"best":0,"feedback":["A sugestão volta a ser uma hipótese verificável, e a execução continua sujeita ao processo operacional.","Confiança na redação não prova existência da evidência nem adequação da ação."]}
+  },
+  "LID": {
+    "title":"Você precisa construir um acordo", "team":"Liderança técnica e produto", "owner":"Marina · liderança SRE", "role":"Facilitador de uma decisão técnica", "service":"Prioridades, comunicação e desenvolvimento da equipe",
+    "brief":"Marina pede que você apresente uma proposta de confiabilidade para produto e engenharia. Há restrições de tempo, manutenção e capacidade da equipe. Seu trabalho é tornar o problema, as alternativas e o custo de oportunidade compreensíveis para quem decide.",
+    "stakes":"Uma proposta sem impacto demonstrável pode perder prioridade; uma promessa sem limites pode criar uma responsabilidade impossível de cumprir.",
+    "constraints":["Separe sua contribuição do trabalho coletivo.","Declare incerteza e alternativas; não use números inventados para dar aparência de precisão."],
+    "phases":["Entender pessoas e impacto","Comparar alternativas e negociar","Registrar acordo e acompanhar resultado"],
+    "deliverable":"Memorando de decisão com impacto, opções, responsáveis e evidência de resultado",
+    "handoff":"Marina e Lia precisam enxergar a escolha e o que será revisto se as premissas mudarem.",
+    "decision":{"prompt":"Você quer priorizar uma melhoria, mas não mediu o impacto. Como apresenta a proposta?","options":["Prometo uma redução exata para conseguir aprovação.","Explico a evidência disponível, a incerteza e uma etapa de medição que reduza o risco da decisão."],"best":1,"feedback":["A precisão inventada pode produzir um acordo baseado em uma promessa insustentável.","Você oferece um próximo passo executável e permite comparar custo de aprender com custo de agir agora."]}
+  },
+  "PRA": {
+    "title":"A revisão de prontidão da Aurora", "team":"Comitê de engenharia", "owner":"Marina · revisão técnica", "role":"Responsável pela defesa do projeto", "service":"Projeto integrado da plataforma de pedidos",
+    "brief":"Você reúne o trabalho das rotações em uma revisão técnica. A banca fictícia pede explicações, cálculos e diagnósticos sob novas condições. A meta é defender o que foi demonstrado e reconhecer o que ainda precisa de experimento; esta simulação não equivale a experiência profissional real.",
+    "stakes":"Uma solução pode parecer completa no desenho e falhar quando precisa ser testada, recuperada ou operada por outra pessoa.",
+    "constraints":["Identifique artefatos simulados e experimentos realmente executados.","Justifique decisões com requisitos; não decore a resposta-modelo."],
+    "phases":["Organizar evidências e requisitos","Defender decisões sob novas condições","Entregar projeto e plano de evolução"],
+    "deliverable":"Defesa técnica com evidências, tradeoffs, demonstração e lacunas prioritárias",
+    "handoff":"A banca registra pontos fortes e perguntas abertas; seu próximo ciclo de aprendizado parte dessas lacunas.",
+    "decision":{"prompt":"A banca muda a demanda do cenário e sua conta deixa de fechar. Qual resposta é mais sólida?","options":["Recalculo, explicito a hipótese invalidada e reviso o desenho.","Mantenho a resposta original porque ela era o gabarito."],"best":0,"feedback":["Você demonstra domínio do mecanismo ao adaptar a decisão às novas condições.","Uma resposta depende de suas premissas; repetir o desenho não responde ao novo problema."]}
+  },
+  "JOBS": {
+    "title":"Uma pesquisa para orientar a formação", "team":"Desenvolvimento de pessoas", "owner":"Marina · mentoria", "role":"Analista de competências", "service":"Arquivo histórico de pesquisa de vagas",
+    "brief":"Marina entrega a amostra histórica de vagas preservada no livro. Você deve distinguir exigências explícitas de inferências e transformar a análise em prioridades de estudo para a equipe fictícia. As empresas citadas no arquivo não fazem parte da Aurora e as vagas não são apresentadas como abertas hoje.",
+    "stakes":"Generalizar uma amostra ou presumir uma ferramenta não citada pode direcionar esforço para a competência errada.",
+    "constraints":["Preserve data, recorte e limites da pesquisa histórica.","Não trate frequência na amostra como probabilidade de contratação."],
+    "phases":["Entender recorte e método","Analisar requisitos explícitos","Priorizar estudo com evidências"],
+    "deliverable":"Nota de pesquisa com evidência textual, inferência separada e prioridade de estudo justificada",
+    "handoff":"Marina usará a nota como insumo para mentoria, sem atribuir validade atual a um anúncio histórico.",
+    "decision":{"prompt":"Um anúncio histórico cita Docker, mas não Kubernetes. Como você registra o requisito?","options":["Marco Kubernetes como obrigatório porque costuma aparecer junto.","Registro Docker e separo qualquer hipótese sobre Kubernetes do que foi explicitamente observado."],"best":1,"feedback":["A associação entre ferramentas não cria uma exigência que não aparece na fonte.","Você preserva a rastreabilidade da pesquisa e evita transformar inferência em evidência."]}
+  }
+}
