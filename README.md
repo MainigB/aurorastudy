@@ -26,7 +26,7 @@ Os arquivos `.env*` são excluídos do Git e deploy. DATABASE_URL e BETTER_AUTH_
 
 ## Validação
 
-`npm test`: 7 testes de currículo, comandos, XP, validação e normalização de progresso.
+`npm test`: testes de currículo, comandos, XP, validação, normalização de progresso, quizzes, SQLite e fluxo de aprendizagem SRE.
 `npm run test:integration`: cria duas contas fictícias e as remove ao terminar; exige autorização para esse fluxo e acesso ao banco. Testa cadastro, login, rejeição de senha incorreta, cookies, persistência, isolamento, versões, origem, logout e troca de senha.
 
 ## Conteúdo
@@ -50,3 +50,13 @@ O laboratório roda SQLite/sql.js em um Web Worker, com banco fictício recriado
 `python scripts/build_developer.py` gera `public/developer.json` e `lib/lesson-ids.json`. O registro é validado no servidor, inclui todos os IDs históricos e deve ser regenerado quando o catálogo mudar. Não foi necessária alteração no esquema de dados. XP global soma as áreas; o painel de progresso e a lista de revisão são filtrados pela formação selecionada. Exportação/importação continua abrangendo todas as formações.
 
 `npm test` inclui validação do catálogo, chaves dos quizzes, execução das seis soluções SQL e coexistência de progresso SRE/Desenvolvimento. No navegador foram verificados erro/acerto de quiz, SQL real, troca de formação e persistência após recarga usando uma conta fictícia.
+
+## SRE aprofundado
+
+Oito oficinas adicionais em `scripts/sre_cases.json` incluem dados, restrições e decisões: canário/percentis, retries/deadline, agregação de erros, orçamento de erro, lock de infraestrutura, PDB/capacidade, recuperação de dados e coordenação de incidente. As perguntas de aprofundamento do manuscrito também aparecem no roteiro de resposta antes da solução.
+
+Os 347 tópicos preservam todas as seções do manuscrito, sem truncar explicações, código ou soluções. `python build_curriculum.py` usa os manifestos em `../book4/` para gerar estudo, prática, respostas comentadas, exemplos guiados, vocabulário e links de pré-requisitos. Esses arquivos de origem pertencem ao projeto do livro e não estão neste repositório; o catálogo gerado está versionado e basta para executar/publicar o site. Seções são classificadas por título: estudo, prática ou solução. Perguntas-guia específicas são acompanhadas de aplicação ao caso e análise de limites. As referências são abertas após uma tentativa; a conclusão exige quatro critérios de autoavaliação, sem alegar correção semântica.
+
+`node scripts/build_linux.mjs` gera `public/linux.json` com 18 laboratórios autorais: cenário operacional, teoria, sintaxe, dicas progressivas, interpretação com feedback por alternativa e extensão comentada. Um comando correto libera a interpretação; XP só é concedido após as duas etapas. A simulação não executa Linux e aceita apenas variantes previstas. Os IDs e os 20 XP históricos foram mantidos: atividades já concluídas continuam concluídas, e sua revisão não gera XP adicional. Rascunhos de comandos e respostas continuam salvos pelo mecanismo existente. A etapa intermediária de interpretação reinicia ao reabrir o laboratório.
+
+`public/sre-learning.js` renderiza um subconjunto seguro de Markdown: HTML bruto vira texto, e links aceitam somente HTTP/HTTPS. `tests/sre.test.mjs` verifica cobertura, pré-requisitos, trechos de código preservados, conclusão em duas etapas e escape de conteúdo.
