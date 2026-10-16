@@ -1,0 +1,4886 @@
+{
+  "checked": "2026-10-16",
+  "videos": {
+    "dns": {
+      "url": "https://www.youtube.com/watch?v=mpQZVYPuDGU",
+      "language": "en",
+      "topic": "Resolução de nomes",
+      "focus": "Visualize a resolução DNS e relacione cada etapa à evidência que uma consulta dig fornece.",
+      "title": "How a DNS Server (Domain Name System) works.",
+      "channel": "PowerCert Animated Videos",
+      "checked": "2026-10-16"
+    },
+    "prometheus": {
+      "url": "https://www.youtube.com/watch?v=h4Sl21AKiDg",
+      "language": "en",
+      "topic": "Arquitetura do Prometheus",
+      "focus": "Relacione coleta, séries temporais e alertas. Para quantis e cardinalidade, aprofunde na documentação vinculada.",
+      "title": "How Prometheus Monitoring works | Prometheus Architecture explained",
+      "channel": "TechWorld with Nana",
+      "checked": "2026-10-16"
+    },
+    "group": {
+      "url": "https://www.youtube.com/watch?v=ocyVJ9gRUaE",
+      "language": "pt-BR",
+      "topic": "Agregação SQL",
+      "focus": "Compare DISTINCT, GROUP BY e HAVING. Observe as diferenças entre o MySQL do vídeo e o SQLite do laboratório.",
+      "title": "Curso MySQL #13 - SELECT (Parte 3)",
+      "channel": "Curso em Vídeo",
+      "checked": "2026-10-16"
+    },
+    "explain": {
+      "url": "https://www.youtube.com/watch?v=CMftYJnqou0",
+      "language": "en",
+      "topic": "Planos de execução PostgreSQL",
+      "focus": "Aprofundamento em EXPLAIN e planos genéricos no PostgreSQL 16. Compare com o plano e a versão do seu caso.",
+      "title": "Waiting for Postgres 16: Running EXPLAIN on any query (even with $1 parameters!)",
+      "channel": "pganalyze",
+      "checked": "2026-10-16"
+    },
+    "learn": {
+      "url": "https://www.youtube.com/watch?v=ZtMzB5CoekE",
+      "language": "pt-BR",
+      "topic": "Métodos de estudo",
+      "focus": "Observe como organizar o aprendizado e transforme a aula em uma pequena prática verificável.",
+      "title": "3 Técnicas Que Eu Uso Para Aprender a Programar Qualquer Coisa (mesmo sem ter o dom da programação)",
+      "channel": "Filipe Deschamps",
+      "checked": "2026-10-16"
+    },
+    "linux": {
+      "url": "https://www.youtube.com/watch?v=x0AG2sqTCGo",
+      "language": "pt-BR",
+      "topic": "Fundamentos do terminal",
+      "focus": "Apoio geral para ganhar familiaridade com o terminal. Confira a sintaxe específica no manual da aula.",
+      "title": "12 Comandos Linux para expandir suas habilidades no PC!",
+      "channel": "Diolinux",
+      "checked": "2026-10-16"
+    },
+    "perf": {
+      "url": "https://www.youtube.com/watch?v=FJW8nGV4jxY",
+      "language": "en",
+      "topic": "Diagnóstico de desempenho",
+      "focus": "Relacione ferramentas de diagnóstico com CPU, memória e I/O. O material é histórico; valide opções na documentação atual.",
+      "title": "Linux Performance Tools, Brendan Gregg, part 1 of 2",
+      "channel": "Brendan Gregg",
+      "checked": "2026-10-16"
+    },
+    "slo": {
+      "url": "https://www.youtube.com/watch?v=tEylFyxbDLE",
+      "language": "en",
+      "topic": "Confiabilidade e objetivos",
+      "focus": "Diferencie indicador, objetivo e compromisso de serviço antes de justificar a decisão do caso.",
+      "title": "SLIs, SLOs, SLAs, oh my! (class SRE implements DevOps)",
+      "channel": "Google Cloud Tech",
+      "checked": "2026-10-16"
+    },
+    "incident": {
+      "url": "https://www.youtube.com/watch?v=n4y9dwinPBQ",
+      "language": "en",
+      "topic": "Coordenação de incidentes",
+      "focus": "Observe os papéis e a comunicação. Aplique isso à passagem de turno e às decisões da equipe Aurora.",
+      "title": "Incident Management (class SRE implements DevOps)",
+      "channel": "Google Cloud Tech",
+      "checked": "2026-10-16"
+    },
+    "obs": {
+      "url": "https://www.youtube.com/watch?v=SoZZzB-yTOk",
+      "language": "en",
+      "topic": "Observabilidade",
+      "focus": "Relacione métricas, logs e traces à evidência que falta no diagnóstico. Interfaces antigas podem diferir das atuais.",
+      "title": "Observability of Distributed Systems (class SRE implements DevOps)",
+      "channel": "Google Cloud Tech",
+      "checked": "2026-10-16"
+    },
+    "python": {
+      "url": "https://www.youtube.com/watch?v=31llNGKWDdo",
+      "language": "pt-BR",
+      "topic": "Base para automação",
+      "focus": "Introdução à linguagem para quem precisa revisar a base. As decisões de segurança da automação continuam no exercício.",
+      "title": "Curso Python #04 - Primeiros comandos em Python3",
+      "channel": "Curso em Vídeo",
+      "checked": "2026-10-16"
+    },
+    "distributed": {
+      "url": "https://www.youtube.com/watch?v=UEAMfLPZZhE",
+      "language": "en",
+      "topic": "Sistemas distribuídos",
+      "focus": "Introdução à série de Martin Kleppmann. Use as aulas seguintes da série para aprofundar modelos de falha e coordenação.",
+      "title": "Distributed Systems 1.1: Introduction",
+      "channel": "Martin Kleppmann",
+      "checked": "2026-10-16"
+    },
+    "cloud": {
+      "url": "https://www.youtube.com/watch?v=97l0Ahu2efE",
+      "language": "pt-BR",
+      "topic": "Computação em nuvem",
+      "focus": "Revise os conceitos de nuvem e confronte-os com responsabilidade operacional, custo e disponibilidade.",
+      "title": "Cloud Computing (Computação em Nuvem) // Dicionário do Programador",
+      "channel": "Código Fonte TV",
+      "checked": "2026-10-16"
+    },
+    "terraform": {
+      "url": "https://www.youtube.com/watch?v=4FellihAcV8",
+      "language": "pt-BR",
+      "topic": "Infraestrutura como código",
+      "focus": "Apoio para compreender Terraform. Compare exemplos antigos com a documentação atual de estado, planos e provedores.",
+      "title": "Descomplicando o Terraform | HashiWeek",
+      "channel": "LINUXtips",
+      "checked": "2026-10-16"
+    },
+    "docker": {
+      "url": "https://www.youtube.com/watch?v=ms04rvuRyyI",
+      "language": "pt-BR",
+      "topic": "Containers",
+      "focus": "Primeiros passos da série Descomplicando Docker. Relacione o ambiente isolado com o ciclo de vida da aplicação.",
+      "title": "Day-01 - 06 - Primeiros passos 01 | Descomplicando o Docker",
+      "channel": "LINUXtips",
+      "checked": "2026-10-16"
+    },
+    "k8s": {
+      "url": "https://www.youtube.com/watch?v=s_o8dwzRlu4",
+      "language": "en",
+      "topic": "Kubernetes",
+      "focus": "Visão geral prática dos componentes. Consulte a documentação atual antes de reproduzir configurações e versões.",
+      "title": "Kubernetes Crash Course for Absolute Beginners [NEW]",
+      "channel": "TechWorld with Nana",
+      "checked": "2026-10-16"
+    },
+    "sql": {
+      "url": "https://www.youtube.com/watch?v=GaOlyL3Uv9M",
+      "language": "pt-BR",
+      "topic": "Consultas SQL",
+      "focus": "Revise SELECT e filtros. O vídeo usa MySQL; o laboratório Aurora usa SQLite e os casos de SRE podem usar PostgreSQL.",
+      "title": "Curso MySQL #11 - SELECT (Parte 1)",
+      "channel": "Curso em Vídeo",
+      "checked": "2026-10-16"
+    },
+    "events": {
+      "url": "https://www.youtube.com/watch?v=50v1MkAYQ-s",
+      "language": "pt-BR",
+      "topic": "Arquitetura orientada a eventos",
+      "focus": "Relacione produtores, consumidores e eventos com as consequências de entrega repetida ou atrasada.",
+      "title": "Event Driven: O segredo por trás de aplicações de grande porte",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    },
+    "kafka": {
+      "url": "https://www.youtube.com/watch?v=YL8CvpQ_nL0",
+      "language": "pt-BR",
+      "topic": "Mensageria e integração",
+      "focus": "Apoio sobre Kafka e integração. Ao responder, explicite garantias, reprocessamento e limites do seu cenário.",
+      "title": "Intensivão Apache Kafka: Streaming de dados e mensageria na prática",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    },
+    "cicd": {
+      "url": "https://www.youtube.com/watch?v=rQ_f1ptZWlU",
+      "language": "pt-BR",
+      "topic": "Entrega de software",
+      "focus": "Relacione a esteira com validação, artefato e implantação. Acrescente critérios de interrupção e recuperação ao caso.",
+      "title": "Do ciclo completo de integração contínua com esteróides aos microsserviços",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    },
+    "security": {
+      "url": "https://www.youtube.com/watch?v=yn6CPQ9RioA",
+      "language": "en",
+      "topic": "Identidade e confiança",
+      "focus": "Introdução a Zero Trust. Use como ponto de partida para discutir identidade, autorização e privilégio mínimo.",
+      "title": "Zero Trust Explained in 4 mins",
+      "channel": "IBM Technology",
+      "checked": "2026-10-16"
+    },
+    "ai": {
+      "url": "https://www.youtube.com/watch?v=jrHRe9lSqqA",
+      "language": "en",
+      "topic": "Segurança de IA",
+      "focus": "Observe o risco de instruções presentes em dados externos e avalie os limites de atuação do agente.",
+      "title": "What Is a Prompt Injection Attack?",
+      "channel": "IBM Technology",
+      "checked": "2026-10-16"
+    },
+    "career": {
+      "url": "https://www.youtube.com/watch?v=imB0QVoNrGc",
+      "language": "pt-BR",
+      "topic": "Escolhas de aprendizado",
+      "focus": "Conversa sobre escolhas de tecnologia. Apoio geral de carreira, não análise das vagas históricas nem anúncio de emprego.",
+      "title": "A MELHOR linguagem de programação com Fabio Akita | #HipstersPontoTube",
+      "channel": "Alura",
+      "checked": "2026-10-16"
+    },
+    "api": {
+      "url": "https://www.youtube.com/watch?v=S7MduKwvVGk",
+      "language": "pt-BR",
+      "topic": "Contratos de API",
+      "focus": "Introdução a REST. Use a documentação da aula para conferir semântica HTTP, erros e condições do contrato.",
+      "title": "REST // Dicionário do Programador",
+      "channel": "Código Fonte TV",
+      "checked": "2026-10-16"
+    },
+    "test": {
+      "url": "https://www.youtube.com/watch?v=fNTJnJB3eDI",
+      "language": "pt-BR",
+      "topic": "Testes de software",
+      "focus": "Relacione os tipos de teste com o risco do caso, o isolamento e o feedback que cada teste oferece.",
+      "title": "Testes Automatizados - Aprenda 4 tipos na Prática",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    },
+    "solid": {
+      "url": "https://www.youtube.com/watch?v=6SfrO3D4dHM",
+      "language": "pt-BR",
+      "topic": "Princípios SOLID",
+      "focus": "Use as ilustrações como base para explicar responsabilidades, contratos e dependências no código da aula.",
+      "title": "SOLID fica FÁCIL com Essas Ilustrações",
+      "channel": "Filipe Deschamps",
+      "checked": "2026-10-16"
+    },
+    "patterns": {
+      "url": "https://www.youtube.com/watch?v=J-lHpiu-Twk",
+      "language": "pt-BR",
+      "topic": "Design Patterns",
+      "focus": "Introdução à família de padrões. Consulte a referência específica para comparar intenção, estrutura e custo do padrão da aula.",
+      "title": "Design Patterns // Dicionário do Programador",
+      "channel": "Código Fonte TV",
+      "checked": "2026-10-16"
+    },
+    "mvc": {
+      "url": "https://www.youtube.com/watch?v=jyTNhT67ZyY",
+      "language": "pt-BR",
+      "topic": "MVC",
+      "focus": "Relacione modelo, visão e controlador com a responsabilidade de cada trecho do exemplo.",
+      "title": "MVC // Dicionário do Programador",
+      "channel": "Código Fonte TV",
+      "checked": "2026-10-16"
+    },
+    "mvvm": {
+      "url": "https://www.youtube.com/watch?v=Pso1MeX_HvI",
+      "language": "en",
+      "topic": "MVVM",
+      "focus": "Exemplos no ecossistema .NET. Transfira a separação de estado, apresentação e comandos para o cenário da aula.",
+      "title": "MVVM for Beginners: Model-View-ViewModel Architecture for Xamarin.Forms, .NET MAUI, WPF, UWP, & More",
+      "channel": "James Montemagno",
+      "checked": "2026-10-16"
+    },
+    "clean": {
+      "url": "https://www.youtube.com/watch?v=BuSf7VsH064",
+      "language": "pt-BR",
+      "topic": "Clean Architecture",
+      "focus": "Observe limites e direção das dependências; explique como testar a regra de negócio sem depender da infraestrutura.",
+      "title": "Clean Architecture",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    },
+    "tenant": {
+      "url": "https://www.youtube.com/watch?v=KYf-3pXANto",
+      "language": "en",
+      "topic": "Arquitetura SaaS",
+      "focus": "Conversa sobre arquitetura multi-tenant. Compare isolamento, operação e efeitos de compartilhar recursos.",
+      "title": "Building Multi-Tenant SaaS Architectures • Tod Golding & Bill Tarr • GOTO 2024",
+      "channel": "GOTO Conferences",
+      "checked": "2026-10-16"
+    },
+    "ddd": {
+      "url": "https://www.youtube.com/watch?v=eUf5rhBGLAk",
+      "language": "pt-BR",
+      "topic": "Domain-Driven Design",
+      "focus": "Relacione domínio e linguagem de negócio com os limites e invariantes do exercício.",
+      "title": "Aprenda DDD (Domain Driven Design) do jeito certo",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    },
+    "micro": {
+      "url": "https://www.youtube.com/watch?v=hlcQ_WOyNNs",
+      "language": "pt-BR",
+      "topic": "Microsserviços",
+      "focus": "Apoio para discutir distribuição e escala. Compare os benefícios com falhas parciais e custo de operação.",
+      "title": "Full Cycle Week: Escalabilidade, Microsserviços e Sistemas Distribuídos",
+      "channel": "Full Cycle",
+      "checked": "2026-10-16"
+    }
+  },
+  "lessons": {
+    "linux-0": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/s/coreutils/manual/html_node/pwd-invocation.html"
+        }
+      ]
+    },
+    "linux-1": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/ls-invocation.html"
+        }
+      ]
+    },
+    "linux-2": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html"
+        }
+      ]
+    },
+    "linux-3": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/cat-invocation.html"
+        }
+      ]
+    },
+    "linux-4": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html"
+        }
+      ]
+    },
+    "linux-5": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/grep/manual/grep.html"
+        }
+      ]
+    },
+    "linux-6": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html"
+        }
+      ]
+    },
+    "linux-7": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html"
+        }
+      ]
+    },
+    "linux-8": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://man7.org/linux/man-pages/man1/free.1.html"
+        }
+      ]
+    },
+    "linux-9": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://man7.org/linux/man-pages/man1/ps.1.html"
+        }
+      ]
+    },
+    "linux-10": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://man7.org/linux/man-pages/man8/vmstat.8.html"
+        }
+      ]
+    },
+    "linux-11": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://man7.org/linux/man-pages/man8/ss.8.html"
+        }
+      ]
+    },
+    "linux-12": {
+      "videos": [
+        "dns"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://bind9.readthedocs.io/en/latest/manpages.html#dig-dns-lookup-utility"
+        }
+      ]
+    },
+    "linux-13": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://curl.se/docs/httpscripting.html"
+        }
+      ]
+    },
+    "linux-14": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.freedesktop.org/software/systemd/man/latest/systemctl.html"
+        }
+      ]
+    },
+    "linux-15": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.freedesktop.org/software/systemd/man/latest/journalctl.html"
+        }
+      ]
+    },
+    "linux-16": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/chmod-invocation.html"
+        }
+      ]
+    },
+    "linux-17": {
+      "videos": [
+        "linux"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.gnu.org/software/coreutils/manual/html_node/du-invocation.html"
+        }
+      ]
+    },
+    "u000": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/part-I-introduction/"
+        }
+      ]
+    },
+    "u001": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/part-I-introduction/"
+        }
+      ]
+    },
+    "u002": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/part-I-introduction/"
+        }
+      ]
+    },
+    "u003": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/part-I-introduction/"
+        }
+      ]
+    },
+    "u004": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/part-I-introduction/"
+        }
+      ]
+    },
+    "u005": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/part-I-introduction/"
+        }
+      ]
+    },
+    "u006": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u007": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u008": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u009": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u010": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u011": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u012": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u013": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u014": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u015": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u016": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u017": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u018": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u019": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u020": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u021": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/engagement-model/"
+        }
+      ]
+    },
+    "u022": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u023": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u024": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u025": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u026": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u027": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u028": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u029": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u030": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u031": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u032": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u033": {
+      "videos": [
+        "dns"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u034": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u035": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u036": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u037": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u038": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u039": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u040": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u041": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u042": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u043": {
+      "videos": [
+        "dns"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u044": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u045": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u046": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u047": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u048": {
+      "videos": [
+        "dns"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u049": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u050": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u051": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u052": {
+      "videos": [
+        "perf"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.brendangregg.com/linuxperf.html"
+        }
+      ]
+    },
+    "u053": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u054": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u055": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u056": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u057": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u058": {
+      "videos": [
+        "distributed",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u059": {
+      "videos": [
+        "distributed",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u060": {
+      "videos": [
+        "test",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u061": {
+      "videos": [
+        "distributed",
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u062": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u063": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u064": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u065": {
+      "videos": [
+        "distributed",
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u066": {
+      "videos": [
+        "distributed",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u067": {
+      "videos": [
+        "distributed",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u068": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u069": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u070": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u071": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u072": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u073": {
+      "videos": [
+        "distributed",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u074": {
+      "videos": [
+        "distributed",
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u075": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u076": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u077": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u078": {
+      "videos": [
+        "python"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.python.org/pt-br/3/tutorial/"
+        }
+      ]
+    },
+    "u079": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u080": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u081": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u082": {
+      "videos": [
+        "prometheus",
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u083": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u084": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u085": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u086": {
+      "videos": [
+        "prometheus",
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u087": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u088": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u089": {
+      "videos": [
+        "prometheus",
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u090": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u091": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u092": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u093": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u094": {
+      "videos": [
+        "prometheus",
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u095": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u096": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u097": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u098": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u099": {
+      "videos": [
+        "obs"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://prometheus.io/docs/practices/histograms/"
+        }
+      ]
+    },
+    "u100": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u101": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u102": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u103": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u104": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u105": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u106": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u107": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u108": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u109": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u110": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u111": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u112": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u113": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u114": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u115": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u116": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u117": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u118": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u119": {
+      "videos": [
+        "slo"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/implementing-slos/"
+        }
+      ]
+    },
+    "u120": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u121": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u122": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u123": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u124": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u125": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u126": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u127": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u128": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u129": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u130": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u131": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u132": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u133": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u134": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u135": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u136": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u137": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u138": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u139": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u140": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u141": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u142": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u143": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u144": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u145": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u146": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u147": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u148": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u149": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u150": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u151": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/handling-overload/"
+        }
+      ]
+    },
+    "u152": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u153": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u154": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u155": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u156": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u157": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u158": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u159": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u160": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u161": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u162": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u163": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u164": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u165": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u166": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u167": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u168": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u169": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u170": {
+      "videos": [
+        "cloud"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"
+        }
+      ]
+    },
+    "u171": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u172": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u173": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u174": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u175": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u176": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u177": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u178": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u179": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u180": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u181": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u182": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u183": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u184": {
+      "videos": [
+        "terraform"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://developer.hashicorp.com/terraform/language/state"
+        }
+      ]
+    },
+    "u185": {
+      "videos": [
+        "docker",
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u186": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u187": {
+      "videos": [
+        "docker",
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u188": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u189": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u190": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u191": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u192": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u193": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u194": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u195": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u196": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u197": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u198": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u199": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u200": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u201": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u202": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u203": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u204": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u205": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u206": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u207": {
+      "videos": [
+        "k8s"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://kubernetes.io/pt-br/docs/concepts/"
+        }
+      ]
+    },
+    "u208": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u209": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u210": {
+      "videos": [
+        "explain"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u211": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u212": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u213": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u214": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u215": {
+      "videos": [
+        "kafka",
+        "events"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u216": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u217": {
+      "videos": [
+        "explain"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u218": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u219": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u220": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u221": {
+      "videos": [
+        "kafka",
+        "events"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u222": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u223": {
+      "videos": [
+        "explain"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u224": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u225": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u226": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u227": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u228": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u229": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://www.postgresql.org/docs/current/admin.html"
+        }
+      ]
+    },
+    "u230": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u231": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u232": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u233": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u234": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u235": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u236": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u237": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u238": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u239": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u240": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u241": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u242": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u243": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u244": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u245": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u246": {
+      "videos": [
+        "cicd"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/canarying-releases/"
+        }
+      ]
+    },
+    "u247": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u248": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u249": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u250": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u251": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u252": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u253": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u254": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u255": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u256": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u257": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u258": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u259": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u260": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u261": {
+      "videos": [
+        "security"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ]
+    },
+    "u262": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u263": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u264": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u265": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u266": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u267": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u268": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u269": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u270": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u271": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u272": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u273": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u274": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u275": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u276": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u277": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u278": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u279": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u280": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u281": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/incident-response/"
+        }
+      ]
+    },
+    "u282": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u283": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u284": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u285": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u286": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u287": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u288": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u289": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u290": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u291": {
+      "videos": [
+        "ai"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    "u292": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u293": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u294": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u295": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u296": {
+      "videos": [
+        "incident"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u297": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u298": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u299": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u300": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u301": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u302": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u303": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u304": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u305": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u306": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u307": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u308": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u309": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u310": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u311": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u312": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u313": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u314": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u315": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u316": {
+      "videos": [
+        "distributed"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u317": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u318": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u319": {
+      "videos": [
+        "learn"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/workbook/table-of-contents/"
+        }
+      ]
+    },
+    "u320": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u321": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u322": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u323": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u324": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u325": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u326": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u327": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u328": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u329": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u330": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u331": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u332": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u333": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u334": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u335": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u336": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u337": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u338": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u339": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u340": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u341": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u342": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u343": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u344": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u345": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "u346": {
+      "videos": [
+        "career"
+      ],
+      "references": [
+        {
+          "title": "Documentação e aprofundamento da trilha",
+          "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+        }
+      ]
+    },
+    "dev-api-01": {
+      "videos": [
+        "api"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+        }
+      ]
+    },
+    "dev-api-02": {
+      "videos": [
+        "api"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+        }
+      ]
+    },
+    "dev-api-03": {
+      "videos": [
+        "api"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+        }
+      ]
+    },
+    "dev-api-04": {
+      "videos": [
+        "api"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+        }
+      ]
+    },
+    "dev-api-05": {
+      "videos": [
+        "api"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference"
+        }
+      ]
+    },
+    "dev-test-01": {
+      "videos": [
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://playwright.dev/docs/best-practices"
+        }
+      ]
+    },
+    "dev-test-02": {
+      "videos": [
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://playwright.dev/docs/best-practices"
+        }
+      ]
+    },
+    "dev-test-03": {
+      "videos": [
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://playwright.dev/docs/best-practices"
+        }
+      ]
+    },
+    "dev-test-04": {
+      "videos": [
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://playwright.dev/docs/best-practices"
+        }
+      ]
+    },
+    "dev-test-05": {
+      "videos": [
+        "test"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://playwright.dev/docs/best-practices"
+        }
+      ]
+    },
+    "dev-solid-01": {
+      "videos": [
+        "solid"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-solid-02": {
+      "videos": [
+        "solid"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-solid-03": {
+      "videos": [
+        "solid"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-solid-04": {
+      "videos": [
+        "solid"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-solid-05": {
+      "videos": [
+        "solid"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-pat-01": {
+      "videos": [
+        "patterns"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-pat-02": {
+      "videos": [
+        "patterns"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-pat-03": {
+      "videos": [
+        "patterns"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-pat-04": {
+      "videos": [
+        "patterns"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-pat-05": {
+      "videos": [
+        "patterns"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+        }
+      ]
+    },
+    "dev-mvc-01": {
+      "videos": [
+        "mvc"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+        }
+      ]
+    },
+    "dev-mvc-02": {
+      "videos": [
+        "mvc"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+        }
+      ]
+    },
+    "dev-mvc-03": {
+      "videos": [
+        "mvc"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/aspnet/core/mvc/overview"
+        }
+      ]
+    },
+    "dev-mvvm-01": {
+      "videos": [
+        "mvvm"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+        }
+      ]
+    },
+    "dev-mvvm-02": {
+      "videos": [
+        "mvvm"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+        }
+      ]
+    },
+    "dev-mvvm-03": {
+      "videos": [
+        "mvvm"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/dotnet/architecture/maui/mvvm"
+        }
+      ]
+    },
+    "dev-clean-01": {
+      "videos": [
+        "clean"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        }
+      ]
+    },
+    "dev-clean-02": {
+      "videos": [
+        "clean"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        }
+      ]
+    },
+    "dev-clean-03": {
+      "videos": [
+        "clean"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        }
+      ]
+    },
+    "dev-clean-04": {
+      "videos": [
+        "clean"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        }
+      ]
+    },
+    "dev-tenant-01": {
+      "videos": [
+        "tenant"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+        }
+      ]
+    },
+    "dev-tenant-02": {
+      "videos": [
+        "tenant"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+        }
+      ]
+    },
+    "dev-tenant-03": {
+      "videos": [
+        "tenant"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+        }
+      ]
+    },
+    "dev-tenant-04": {
+      "videos": [
+        "tenant"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models"
+        }
+      ]
+    },
+    "dev-ddd-01": {
+      "videos": [
+        "ddd"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+        }
+      ]
+    },
+    "dev-ddd-02": {
+      "videos": [
+        "ddd"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+        }
+      ]
+    },
+    "dev-ddd-03": {
+      "videos": [
+        "ddd"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+        }
+      ]
+    },
+    "dev-ddd-04": {
+      "videos": [
+        "ddd"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+        }
+      ]
+    },
+    "dev-ddd-05": {
+      "videos": [
+        "ddd"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis"
+        }
+      ]
+    },
+    "dev-micro-01": {
+      "videos": [
+        "micro"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+        }
+      ]
+    },
+    "dev-micro-02": {
+      "videos": [
+        "micro"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+        }
+      ]
+    },
+    "dev-micro-03": {
+      "videos": [
+        "micro"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+        }
+      ]
+    },
+    "dev-micro-04": {
+      "videos": [
+        "micro"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+        }
+      ]
+    },
+    "dev-micro-05": {
+      "videos": [
+        "micro"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-ddd"
+        }
+      ]
+    },
+    "dev-sql-01": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.sqlite.org/lang.html"
+        }
+      ]
+    },
+    "dev-sql-02": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.sqlite.org/lang.html"
+        }
+      ]
+    },
+    "dev-sql-03": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.sqlite.org/lang.html"
+        }
+      ]
+    },
+    "dev-sql-04": {
+      "videos": [
+        "group"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.sqlite.org/lang.html"
+        }
+      ]
+    },
+    "dev-sql-05": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.sqlite.org/lang.html"
+        }
+      ]
+    },
+    "dev-sql-06": {
+      "videos": [
+        "sql"
+      ],
+      "references": [
+        {
+          "title": "Referência técnica da aula",
+          "url": "https://www.sqlite.org/lang.html"
+        }
+      ]
+    }
+  }
+}

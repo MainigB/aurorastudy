@@ -70,3 +70,10 @@ Toda a formação SRE tem um contexto de trabalho: 17 rotações com colegas rec
 O caderno de bordo reúne rascunhos, revisões e conclusões SRE e pode ser baixado como Markdown. Usa a sincronização autenticada já existente; não cria tabela ou campo adicional. O botão de modelo de registro só preenche respostas vazias e preserva rascunhos existentes. Um modelo sem preenchimento não libera a comparação. Em Linux, o comando é salvo; a alternativa de interpretação não é armazenada. O encerramento informa explicitamente que nenhum colega real revisou ou recebeu o registro.
 
 `tests/company.test.mjs` verifica cobertura integral, identidade dos tickets, sequência dentro das rotações, fases, decisões e preservação dos estados históricos.
+### Vídeos e referências complementares
+
+Todas as 415 aulas possuem materiais complementares em `public/resources.json`: 33 vídeos do YouTube, com prioridade para português, identificação de idioma, canal e orientação de estudo. Materiais de fundamentos podem ser compartilhados entre aulas da mesma trilha; não são apresentados como respostas específicas ao exercício. Referências técnicas existentes foram preservadas. A consulta aos vídeos é opcional e não concede XP.
+
+`node scripts/build_resources.mjs` regenera as associações por trilha e assunto usando os metadados salvos. `node scripts/build_resources.mjs --verify` consulta o oEmbed público do YouTube e atualiza títulos/canais; requer rede. A checagem de metadados não comprova reprodução integral nem revisão de toda a transcrição. A curadoria inicial foi feita em 16/10/2026. Alguns manuais GNU e systemd recusam consultas automatizadas; seus endereços oficiais foram preservados. Para novos vídeos, conferir conteúdo, idioma, relevância e compatibilidade de versões antes de adicioná-los.
+
+O componente compartilhado `public/resources.js` escapa texto e aceita apenas links HTTPS. Falhas no carregamento do catálogo não impedem o acesso às atividades. Os testes verificam cobertura das aulas, metadados e segurança da renderização.
