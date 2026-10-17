@@ -3,6 +3,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const curriculum=read('public/curriculum.json'),company=read('public/company.json');
+test('reading ranges cover each book topic up to the next topic or references',()=>{
+ curriculum.lessons.forEach((l,i)=>{const next=curriculum.lessons[i+1]?.page??683;assert.equal(l.readingEnd,Math.max(l.page,next-1));assert.ok(Number.isInteger(l.readingEnd)&&l.readingEnd>=l.page)});
+ assert.equal(curriculum.lessons[0].page,29);assert.equal(curriculum.lessons[0].readingEnd,31);
+});
 test('chapters and company rotations follow the book table of contents',()=>{
  // Snapshot of the book's chapter order/pages; tests also run in the site-only repository.
  const toc=[['PRE',29],['LID',44],['SYS',72],['AUT',135],['OBS',191],['SLO',232],['RES',268],['CLOUD',332],['IAC',369],['CONT',397],['DATA',443],['CD',487],['SEC',519],['INC',547],['AI',584],['PRA',602],['JOBS',654]];

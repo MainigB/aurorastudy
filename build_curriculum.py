@@ -38,6 +38,9 @@ for i,u in enumerate(units):
  if not scenario: scenario=next((b['body'] for b in practice),blocks[0]['body'])
  followup=(f'Na análise histórica de “{u["title"]}”, separe o que foi observado daquilo que foi inferido. Que informação precisaria ser verificada antes de aplicar a conclusão hoje?' if u['code']=='JOBS' else f'Aplique “{u["title"]}” ao caso apresentado: descreva a decisão, o mecanismo que a sustenta e a evidência que faria você mudar de hipótese.')
  lessons.append(dict(id=f'u{i:03}',track=u['code'],title=re.sub(r'^G: ','',u['title']),page=toc.get(f'u{i:03}'),question=question,scenario=scenario,reference='\n\n'.join(b['title']+'\n\n'+b['body'] for b in solution) or body,vocabulary=d.get('vocabulary',[]),kind='reflection',sections=blocks,example=d.get('example'),prerequisite=f'u{d["prerequisite"]:03}' if isinstance(d.get('prerequisite'),int) else None,questions=[question,followup,'Quais hipóteses, limites ou condições do caso precisam continuar verdadeiros? Explique uma alternativa e o que mudaria sua escolha.'],rubric=['Respondi à pergunta-guia com um mecanismo explicado em minhas palavras.','Relacionei minha decisão aos dados, comandos, cálculos ou exemplos específicos deste tópico.','Expliquei como verificaria o resultado e o que enfraqueceria minha hipótese.','Declarei uma limitação e comparei uma alternativa.'],minutes=max(12,round(len(body.split())/150)+10)))
+for index,lesson in enumerate(lessons):
+ next_page=lessons[index+1]['page'] if index+1<len(lessons) else book_sections['REF']['page']
+ lesson['readingEnd']=max(lesson['page'],next_page-1)
 cases=json.loads((root/'site/scripts/sre_cases.json').read_text(encoding='utf-8'))
 for lesson in lessons:
  extra_questions=re.findall(r'\*\*([^*]+\?)\*\*','\n'.join(s['body'] for s in lesson['sections']))

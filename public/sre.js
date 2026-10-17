@@ -6,6 +6,7 @@ function openSreLesson(l){
  <button class="text-button" id="back">← Voltar à trilha</button>
  <p class="muted">${l.minutes} min estimados · ${isCommand?'Cenário fictício · terminal simulado, sem execução real. Cada laboratório começa em um ambiente independente.':'Livro 4, página '+l.page+' · respostas abertas com autoavaliação. Os casos do livro são didáticos; a pesquisa de vagas é histórica.'}</p>
  ${state.done[l.id]?'<p class="sre-note">Você já concluiu esta atividade. Revisite a versão aprofundada sem duplicar XP.</p>':''}
+ ${lessonReadingPlan(l)}
  ${companyMissionBrief(l)}
  <a class="resource-shortcut" href="#lesson-resources">▶ Vídeos e referências desta aula ↓</a><nav class="sre-steps" aria-label="Etapas da aula"><button data-jump="sre-study">01 · Entender</button><button data-jump="sre-practice">02 · Aplicar</button><button data-jump="sre-answer">03 · ${isCommand?'Interpretar':'Comparar'}</button></nav>
  <section id="sre-study" class="sre-section"><span class="eyebrow">01 · BASE PARA A DECISÃO</span><h3>${isCommand?'Antes de abrir o terminal':'Estude o mecanismo'}</h3>
@@ -18,6 +19,7 @@ function openSreLesson(l){
  <p id="sre-answer-pending" class="muted">${isCommand?'A interpretação será liberada depois de um comando correto. Acertar apenas a sintaxe ainda não conclui o laboratório.':'Escreva sua análise antes de abrir a referência. Compare o raciocínio e as condições do caso, não apenas palavras iguais.'}</p>
  <div id="comparison"></div><div id="feedback" aria-live="polite"></div></section>
  ${isCommand?`<section class="sre-section"><h3>Leve o raciocínio além</h3><p>${esc(l.transfer)}</p><details class="sre-details"><summary>Conferir o raciocínio da extensão</summary><p>${esc(l.transferAnswer)}</p></details><a class="pdf-link" href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">Manual técnico para aprofundar ↗</a></section>`:''}${AuroraResources.render(l,curriculum.resources)}</div>`);
+ $('#lesson-study-tutorial').onclick=openStudyTutorial;
  $('#back').onclick=()=>openTrack(l.track);$('#mission-board').onclick=()=>openTrack(l.track);
  document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.jump).scrollIntoView({behavior:'smooth',block:'start'}));
  $('.connect-inline')?.addEventListener('click',()=>$('#pdf-input').click());
