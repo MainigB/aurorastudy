@@ -6,6 +6,10 @@ did=json.loads((root/'book4/didactic_manifest.json').read_text(encoding='utf-8')
 toc={x['key']:x['page'] for x in json.loads((root/'book4/toc.json').read_text(encoding='utf-8'))}
 names={'SYS':'Linux e redes','AUT':'Programação e automação','OBS':'Observabilidade','SLO':'SLOs e error budget','RES':'Sistemas distribuídos','CLOUD':'Cloud e infraestrutura','IAC':'Infraestrutura como código','CONT':'Containers e Kubernetes','DATA':'Bancos, cache e mensageria','CD':'Entrega contínua','SEC':'Segurança e identidade','INC':'Incidentes e operação','AI':'IA para confiabilidade','LID':'Liderança e produto','PRE':'Aprender a aprender','PRA':'Entrevistas e projeto final','JOBS':'Pesquisa de vagas'}
 tracks=[dict(id=k,name=v) for k,v in names.items()]
+book_sections={x['key'].removeprefix('section-'):x for x in json.loads((root/'book4/toc.json').read_text(encoding='utf-8')) if x['key'].startswith('section-')}
+tracks.sort(key=lambda t:book_sections[t['id']]['page'])
+for index,track in enumerate(tracks,1):
+ track.update(name=book_sections[track['id']]['title'],chapter=index,page=book_sections[track['id']]['page'])
 lessons=[]
 for i,u in enumerate(units):
  d=did.get(str(i),{});body=u['body'];sections=re.split(r'\n### ',body)

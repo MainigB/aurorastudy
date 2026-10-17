@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 const read=p=>JSON.parse(fs.readFileSync(new URL(p,import.meta.url),'utf8'));
 const arcs=read('./company_arcs.json'),curriculum=read('../public/curriculum.json'),linux=read('../public/linux.json');
-const order=['PRE','SYS','AUT','OBS','SLO','RES','CLOUD','IAC','CONT','DATA','CD','SEC','INC','AI','LID','PRA','JOBS'];
+const order=curriculum.tracks.map(t=>t.id);
 const missions={};
 for(const track of order){
- const lessons=[...linux,...curriculum.lessons].filter(l=>l.track===track);
+ const lessons=[...curriculum.lessons,...linux].filter(l=>l.track===track);
  const arc=arcs[track];
  for(const [index,l] of lessons.entries()){
   const phase=Math.min(2,Math.floor(index*3/lessons.length));
