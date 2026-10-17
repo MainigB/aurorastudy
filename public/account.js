@@ -25,7 +25,7 @@ function identity(){accountButton.textContent=user?user.name.split(' ')[0]:'Entr
 function showAuth(mode='login'){
  const signup=mode==='signup';
  dialog.innerHTML=`<div class="modal-head"><div><span class="eyebrow">AURORA · SUA CONTA</span><h2>${signup?'Comece sua jornada':'Bom ter você por aqui'}</h2></div></div><p class="muted">${signup?'Crie sua conta para guardar as atividades, respostas e revisões.':'Entre para continuar seu aprendizado em qualquer dispositivo.'}</p><form id="account-form">${signup?'<label>Seu nome<input name="name" autocomplete="name" required minlength="2" maxlength="80"></label>':''}<label>E-mail<input name="email" type="email" autocomplete="email" required maxlength="254"></label><label>Senha<input name="password" type="password" autocomplete="${signup?'new-password':'current-password'}" required minlength="${signup?12:1}" maxlength="128"></label>${signup?'<small class="muted">Use pelo menos 12 caracteres. Prefira uma frase que você consiga lembrar.</small><label>Confirme a senha<input name="confirm" type="password" autocomplete="new-password" required minlength="12" maxlength="128"></label>':''}<p id="account-error" class="auth-error" role="alert"></p><button class="primary" type="submit">${signup?'Criar minha conta':'Entrar na minha conta'} →</button></form><button class="text-button" id="account-toggle">${signup?'Já tenho uma conta. Entrar':'Ainda não tenho conta. Criar cadastro'}</button>`;
- if(!dialog.open)dialog.showModal();
+ AuroraDialogs.prepare(dialog);if(!dialog.open)dialog.showModal();
  el('#account-toggle').onclick=()=>showAuth(signup?'login':'signup');
  el('#account-form').onsubmit=async e=>{
   e.preventDefault();const form=e.currentTarget;const values=Object.fromEntries(new FormData(form));
@@ -56,7 +56,7 @@ function settings(){
  if(!user){showAuth();return}
  const old=localStorage.getItem('aurora-v1');
  dialog.innerHTML=`<div class="modal-head"><div><span class="eyebrow">SUA CONTA</span><h2>${safe(user.name)}</h2></div><button class="close" aria-label="Fechar conta">×</button></div><p class="muted">${safe(user.email)}</p><div class="account-sync">${safe(status.textContent)}<p class="muted">Atividades, respostas e revisões ficam vinculadas à sua conta. Seu PDF continua apenas no navegador.</p></div><div class="actions">${isAdmin?'<button class="primary" id="open-admin">Abrir administração →</button>':''}<button class="outline" id="retry-sync">Tentar sincronizar</button><button class="outline" id="export-pending">Exportar cópia do progresso</button>${conflict||!ready?'<button class="outline" id="reload-account">Recarregar progresso da conta</button>':''}${old?'<button class="outline" id="import-legacy">Importar progresso antigo deste navegador</button>':''}</div><details><summary>Alterar minha senha</summary><form id="password-form"><label>Senha atual<input name="currentPassword" type="password" autocomplete="current-password" required></label><label>Nova senha<input name="newPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label><label>Confirme a nova senha<input name="confirm" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label><button class="primary">Salvar nova senha</button></form></details><p id="account-error" class="auth-error" role="alert"></p><button class="text-button" id="sign-out">Sair da conta</button>`;
- if(!dialog.open)dialog.showModal();dialog.querySelector('.close').onclick=()=>dialog.close();
+ AuroraDialogs.prepare(dialog);if(!dialog.open)dialog.showModal();dialog.querySelector('.close').onclick=()=>dialog.close();
  el('#open-admin')?.addEventListener('click',()=>{dialog.close();window.AuroraAdmin.open(api)});
  el('#export-pending').onclick=exportCurrent;
  el('#retry-sync').onclick=async()=>{if(conflict){el('#account-error').textContent='Exporte suas alterações e recarregue o progresso da conta para resolver o conflito.';return}await flush();el('#account-error').textContent=status.textContent};
@@ -68,7 +68,7 @@ function settings(){
   try{await api('/api/auth/sign-out','POST',{});clearTimeout(timer);user=null;isAdmin=false;ready=false;version=0;onState(empty());identity();setStatus('');showAuth()}catch(e){el('#account-error').textContent=message(e)}
  };
 }
-dialog.addEventListener('cancel',e=>{if(!user)e.preventDefault()});
+
 accountButton.onclick=settings;
 window.addEventListener('online',flush);
 window.addEventListener('beforeunload',e=>{if(pending||sending){e.preventDefault();e.returnValue=''}});

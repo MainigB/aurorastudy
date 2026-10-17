@@ -21,7 +21,7 @@ async function load(){
 }
 window.AuroraAdmin={open(request){api=request;query='';page=0;
  dialog.innerHTML='<div class="modal-head"><div><span class="eyebrow">ADMINISTRAÇÃO</span><h2>Usuários e aprendizado</h2></div><button class="close" aria-label="Fechar administração">×</button></div><p class="muted">Consulte os cadastros, acompanhe o progresso e gerencie as sessões de acesso.</p><form id="admin-search"><input aria-label="Buscar usuário" placeholder="Nome ou e-mail" maxlength="100"><button class="primary">Buscar</button></form><p id="admin-status" class="muted" role="status"></p><div id="admin-users"></div><div class="actions"><button id="admin-prev" class="text-button" disabled>← Anterior</button><button id="admin-next" class="text-button" disabled>Próxima →</button></div>';
- dialog.querySelector('.close').onclick=()=>dialog.close();
+ AuroraDialogs.prepare(dialog);
  dialog.querySelector('#admin-search').onsubmit=e=>{e.preventDefault();query=e.currentTarget.querySelector('input').value.trim();page=0;load()};
  dialog.querySelector('#admin-prev').onclick=()=>{if(page>0){page--;load()}};
  dialog.querySelector('#admin-next').onclick=()=>{page++;load()};
