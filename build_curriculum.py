@@ -1,6 +1,7 @@
 import json,re
 from pathlib import Path
 from scripts.sre_coaching import PROFILES
+from scripts.site_editorial import adapt
 root=Path(__file__).resolve().parent.parent
 units=json.loads((root/'book4/units_snapshot.json').read_text(encoding='utf-8'))
 did=json.loads((root/'book4/didactic_manifest.json').read_text(encoding='utf-8'))
@@ -57,9 +58,10 @@ for lesson in lessons:
   lesson['sections'].append(dict(title='Oficina de decisão: análise comentada',body=case['solution'],role='solution'))
   lesson['questions']=case['questions']
   lesson['minutes']+=10
+adapt(lessons)
 for track in tracks:
  coaching=PROFILES[track['id']]
- last=next(l for l in reversed(lessons) if l['track']==track['id'])
+ last=next(l for l in reversed(lessons) if l['track']==track['id'] and l['learningMode']=='activity')
  track['integrationLesson']=last['id']
  track['outcomes']=coaching['criteria']
  last['integration']=dict(scenario=coaching['case'],questions=coaching['questions'],analysis=coaching['analysis'])
