@@ -14,6 +14,10 @@ dialog.persistent-close{padding:0;isolation:isolate;overscroll-behavior:contain;
 .integration-case{margin:24px 0;padding:24px;border:1px solid #c9b9e9;border-left:4px solid #8160ca;border-radius:12px;background:#faf8ff;line-height:1.7}.integration-case h4{margin:8px 0}.integration-case li+li{margin-top:12px}
 
 /* Course home: one primary action, compact tools and a readable curriculum. */
+.sre-lesson>.reading-guide,.sre-lesson>.mission-context,.sre-lesson>#sre-study{padding:10px 0;margin:6px 0;border:0;border-bottom:1px solid #eceaf0;border-radius:0}
+.sre-lesson>.reading-guide summary,.sre-lesson>.mission-context summary,.sre-lesson>#sre-study summary{font-size:13px}
+.sre-lesson>.sre-steps{margin-top:14px}
+.sre-lesson>#sre-practice{padding-top:18px}
 body{background:#fafbfc}
 main{max-width:1180px;padding-top:32px}
 .page-intro{min-height:0;margin-bottom:26px}

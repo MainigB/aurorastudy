@@ -9,6 +9,12 @@ test('editorial and answer material cannot appear as website exercises',()=>{
  for(const l of lessons){
   assert.ok(['activity','reading','guide','external-lab','answer'].includes(l.learningMode),l.id);
   assert.ok(l.bookTitle,l.id);
+  if(l.learningMode==='activity'){
+   assert.ok(['Entrevista simulada','Projeto guiado','Simulado','Caso prático'].includes(l.format),l.id);
+   assert.ok(l.responseGuidance,l.id);
+   assert.ok(!l.title.match(/^(Q\d+:|Aplicação:)/),l.id);
+   assert.ok(!l.questions.some(q=>q.startsWith('Em qual camada o mecanismo deste tópico atua?')),l.id);
+  }
   if(l.learningMode==='answer'){
    const exercise=find(l.exerciseId);
    assert.equal(exercise.learningMode,'activity');

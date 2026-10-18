@@ -47,10 +47,10 @@ cases=json.loads((root/'site/scripts/sre_cases.json').read_text(encoding='utf-8'
 for lesson in lessons:
  coaching=PROFILES[lesson['track']]
  # Keep the manuscript's question; replace only the repetitive follow-ups.
- lesson['questions']=[lesson['question'],*coaching['prompts']]
+ lesson['questions']=[lesson['question']]
  lesson['rubric']=coaching['criteria']
  lesson['reasoningHints']=coaching['hints']
- extra_questions=re.findall(r'\*\*([^*]+\?)\*\*','\n'.join(s['body'] for s in lesson['sections']))
+ extra_questions=re.findall(r'\*\*([^*]+\?)\*\*','\n'.join(s['body'] for s in lesson['sections'] if s['role']!='solution'))
  lesson['questions']=list(dict.fromkeys([lesson['question'],*extra_questions,*lesson['questions'][1:]]))
  if lesson['id'] in cases:
   case=cases[lesson['id']]

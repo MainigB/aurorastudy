@@ -22,6 +22,16 @@ def adapt(lessons):
             exercise['answerId']=l['id']
             exercise['sections'].append(dict(title='Resposta comentada do exercício',body='\n\n'.join(s['title']+'\n\n'+s['body'] for s in l['sections']),role='solution'))
         l['siteNote']=('Este roteiro exige um ambiente externo de laboratório. O Aurora não executa estes procedimentos; use a leitura para preparar seu ambiente e registre evidências fora do site.' if l['learningMode']=='external-lab' else 'Material de consulta do livro. Não é uma missão, não exige resposta e não concede XP.')
+        if l['learningMode']=='activity':
+            l['format']='Entrevista simulada' if re.match(r'Q\d+:',title) else 'Projeto guiado' if title.startswith('Projeto') else 'Simulado' if title.startswith(('Simulado','Prova ')) else 'Caso prático'
+            l['title']=re.sub(r'^(Q\d+: |Aplicação: )','',title)
+            l['title']=l['title'][0].upper()+l['title'][1:]
+            if l['format']=='Entrevista simulada':
+                l['responseGuidance']='Ensaie uma resposta de entrevista. Use uma experiência real ou declare que está construindo uma resposta hipotética; não apresente a simulação como experiência profissional.'
+            elif l['format']=='Projeto guiado':
+                l['responseGuidance']='Registre aqui o plano e as evidências do projeto. Implementação, execução e medições exigem seu próprio ambiente de laboratório; o site não executa nem valida infraestrutura.'
+            else:
+                l['responseGuidance']='Use os dados do enunciado. Quando faltar uma informação, declare a hipótese ou a próxima verificação; não invente resultados.'
 
     overrides={
     'u002':dict(
@@ -46,6 +56,8 @@ def adapt(lessons):
     for id,o in overrides.items():
         l=by_id[id]
         l.update(title=o['title'],learningMode='activity',question=o['questions'][0],questions=o['questions'],scenario=o['scenario'],rubric=o['rubric'])
+        l['format']='Caso prático'
+        l['responseGuidance']='Resolva com os dados fornecidos e mostre seu raciocínio. Declare o que ainda precisaria verificar antes de aplicar a decisão fora do exercício.'
         # Preserve the book text as study; the website exercise has its own data.
         l['sections']=[dict(s,role='study') for s in l['sections']]+[
             dict(title='Sua tarefa na Aurora',body=o['scenario'],role='practice'),
