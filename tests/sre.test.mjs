@@ -41,6 +41,31 @@ test('all 18 Linux labs require both a command and an interpretation; distractor
  }
  assert.ok(checkCommand(linux[0],'pwd -P'));
 });
+
+test('every chapter has a distinct integration workshop on its last book topic, without changing lesson IDs',()=>{
+ assert.deepEqual(curriculum.lessons.map(l=>l.id),Array.from({length:347},(_,i)=>`u${String(i).padStart(3,'0')}`));
+ const scenarios=new Set();
+ for(const track of curriculum.tracks){
+  const lessons=curriculum.lessons.filter(l=>l.track===track.id);
+  const last=lessons.at(-1);
+  assert.equal(track.integrationLesson,last.id);
+  assert.equal(lessons.filter(l=>l.integration).length,1);
+  assert.equal(last.integration.questions.length,2);
+  assert.ok(last.integration.analysis.length>300);
+  scenarios.add(last.integration.scenario);
+  assert.deepEqual(track.outcomes,last.rubric);
+  for(const lesson of lessons){
+   assert.equal(lesson.reasoningHints.length,2);
+   assert.ok(!lesson.questions.some(q=>q.startsWith('Quais hipóteses, limites ou condições')));
+  }
+ }
+ assert.equal(scenarios.size,17);
+ const slo=curriculum.lessons.find(l=>l.track==='SLO'&&l.integration).integration;
+ assert.ok(slo.analysis.includes('75%'));
+ assert.ok(slo.analysis.includes('10 vezes'));
+ const jobs=curriculum.lessons.find(l=>l.track==='JOBS'&&l.integration).integration;
+ assert.ok(jobs.analysis.includes('não comprova vagas abertas'));
+});
 test('study renderer preserves code and escapes HTML, attribute injection and unsafe links',()=>{
  const rendered=markdown('### Mecanismo\n\n**Evidência** e `x < y`\n\n```python\nif x < y:\n    print("ok")\n```\n\n[Manual](https://example.test/doc)');
  assert.ok(rendered.includes('<h4>Mecanismo</h4>'));

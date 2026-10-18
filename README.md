@@ -79,5 +79,9 @@ Todas as 415 aulas possuem materiais complementares em `public/resources.json`: 
 O componente compartilhado `public/resources.js` escapa texto e aceita apenas links HTTPS. Falhas no carregamento do catálogo não impedem o acesso às atividades. Os testes verificam cobertura das aulas, metadados e segurança da renderização.
 ### Organização pelo Livro 4
 
+`scripts/sre_coaching.py` contém as orientações editoriais por capítulo: perguntas de aplicação, quatro critérios de autoavaliação, duas dicas de raciocínio e um caso independente de integração. O gerador preserva a pergunta do manuscrito e os oito casos específicos existentes; acrescenta a integração ao último tópico de cada capítulo, sem criar IDs nem alterar XP histórico. O caso adicional é identificado como conteúdo fictício do site, com análise liberada após a tentativa. Os critérios e dicas são compartilhados dentro do capítulo, enquanto a pergunta-guia e o conteúdo original continuam específicos de cada tópico.
+
+O capítulo mostra as evidências de aprendizagem esperadas e um atalho para sua integração. As linhas de atividades indicam faixa de leitura e duração estimada. A revisão pode ser marcada ou desmarcada; conectar o PDF mantém a atividade ou capítulo aberto, preservando o rascunho.
+
 A formação SRE segue os 17 capítulos do sumário: método de estudo, produto/maturidade, fundamentos técnicos, operação, avaliação e pesquisa histórica. Títulos e páginas vêm de `book4/toc.json` pelo `build_curriculum.py`. Os 347 tópicos mantêm a ordem e os IDs originais; os 18 laboratórios Linux aparecem como prática complementar no capítulo 3. O método apresentado é entender, explicar, aplicar e revisar. O cenário da empresa permanece acessível no capítulo e em cada missão. Para regenerar: `python build_curriculum.py` (requer os manuscritos no diretório pai), depois `node scripts/build_company.mjs`. Os arquivos gerados são versionados e os testes não dependem dos manuscritos.
 

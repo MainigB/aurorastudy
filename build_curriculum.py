@@ -1,5 +1,6 @@
 import json,re
 from pathlib import Path
+from scripts.sre_coaching import PROFILES
 root=Path(__file__).resolve().parent.parent
 units=json.loads((root/'book4/units_snapshot.json').read_text(encoding='utf-8'))
 did=json.loads((root/'book4/didactic_manifest.json').read_text(encoding='utf-8'))
@@ -43,6 +44,11 @@ for index,lesson in enumerate(lessons):
  lesson['readingEnd']=max(lesson['page'],next_page-1)
 cases=json.loads((root/'site/scripts/sre_cases.json').read_text(encoding='utf-8'))
 for lesson in lessons:
+ coaching=PROFILES[lesson['track']]
+ # Keep the manuscript's question; replace only the repetitive follow-ups.
+ lesson['questions']=[lesson['question'],*coaching['prompts']]
+ lesson['rubric']=coaching['criteria']
+ lesson['reasoningHints']=coaching['hints']
  extra_questions=re.findall(r'\*\*([^*]+\?)\*\*','\n'.join(s['body'] for s in lesson['sections']))
  lesson['questions']=list(dict.fromkeys([lesson['question'],*extra_questions,*lesson['questions'][1:]]))
  if lesson['id'] in cases:
@@ -51,5 +57,12 @@ for lesson in lessons:
   lesson['sections'].append(dict(title='Oficina de decisão: análise comentada',body=case['solution'],role='solution'))
   lesson['questions']=case['questions']
   lesson['minutes']+=10
+for track in tracks:
+ coaching=PROFILES[track['id']]
+ last=next(l for l in reversed(lessons) if l['track']==track['id'])
+ track['integrationLesson']=last['id']
+ track['outcomes']=coaching['criteria']
+ last['integration']=dict(scenario=coaching['case'],questions=coaching['questions'],analysis=coaching['analysis'])
+ last['minutes']+=15
 (root/'site/public/curriculum.json').write_text(json.dumps(dict(tracks=tracks,lessons=lessons),ensure_ascii=False),encoding='utf-8')
 print(f'{len(tracks)} trilhas, {len(lessons)} tópicos exportados.')
