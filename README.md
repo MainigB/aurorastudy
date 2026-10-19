@@ -89,3 +89,7 @@ O capítulo mostra as evidências de aprendizagem esperadas e um atalho para sua
 
 A formação SRE segue os 17 capítulos do sumário: método de estudo, produto/maturidade, fundamentos técnicos, operação, avaliação e pesquisa histórica. Títulos e páginas vêm de `book4/toc.json` pelo `build_curriculum.py`. Os 347 tópicos mantêm a ordem e os IDs originais; os 18 laboratórios Linux aparecem como prática complementar no capítulo 3. O método apresentado é entender, explicar, aplicar e revisar. O cenário da empresa permanece acessível no capítulo e em cada missão. Para regenerar: `python build_curriculum.py` (requer os manuscritos no diretório pai), depois `node scripts/build_company.mjs`. Os arquivos gerados são versionados e os testes não dependem dos manuscritos.
 
+
+### Catálogo e área de estudo
+
+A entrada abre Meus cursos, com SRE e Desenvolvimento e progresso calculado somente sobre as atividades atuais. `study-workspace.js` monta uma área ampla de estudo sem recriar os formulários: preserva os eventos e rascunhos, acrescenta lista lateral do módulo, destaque da atividade, caminho de retorno e navegação anterior/próxima. Leituras de apoio ficam em uma seção própria. Navegar não conclui atividades; a conclusão segue os critérios existentes. Em telas pequenas a lista é recolhível. `study-workspace.css` mantém esses estilos separados da página inicial.
