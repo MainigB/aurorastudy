@@ -2,7 +2,7 @@ function renderCourseCatalog(){
  $('#section-heading').textContent='Suas formações';
  $('#section-description').textContent='Escolha uma formação para ver os módulos e continuar seu aprendizado.';
  $('.filters').style.display='none';$('.count').style.display='none';
- $('#extra').innerHTML='';$('#tracks').className='course-catalog';
+ $('#extra').innerHTML='<div class="practice-catalog-link"><div><b>SRE: da leitura à operação</b><p>17 projetos, 6 oficinas de cálculo e uma bancada executável.</p></div><button class="primary" id="catalog-practice">Abrir formação prática →</button></div>';$('#catalog-practice').onclick=()=>openPractice();$('#tracks').className='course-catalog';
  const courses=[{id:'SRE',name:'SRE e infraestrutura',label:'CONFIABILIDADE',icon:'>_',description:'Investigue sistemas, resolva incidentes e pratique decisões de engenharia com o Livro 4.',tags:'Linux · Cloud · Operação',tone:'sre'},{id:'DEV',name:'Desenvolvimento',label:'SOFTWARE',icon:'{ }',description:'Construa sua base em APIs, testes, arquitetura e dados com desafios e laboratórios.',tags:'APIs · Arquitetura · SQL',tone:'dev'}];
  $('#tracks').innerHTML=courses.map(c=>{
   const lessons=all.filter(l=>l.formation===c.id&&isPractice(l)),done=lessons.filter(l=>state.done[l.id]).length,percent=Math.round(done/lessons.length*100),modules=curriculum.tracks.filter(t=>t.formation===c.id).length;

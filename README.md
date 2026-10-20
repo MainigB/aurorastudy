@@ -93,3 +93,18 @@ A formação SRE segue os 17 capítulos do sumário: método de estudo, produto/
 ### Catálogo e área de estudo
 
 A entrada abre Meus cursos, com SRE e Desenvolvimento e progresso calculado somente sobre as atividades atuais. `study-workspace.js` monta uma área ampla de estudo sem recriar os formulários: preserva os eventos e rascunhos, acrescenta lista lateral do módulo, destaque da atividade, caminho de retorno e navegação anterior/próxima. Leituras de apoio ficam em uma seção própria. Navegar não conclui atividades; a conclusão segue os critérios existentes. Em telas pequenas a lista é recolhível. `study-workspace.css` mantém esses estilos separados da página inicial.
+
+
+## Formação operacional SRE
+
+Acesso pelo catálogo, pelo botão Formação prática e pelo projeto de cada capítulo. 17 projetos em `public/practice.json`, seis oficinas numéricas com cinco conjuntos de dados e download de bancada HTTP/SQLite em `public/downloads/aurora-operacao.zip`.
+
+Os registros ficam em drafts com IDs practice-<capítulo>. O servidor permite esses IDs apenas como rascunhos, nunca como conclusão/XP. Execução, repetição, critérios e revisão são relatos do aluno; não há validação semântica nem certificação. As oficinas corrigem valores numéricos, e a bancada verifica cinco propriedades dos arquivos locais. O portfólio pede revisão humana e defesa do projeto final.
+
+- `python scripts/build_practice.py`: regenera os 17 roteiros.
+- `python scripts/connect_practice.py`: empacota apenas lab.py e README.md em ZIP determinístico; não altera o app.
+- `npm test`: inclui cálculos, cobertura dos capítulos e isolamento de XP.
+- `python -m unittest discover -s tests -p test_operational_lab.py`: executa HTTP real em loopback e verifica SQLite, duplicação, restauração e rejeição de artefatos incorretos em diretórios temporários.
+- `npm run test:integration`: inclui persistência dos projetos, nova sessão e isolamento entre contas temporárias.
+
+Os projetos de Docker, Kubernetes, CI e cloud são roteiros para execução pelo aluno; o site não provisiona ambientes remotos. A bancada fornecida é didática e não deve ser exposta à internet.
