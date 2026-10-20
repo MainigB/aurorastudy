@@ -1,0 +1,35 @@
+.chapter-page{padding-top:8px}
+.chapter-header{display:block;height:auto;padding:0;border:0;background:transparent}
+.chapter-header h2{font-size:28px;line-height:1.3;max-width:630px;margin:12px 0 20px}
+.chapter-progress{display:flex;align-items:center;gap:20px;color:#776e87;font-size:12px}
+.chapter-progress .progress-line{flex:1;max-width:160px;margin:0;height:5px}
+.chapter-sections{display:flex;gap:24px;border-bottom:1px solid #e9e4ef;margin:28px 0 0}
+.chapter-sections button{border:0;border-bottom:3px solid transparent;border-radius:0;background:none;padding:14px 0;color:#777081;font-size:13px;font-weight:600;box-shadow:none}
+.chapter-sections button[aria-pressed=true]{color:#6544c4;border-bottom-color:#7955d9}
+.chapter-panel{padding-top:26px}.chapter-panel[hidden]{display:none}
+.chapter-resume{padding:24px 26px;border-radius:14px;background:#f5f2fc;margin-bottom:30px}
+.chapter-resume h3{font-size:19px;margin:10px 0}
+.chapter-resume p{font-size:13px;color:#72677e;margin:0 0 18px;line-height:1.7}
+.chapter-resume .primary{min-height:44px}
+.chapter-list-heading{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.chapter-list-heading h3{font-size:16px;margin:0 0 14px}
+.chapter-list-heading>span{font-size:12px;color:#847b91}
+.chapter-lessons{border-top:1px solid #ede9f2}
+.chapter-lesson{display:grid;grid-template-columns:32px minmax(0,1fr) 18px;align-items:center;gap:15px;width:100%;text-align:left;padding:19px 0;border:0;border-bottom:1px solid #ede9f2;border-radius:0;background:transparent;box-shadow:none;color:#30283e}
+.chapter-lesson:hover{background:#faf8fe}
+.chapter-lesson b{display:block;font-size:14px;line-height:1.6;font-weight:600}
+.chapter-lesson small{display:block;font-size:12px;color:#81768e;margin-top:4px;line-height:1.5}
+.chapter-step{width:30px;height:30px;border-radius:50%;background:#f1ecfa;color:#7752cf;display:grid;place-items:center;font-size:12px}
+.chapter-step.is-done{background:#e8f4ed;color:#31734b}
+.chapter-lesson>span:last-child{color:#9a8bab}
+.chapter-help{font-size:12px;color:#81768e;margin:24px 0 0}
+.chapter-help .text-button{font-size:12px;padding:5px}
+.chapter-labs{margin:22px 0;border:0;border-top:1px solid #ede9f2;padding:18px 0;font-size:13px}
+.chapter-labs summary{cursor:pointer;color:#665775;font-weight:600;line-height:1.6}
+.chapter-book{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:20px 0;font-size:12px;color:#81768e}
+.chapter-project-steps{padding-left:20px;font-size:14px;line-height:2.2;margin:20px 0 26px}
+.chapter-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:28px;padding-top:22px;border-top:1px solid #ede9f2}
+.chapter-footer>span{display:block;font-size:11px;color:#8a8095;flex-shrink:0}
+.chapter-footer .text-button{text-align:right;font-size:12px;line-height:1.6}
+.chapter-sections button:focus-visible,.chapter-lesson:focus-visible{outline:2px solid #7955d9;outline-offset:3px}
+@media(max-width:600px){.chapter-header h2{font-size:22px}.chapter-sections{gap:0;justify-content:space-between;margin-top:20px}.chapter-sections button{font-size:12px;padding:13px 4px}.chapter-resume{padding:20px}.chapter-resume h3{font-size:17px}.chapter-resume .primary{width:100%}.chapter-progress{gap:12px}.chapter-progress .progress-line{max-width:75px}.chapter-lesson{gap:10px}.chapter-footer{align-items:flex-start;flex-direction:column;gap:2px}.chapter-footer .text-button{text-align:left;padding-left:0}}
