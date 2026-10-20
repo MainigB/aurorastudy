@@ -72,5 +72,5 @@ function settings(){
 accountButton.onclick=settings;
 window.addEventListener('online',flush);
 window.addEventListener('beforeunload',e=>{if(pending||sending){e.preventDefault();e.returnValue=''}});
-window.AuroraAccount={save:saveState,async init(change,get){onState=change;getState=get;identity();try{await loadSession()}catch{ready=false;showAuth();el('#account-error').textContent='Não foi possível conectar ao serviço de contas. Confira sua conexão e tente entrar novamente.'}},isReady:()=>ready};
+window.AuroraAccount={open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;identity();try{await loadSession()}catch{ready=false;showAuth();el('#account-error').textContent='Não foi possível conectar ao serviço de contas. Confira sua conexão e tente entrar novamente.'}},isReady:()=>ready};
 })();

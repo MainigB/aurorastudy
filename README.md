@@ -97,6 +97,16 @@ A entrada abre Meus cursos, com SRE e Desenvolvimento e progresso calculado some
 
 ## Formação operacional SRE
 
+## Livro interativo
+
+O botão Meu livro e os tópicos SRE abrem os 347 trechos do manuscrito dentro do site. A sequência é leitura, atividade correspondente e próximo trecho; seções editoriais continuam sendo apenas leitura. O texto original é preservado em `public/interactive-book.json`, gerado por `python scripts/build_interactive_book.py` a partir de `../book4/units_snapshot.json`. Regenerar após atualizar o currículo ou manuscrito.
+
+`interactive-book.js` conecta o leitor às atividades existentes sem alterar IDs, respostas ou XP. A conta salva o último trecho em `state.last`. Ler ou ouvir não conclui exercícios. Os projetos operacionais continuam separados da leitura.
+
+`book-voice.js` adapta a abordagem do LeitorOnline com Web Speech: reprodução explícita, pausa, retomada, parada, escolha de voz e velocidade. Texto longo é dividido em blocos; fechar ou navegar cancela a fala. As vozes dependem do navegador/sistema e algumas usam serviços remotos do navegador. Não há geração nem armazenamento de arquivos de áudio. Testes cobrem a sequência, cancelamento, callbacks antigos e divisão de texto.
+
+### Projetos operacionais
+
 Acesso pelo catálogo, pelo botão Formação prática e pelo projeto de cada capítulo. 17 projetos em `public/practice.json`, seis oficinas numéricas com cinco conjuntos de dados e download de bancada HTTP/SQLite em `public/downloads/aurora-operacao.zip`.
 
 Os registros ficam em drafts com IDs practice-<capítulo>. O servidor permite esses IDs apenas como rascunhos, nunca como conclusão/XP. Execução, repetição, critérios e revisão são relatos do aluno; não há validação semântica nem certificação. As oficinas corrigem valores numéricos, e a bancada verifica cinco propriedades dos arquivos locais. O portfólio pede revisão humana e defesa do projeto final.
