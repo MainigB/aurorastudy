@@ -97,13 +97,15 @@ A entrada abre Meus cursos, com SRE e Desenvolvimento e progresso calculado some
 
 ## Formação operacional SRE
 
-## Livro interativo
+## Livro integral e interativo
 
-O botão Meu livro e os tópicos SRE abrem os 347 trechos do manuscrito dentro do site. A sequência é leitura, atividade correspondente e próximo trecho; seções editoriais continuam sendo apenas leitura. O texto original é preservado em `public/interactive-book.json`, gerado por `python scripts/build_interactive_book.py` a partir de `../book4/units_snapshot.json`. Regenerar após atualizar o currículo ou manuscrito.
+A entrada Meu livro abre a edição final completa de 817 páginas, da capa ao complemento CONFIAR. `public/book/complete.json` contém o texto por página, índice navegável e links externos. O PDF original é servido sem alterações em `public/book/livro-4-completo.pdf`; seu SHA-256 é verificado pelos testes. A opção Ver página original permite conferir diagramação, links internos e código. O leitor de texto preserva conteúdo e recuos de código, mas não reproduz o desenho exato do PDF.
 
-`interactive-book.js` conecta o leitor às atividades existentes sem alterar IDs, respostas ou XP. A conta salva o último trecho em `state.last`. Ler ou ouvir não conclui exercícios. Os projetos operacionais continuam separados da leitura.
+`scripts/build_complete_book.py` usa pdfplumber e pypdf para regenerar ambos a partir de `../output/pdf/SRE_Senior_Livro_4_Formacao_Aprofundada.pdf`. Apenas cabeçalho e rodapé correntes são omitidos do modo de leitura. Capítulos, explicações guiadas, perguntas, respostas, referências, 506 verbetes do dicionário e complemento final estão disponíveis no próprio site. A busca percorre todas as páginas; o sumário agrupa os tópicos por capítulo.
 
-`book-voice.js` adapta a abordagem do LeitorOnline com Web Speech: reprodução explícita, pausa, retomada, parada, escolha de voz e velocidade. Texto longo é dividido em blocos; fechar ou navegar cancela a fala. As vozes dependem do navegador/sistema e algumas usam serviços remotos do navegador. Não há geração nem armazenamento de arquivos de áudio. Testes cobrem a sequência, cancelamento, callbacks antigos e divisão de texto.
+As 168 atividades do livro aparecem ao final das respectivas faixas de leitura, com os mesmos IDs, respostas e XP. As demais questões e soluções do livro permanecem no texto integral. Os 18 laboratórios Linux e 17 projetos operacionais continuam acessíveis na formação. Ler e ouvir não concedem XP. `bookPage` salva a página na conta, validada de 1 a 817 no servidor; estados antigos recebem página 1. A edição de 347 textos-base foi mantida como fonte de compatibilidade, mas as entradas de leitura usam a edição integral.
+
+`book-voice.js` adapta a abordagem do LeitorOnline com Web Speech: reprodução explícita, pausa, retomada, parada, voz e velocidade. A fala é dividida em blocos e cancelada ao navegar. As vozes dependem do navegador/sistema e podem usar serviços remotos do navegador. Não há geração nem armazenamento de arquivos de áudio.
 
 ### Projetos operacionais
 

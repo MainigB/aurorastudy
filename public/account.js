@@ -1,7 +1,7 @@
 (function(){
 let isAdmin=false;
 let user=null,version=0,pending=null,sending=false,timer=null,conflict=false,ready=false;
-const empty=()=>({done:{},xp:0,days:{},review:[],drafts:{},last:null});
+const empty=()=>({done:{},xp:0,days:{},review:[],drafts:{},last:null,bookPage:1});
 const el=s=>document.querySelector(s);
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let onState=()=>{},getState=empty;

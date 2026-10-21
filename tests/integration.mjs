@@ -10,9 +10,9 @@ try{
  assert.equal((await request('/api/auth/sign-out','POST',{},b.cookie,base,aid)).status,401);
  assert.equal((await request('/api/auth/sign-in/email','POST',{email:emails[0],password:'incorrect-password'})).status,401);
  const initial=await request('/api/progress','GET',null,a.cookie);assert.equal(initial.data.version,0);
- const progress={done:{'linux-0':{date:'2026-10-15'}},drafts:{u001:'Resposta de teste persistida.','practice-pre':JSON.stringify({evidence:'Health 200; ready 503 antes, 200 depois.',repeat:'Porta 8766 testada.',review:'Revisão própria.',criteria:[true,true,true],reviewed:true})},review:['u002'],last:'u001',xp:999,days:{}};
+ const progress={done:{'linux-0':{date:'2026-10-15'}},drafts:{u001:'Resposta de teste persistida.','practice-pre':JSON.stringify({evidence:'Health 200; ready 503 antes, 200 depois.',repeat:'Porta 8766 testada.',review:'Revisão própria.',criteria:[true,true,true],reviewed:true})},review:['u002'],last:'u001',bookPage:688,xp:999,days:{}};
  const saved=await request('/api/progress','PUT',{state:progress,version:0},a.cookie);assert.equal(saved.status,200,JSON.stringify(saved.data));
- const persisted=await request('/api/progress','GET',null,a.cookie);assert.equal(persisted.data.state.xp,20);assert.equal(persisted.data.state.drafts.u001,progress.drafts.u001);assert.equal(persisted.data.state.drafts['practice-pre'],progress.drafts['practice-pre']);
+ const persisted=await request('/api/progress','GET',null,a.cookie);assert.equal(persisted.data.state.xp,20);assert.equal(persisted.data.state.bookPage,688);assert.equal(persisted.data.state.drafts.u001,progress.drafts.u001);assert.equal(persisted.data.state.drafts['practice-pre'],progress.drafts['practice-pre']);
  assert.equal((await request('/api/progress','GET',null,b.cookie)).data.version,0);assert.equal((await request('/api/progress','GET',null,b.cookie)).data.state.drafts['practice-pre'],undefined);
  assert.equal((await request('/api/progress','PUT',{state:progress,version:0},a.cookie)).status,409);
  assert.equal((await request('/api/progress','PUT',{state:progress,version:1},a.cookie,'https://attacker.invalid')).status,403);

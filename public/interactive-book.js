@@ -1,6 +1,7 @@
 let interactiveBook,bookRequest=0;
 async function loadInteractiveBook(){if(!interactiveBook){const response=await fetch('interactive-book.json');if(!response.ok)throw Error();interactiveBook=await response.json()}return interactiveBook;}
-async function openBookReader(id){
+function openBookReader(id){const lesson=all.find(l=>l.id===id);return openCompletePage(lesson?.page||1)}
+async function openTopicReader(id){
  show('<div class="book-reader"><p role="status">Abrindo o livro…</p></div>');
  const request=bookRequest;
  try{
@@ -29,4 +30,4 @@ function openBookExercise(id){
  $('#feedback').insertAdjacentHTML('afterend','<button class="text-button" id="exercise-continue">Continuar leitura sem concluir →</button>');
  $('#exercise-continue').onclick=()=>nextBookPage(id);
 }
-function nextBookPage(id){const index=interactiveBook?.findIndex(p=>p.id===id)??-1;if(index>=0&&index<interactiveBook.length-1)openBookReader(interactiveBook[index+1].id);else openTrack(all.find(l=>l.id===id)?.track||'PRE');}
+function nextBookPage(id){const lesson=all.find(l=>l.id===id);openCompletePage((lesson?.readingEnd||lesson?.page||1)+1);}
