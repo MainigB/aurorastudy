@@ -26,5 +26,5 @@ document.querySelectorAll('[data-formation]').forEach(b=>b.onclick=()=>{formatio
 Promise.all(['curriculum.json','linux.json','company.json','resources.json'].map(url=>fetch(url).then(r=>{if(!r.ok)throw Error();return r.json()}).catch(e=>{if(url==='resources.json')return null;throw e}))).then(([sre,linux,company,resources])=>{
  curriculum={company,resources,tracks:[...sre.tracks.sort((a,b)=>company.order.indexOf(a.id)-company.order.indexOf(b.id)).map(t=>({...t,formation:'SRE'}))],lessons:[...sre.lessons.map(l=>({...l,formation:'SRE'}))]};
  all=[...[...linux,...sre.lessons].sort((a,b)=>company.order.indexOf(a.track)-company.order.indexOf(b.track)||company.missions[a.id].sequence-company.missions[b.id].sequence).map(l=>({...l,formation:'SRE'}))];render();
- window.AuroraAccount.init(next=>{state=next;if($('#lesson-dialog').open)$('#lesson-dialog').close();render()},()=>state);
+ window.AuroraAccount.init((next,{resetStudy=false}={})=>{state=next;if(resetStudy&&$('#lesson-dialog').open)$('#lesson-dialog').close();render()},()=>state);
 }).catch(()=>{$('#tracks').innerHTML='<div class="empty">Não foi possível carregar as formações. Atualize a página para tentar novamente.</div>'});
