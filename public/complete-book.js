@@ -24,7 +24,7 @@ async function openCompletePage(number=1){
   $('#complete-jump').onsubmit=e=>{e.preventDefault();openCompletePage(Number($('#complete-number').value))};
   $('#complete-original').onclick=()=>{const original=$('#complete-pdf'),text=$('#book-text');original.hidden=!original.hidden;if(!original.hidden){const pdf=original.querySelector('object');pdf.data=pdf.dataset.originalUrl}text.hidden=!original.hidden;AuroraBookVoice.stop();$('#book-listen').disabled=!original.hidden;$('#book-stop').disabled=true;$('#book-listen').textContent='Ouvir página';$('#book-voice-status').textContent='Áudio parado. Volte à leitura para ouvir esta página.';$('#complete-original').textContent=original.hidden?'Ver página original':'Voltar à leitura';if(original.hidden)AuroraBookVoice.bind(text)};
   document.querySelectorAll('[data-complete-exercise]').forEach(b=>b.onclick=()=>{if(!AuroraAccount.isReady()){$('#complete-auth').textContent='Entre para salvar sua resposta e seu progresso.';AuroraAccount.open();return}openBookExercise(b.dataset.completeExercise)});
-  AuroraBookVoice.bind($('#book-text'));
+  AuroraBookVoice.bind($('#book-text'));mountJourneyPage(number);
  }catch{if(request!==bookRequest||!$('#lesson-dialog').open)return;show('<div class="book-reader"><p>Não foi possível carregar a edição integral.</p><button id="complete-retry" class="primary">Tentar novamente</button><p><a href="book/livro-4-completo.pdf" target="_blank" rel="noopener">Abrir o PDF completo</a></p></div>');$('#complete-retry')?.addEventListener('click',()=>openCompletePage(number))}
 }
 async function openCompleteIndex(back=1){

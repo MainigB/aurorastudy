@@ -120,3 +120,12 @@ Os registros ficam em drafts com IDs practice-<capítulo>. O servidor permite es
 - `npm run test:integration`: inclui persistência dos projetos, nova sessão e isolamento entre contas temporárias.
 
 Os projetos de Docker, Kubernetes, CI e cloud são roteiros para execução pelo aluno; o site não provisiona ambientes remotos. A bancada fornecida é didática e não deve ser exposta à internet.
+
+
+## Trilha única SRE
+
+A entrada é `renderJourney`, com uma única ação Continuar minha trilha, contadores e mapa de 20 etapas (abertura, 17 capítulos e complementos). DEV foi removida do carregamento do app e da navegação; dados históricos de contas continuam preservados. O leitor contém as 817 páginas, com áudio. O motor `journey-engine.js` determina o primeiro passo pendente: página não confirmada ou exercício no fim de uma faixa de leitura. As 168 atividades do livro e os 18 laboratórios Linux compõem 186 exercícios; os laboratórios entram ao concluir a leitura do capítulo Linux.
+
+`readPages` guarda páginas confirmadas explicitamente, deduplicadas e validadas de 1 a 817. Abrir, ouvir ou consultar uma página não registra leitura automaticamente. Contas antigas não recebem leituras presumidas a partir do marcador `bookPage`. Reler não duplica contagens. Conclusões anteriores de exercícios são respeitadas; XP exibido na jornada considera apenas seus exercícios SRE. Leitura e exercício têm o mesmo peso na porcentagem combinada, com contadores independentes. O mapa indica avanço na sequência, não certificação de domínio.
+
+A confirmação de leitura conduz à atividade pendente; concluir a atividade permite continuar a leitura. As respostas abertas mantêm autoavaliação e os comandos mantêm os critérios do laboratório. A conta salva leituras, rascunhos e conclusões; os testes cobrem persistência, deduplicação, retomada, bloqueio no checkpoint e conclusão da trilha.
