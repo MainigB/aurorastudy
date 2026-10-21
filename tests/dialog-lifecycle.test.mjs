@@ -4,12 +4,16 @@ function harness(){
  const elements=new Map(),requests=[];
  const node=()=>({open:false,isConnected:true,innerHTML:'',textContent:'',classList:{toggle(){}},append(){},after(){},addEventListener(type,fn){this[type]=fn},showModal(){this.open=true;this.shows=(this.shows||0)+1},close(){this.open=false;this.closeEvent?.()},querySelector(){return node()}});
  const dialog=node();let html='';dialog.writes=0;Object.defineProperty(dialog,'innerHTML',{get:()=>html,set:value=>{html=value;dialog.writes++}});dialog.addEventListener=(type,fn)=>{if(type==='close')dialog.closeEvent=fn};
- const document={body:node(),createElement:tag=>tag==='dialog'?dialog:node(),querySelector:selector=>{if(!elements.has(selector))elements.set(selector,node());return elements.get(selector)}};
+ const document={querySelectorAll:()=>[],body:node(),createElement:tag=>tag==='dialog'?dialog:node(),querySelector:selector=>{if(!elements.has(selector))elements.set(selector,node());return elements.get(selector)}};
  const window={addEventListener(){}};
  const context={window,document,AuroraDialogs:{prepare(){}},AbortController,setTimeout,clearTimeout,fetch:()=>new Promise(resolve=>requests.push(data=>resolve({ok:true,json:async()=>data}))),console};
  vm.runInNewContext(accountSource,context);
  return {api:window.AuroraAccount,dialog,requests,elements};
 }
+test('anonymous startup leaves the landing page without forcing a login popup',async()=>{
+ const h=harness(),init=h.api.init(()=>{},()=>({}));h.requests.shift()(null);await init;
+ assert.equal(h.dialog.open,false);assert.equal(h.api.isReady(),false);assert.equal(h.dialog.writes,0);
+});
 test('late initial session response does not rebuild an already opened login form',async()=>{
  const h=harness(),init=h.api.init(()=>{},()=>({}));
  h.api.open();h.elements.get('#account-form').draft='typed credentials';const markup=h.dialog.innerHTML;

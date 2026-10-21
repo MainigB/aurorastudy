@@ -6,6 +6,7 @@ async function loadCompleteBook(){
 }
 function completeBookAudio(){return `<div class="book-audio"><div class="book-audio-actions"><button class="primary" id="book-listen">Ouvir página</button><button class="outline" id="book-stop" disabled>Parar</button><details><summary>Ajustar voz</summary><label>Voz<select id="book-voice" aria-label="Voz da leitura"></select></label><label>Velocidade<select id="book-rate" aria-label="Velocidade da leitura">${[.5,.75,1,1.25,1.5,1.75,2].map(n=>`<option value="${n}" ${n===1?'selected':''}>${n}×</option>`).join('')}</select></label><p>Vozes fornecidas pelo navegador e pelo sistema.</p></details></div><p id="book-voice-status" role="status"></p></div>`}
 async function openCompletePage(number=1){
+ if(!AuroraAccount.isReady()){AuroraAccount.open();return}
  show('<div class="book-reader"><p role="status">Abrindo a edição integral…</p></div>');
  const request=bookRequest;
  try{
@@ -28,6 +29,7 @@ async function openCompletePage(number=1){
  }catch{if(request!==bookRequest||!$('#lesson-dialog').open)return;show('<div class="book-reader"><p>Não foi possível carregar a edição integral.</p><button id="complete-retry" class="primary">Tentar novamente</button><p><a href="book/livro-4-completo.pdf" target="_blank" rel="noopener">Abrir o PDF completo</a></p></div>');$('#complete-retry')?.addEventListener('click',()=>openCompletePage(number))}
 }
 async function openCompleteIndex(back=1){
+ if(!AuroraAccount.isReady()){AuroraAccount.open();return}
  const book=await loadCompleteBook();
  const groups=[];for(const item of book.outline){if(item.level===0||!groups.length)groups.push({head:item,children:[]});else groups.at(-1).children.push(item)}
  const entry=o=>`<button class="book-index-item" data-complete-page="${o.page}">${esc(o.title)} <small>· página ${o.page}</small></button>`;

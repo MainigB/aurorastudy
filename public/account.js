@@ -39,7 +39,7 @@ function showAuth(mode='login'){
 async function loadSession(){
  const previousUser=user?.id,revision=dialogRevision;
  ready=false;const session=await api('/api/auth/get-session');
- if(!session?.user){user=null;isAdmin=false;identity();onState(empty(),{resetStudy:!!previousUser});if(revision===dialogRevision&&!dialog.open)showAuth();return}
+ if(!session?.user){user=null;isAdmin=false;identity();onState(empty(),{resetStudy:!!previousUser});return}
  const progress=await api('/api/progress','GET',undefined,session.user.id);
  const access=await api('/api/admin?action=capabilities','GET',undefined,session.user.id);
  isAdmin=access.isAdmin===true;user=session.user;version=progress.version;pending=null;conflict=false;ready=true;
@@ -50,7 +50,7 @@ async function flush(){
  if(sending||!pending||!user||conflict||!ready)return;
  sending=true;const current=pending;pending=null;setStatus('Salvando na sua conta…');
  try{const result=await api('/api/progress','PUT',{state:current,version});version=result.version;setStatus('Progresso sincronizado');}
- catch(err){pending=pending||current;if(err.status===409){conflict=true;setStatus('Conflito de versão · abra Minha conta',true)}else if(err.status===401){ready=false;setStatus('Sessão expirada · exporte antes de entrar',true)}else{setStatus('Sem sincronização · alterações nesta aba',true)}}
+ catch(err){pending=pending||current;if(err.status===409){conflict=true;setStatus('Conflito de versão · abra Minha conta',true)}else if(err.status===401){ready=false;onState(getState(),{resetStudy:true});setStatus('Sessão expirada · exporte antes de entrar',true)}else{setStatus('Sem sincronização · alterações nesta aba',true)}}
  finally{sending=false;if(pending&&!conflict&&ready)timer=setTimeout(flush,5000)}
 }
 function saveState(value){if(!user||!ready)return;pending=JSON.parse(JSON.stringify(value));setStatus('Alterações pendentes…');clearTimeout(timer);timer=setTimeout(flush,700)}
@@ -69,12 +69,13 @@ function settings(){
  el('#password-form').onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,b=f.querySelector('button'),v=Object.fromEntries(new FormData(f));if(v.newPassword!==v.confirm){el('#account-error').textContent='As senhas não coincidem.';return}b.disabled=true;try{await api('/api/auth/change-password','POST',{currentPassword:v.currentPassword,newPassword:v.newPassword,revokeOtherSessions:true});f.reset();el('#account-error').textContent='Senha alterada. As outras sessões foram encerradas.'}catch(err){el('#account-error').textContent=message(err)}finally{b.disabled=false}};
  el('#sign-out').onclick=async()=>{
   await flush();if(sending||pending){el('#account-error').textContent='Há alterações não sincronizadas. Exporte uma cópia ou aguarde a sincronização antes de sair.';return}
-  try{await api('/api/auth/sign-out','POST',{});clearTimeout(timer);user=null;isAdmin=false;ready=false;version=0;onState(empty(),{resetStudy:true});identity();setStatus('');showAuth()}catch(e){el('#account-error').textContent=message(e)}
+  try{await api('/api/auth/sign-out','POST',{});clearTimeout(timer);user=null;isAdmin=false;ready=false;version=0;onState(empty(),{resetStudy:true});identity();setStatus('');dialog.close()}catch(e){el('#account-error').textContent=message(e)}
  };
 }
 
 accountButton.onclick=settings;
 window.addEventListener('online',flush);
 window.addEventListener('beforeunload',e=>{if(pending||sending){e.preventDefault();e.returnValue=''}});
-window.AuroraAccount={open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;identity();const revision=dialogRevision;try{await loadSession()}catch{ready=false;if(dialogRevision!==revision)return;showAuth();el('#account-error').textContent='Não foi possível conectar ao serviço de contas. Confira sua conexão e tente entrar novamente.'}},isReady:()=>ready};
+document.querySelectorAll('[data-login]').forEach(button=>button.onclick=()=>showAuth());
+window.AuroraAccount={reload:async()=>{clearTimeout(timer);pending=null;await loadSession()},open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;identity();const revision=dialogRevision;try{await loadSession()}catch{ready=false;onState(getState(),{resetStudy:true});if(dialogRevision!==revision)return;const target=el('#account-error')||el('#landing-status');if(target)target.textContent='Não foi possível conectar. Tente entrar novamente.'}},isReady:()=>ready};
 })();

@@ -1,6 +1,7 @@
+function renderLanding(){document.body.classList.add('signed-out');}
 function journeyProgress(){return AuroraJourney.progress(state,all)}
 function renderJourney(){
- formation='SRE';view='catalog';document.body.classList.add('journey-only');
+ document.body.classList.remove('signed-out');formation='SRE';view='catalog';document.body.classList.add('journey-only');
  const p=journeyProgress(),next=p.next;
  $('.formation-picker').hidden=true;$('#formation-intro').hidden=true;$('.right-rail').hidden=true;$('.continue-card').hidden=true;$('.filters').style.display='none';$('.section-title').hidden=true;
  $('.page-intro .eyebrow').textContent='SUA JORNADA DE CONFIABILIDADE';$('.page-intro h1').textContent='Um passo de cada vez.';$('.page-intro>div>p').textContent='Leia, pratique e avance. Seu próximo passo está aqui.';
@@ -11,7 +12,7 @@ function renderJourney(){
  const lesson=next.id?all.find(l=>l.id===next.id):null;
  $('#tracks').innerHTML=`<section class="journey-hero"><div class="journey-emblem" aria-hidden="true">✦</div><div><span class="eyebrow">TRILHA ÚNICA · SRE</span><h2>${next.kind==='finished'?'Jornada concluída!':stages[current].name}</h2><p>${next.kind==='exercise'?`Hora de praticar: ${esc(lesson.title)}`:next.kind==='finished'?'Você concluiu as leituras e atividades desta trilha.':'Seu próximo passo: ler ou ouvir a página '+next.page+'.'}</p><button class="primary" id="journey-follow">${next.kind==='finished'?'Revisitar a trilha':p.read||p.done?'Continuar minha trilha':'Começar minha trilha'} →</button></div><div class="journey-percent"><strong>${p.percent}%</strong><span>da jornada</span></div></section><div class="journey-progress" role="progressbar" aria-label="Progresso da jornada" aria-valuenow="${p.percent}" aria-valuemin="0" aria-valuemax="100"><i style="width:${p.percent}%"></i></div><section class="journey-stats" aria-label="Seu progresso"><div><strong>${p.read}<small> / 817</small></strong><span>páginas lidas</span></div><div><strong>${p.done}<small> / ${p.total}</small></strong><span>exercícios concluídos</span></div><div><strong>${p.xp}</strong><span>XP conquistados</span></div></section><p class="journey-note">Confirme cada página após ler ou ouvir. Abrir uma página não conta como leitura.${AuroraAccount.isReady()?' Seu progresso fica salvo na conta.':' Entre na sua conta ao começar para salvar seu avanço.'}</p><div class="journey-map-heading"><h3>Seu caminho</h3><span>Etapa ${current+1} de ${stages.length}</span></div><ol class="journey-map">${stages.map((t,i)=>`<li class="${i<current?'passed':i===current?'current':'upcoming'}" ${i===current?'aria-current="step"':''}><span class="journey-node">${i<current?'✓':i+1}</span><div><strong>${esc(t.name)}</strong><small>${i<current?'Etapa concluída':i===current?'Você está aqui':'Mais adiante'} · página ${t.page}</small></div>${i===current?'<span class="journey-here">AGORA</span>':''}</li>`).join('')}</ol>`;
  $('#journey-follow').onclick=followJourney;
- document.querySelector('footer').innerHTML='aurora · Sua jornada em SRE <span>Leitura → prática → próximo passo</span>';
+ document.querySelector('.shell footer').innerHTML='aurora · Sua jornada em SRE <span>Leitura → prática → próximo passo</span>';
  const home=document.querySelector('[data-view="catalog"]');home.innerHTML='<span>◉</span> Minha trilha';home.classList.add('active');
 }
 function followJourney(){

@@ -2,6 +2,7 @@ import {fromNodeHeaders} from 'better-auth/node';
 import {getAuth} from '../lib/auth.mjs';
 import {getPool} from '../lib/db.mjs';
 import {reply,readBody,sameOrigin} from '../lib/http.mjs';
+import {emptyState} from '../lib/progress.mjs';
 export default async function handler(req,res){
  try{
   if(!['GET','POST'].includes(req.method))return reply(res,405,{error:'Método não permitido.'});
@@ -23,6 +24,7 @@ export default async function handler(req,res){
      a.user_id IS NOT NULL AS is_admin,
      COALESCE((SELECT count(*) FROM jsonb_object_keys(COALESCE(p.state->'done','{}'::jsonb))),0)::int AS completed,
      p.updated_at,
+     COALESCE(jsonb_array_length(p.state->'readPages'),0)::int AS pages_read,
      (SELECT count(*)::int FROM session s WHERE s."userId"=u.id AND s."expiresAt">now()) AS active_sessions
     FROM "user" u LEFT JOIN aurora_admins a ON a.user_id=u.id LEFT JOIN aurora_progress p ON p.user_id=u.id
     WHERE u.name ILIKE ${filter} OR u.email ILIKE ${filter}
@@ -31,8 +33,8 @@ export default async function handler(req,res){
    return reply(res,200,{users:result.rows,total:total.rows[0].total,page,pageSize:20,actorId:actor});
   }
   let body;try{body=await readBody(req,4096)}catch{return reply(res,400,{error:'Solicitação inválida.'})}
-  if(body.action!=='revoke-sessions'||typeof body.userId!=='string'||body.userId.length>128)return reply(res,400,{error:'Ação inválida.'});
-  if(body.userId===actor)return reply(res,400,{error:'Use Sair da conta para encerrar sua própria sessão.'});
+  if(!['revoke-sessions','reset-progress'].includes(body.action)||typeof body.userId!=='string'||!body.userId||body.userId.length>128)return reply(res,400,{error:'Ação inválida.'});
+  if(body.action==='revoke-sessions'&&body.userId===actor)return reply(res,400,{error:'Use Sair da conta para encerrar sua própria sessão.'});
   const client=await db.connect();
   try{
    await client.query('BEGIN');
@@ -40,6 +42,13 @@ export default async function handler(req,res){
    if(!permission.rowCount){await client.query('ROLLBACK');return reply(res,403,{error:'Permissão administrativa revogada.'})}
    const target=await client.query('SELECT id FROM "user" WHERE id=$1 FOR UPDATE',[body.userId]);
    if(!target.rowCount){await client.query('ROLLBACK');return reply(res,404,{error:'Usuário não encontrado.'})}
+   if(body.action==='reset-progress'){
+    // Keep a monotonically increasing version so an old tab cannot restore erased progress.
+    await client.query(`INSERT INTO aurora_progress(user_id,state,version) VALUES($1,$2::jsonb,1)
+     ON CONFLICT(user_id) DO UPDATE SET state=EXCLUDED.state,version=aurora_progress.version+1,updated_at=now()`,[body.userId,JSON.stringify(emptyState())]);
+    await client.query("INSERT INTO aurora_admin_audit(actor_id,target_id,action) VALUES($1,$2,'reset_progress')",[actor,body.userId]);
+    await client.query('COMMIT');return reply(res,200,{reset:true});
+   }
    const deleted=await client.query('DELETE FROM session WHERE "userId"=$1',[body.userId]);
    await client.query("INSERT INTO aurora_admin_audit(actor_id,target_id,action) VALUES($1,$2,'revoke_sessions')",[actor,body.userId]);
    await client.query('COMMIT');return reply(res,200,{revoked:deleted.rowCount});

@@ -9,9 +9,16 @@ async function load(){
  try{
   const data=await api(`/api/admin?q=${encodeURIComponent(query)}&page=${page}`);
   status.textContent=`${data.total} usuários encontrados · página ${data.page+1}`;
-  area.innerHTML=data.users.length?data.users.map(u=>`<article class="admin-user"><div><strong>${safe(u.name)}</strong><span class="admin-role">${u.is_admin?'Administrador':'Aluno'}</span><p>${safe(u.email)}</p><small>${u.completed} atividades · ${u.completed*20} XP · ${u.active_sessions} sessões ativas</small><small>Cadastro: ${date(u.created_at)} · Último progresso: ${date(u.updated_at)}</small></div>${u.id!==data.actorId?`<button class="outline revoke-user" data-id="${safe(u.id)}" data-name="${safe(u.name)}" ${u.active_sessions===0?'disabled':''}>Encerrar sessões</button>`:'<span class="muted">Sua conta</span>'}</article>`).join(''):'<p class="empty">Nenhum usuário encontrado.</p>';
+  area.innerHTML=data.users.length?data.users.map(u=>`<article class="admin-user"><div><strong>${safe(u.name)}</strong><span class="admin-role">${u.is_admin?'Administrador':'Aluno'}</span><p>${safe(u.email)}</p><small>${u.pages_read||0} páginas lidas · ${u.completed} atividades · ${u.completed*20} XP · ${u.active_sessions} sessões ativas</small><small>Cadastro: ${date(u.created_at)} · Último progresso: ${date(u.updated_at)}</small></div><div class="admin-user-actions"><button class="outline reset-user" data-id="${safe(u.id)}" data-name="${safe(u.name)}" data-email="${safe(u.email)}">Zerar progresso</button>${u.id!==data.actorId?`<button class="outline revoke-user" data-id="${safe(u.id)}" data-name="${safe(u.name)}" ${u.active_sessions===0?'disabled':''}>Encerrar sessões</button>`:'<span class="muted">Sua conta</span>'}</div></article>`).join(''):'<p class="empty">Nenhum usuário encontrado.</p>';
   dialog.querySelector('#admin-prev').disabled=page===0;
   dialog.querySelector('#admin-next').disabled=(page+1)*20>=data.total;
+  area.querySelectorAll('.reset-user').forEach(b=>b.onclick=async()=>{
+   if(!confirm(`Zerar todo o progresso de ${b.dataset.name} (${b.dataset.email})?
+
+Isso apaga páginas lidas, exercícios concluídos, XP, revisões e respostas salvas. A conta e a senha serão mantidas. Esta ação não pode ser desfeita pela interface.`))return;
+   b.disabled=true;
+   try{await api('/api/admin','POST',{action:'reset-progress',userId:b.dataset.id});if(b.dataset.id===data.actorId)await window.AuroraAccount.reload();await load();status.textContent='Progresso zerado e ação registrada. O usuário deve atualizar a página para carregar o novo estado.'}catch(e){status.textContent=e.message;b.disabled=false}
+  });
   area.querySelectorAll('.revoke-user').forEach(b=>b.onclick=async()=>{
    if(!confirm(`Encerrar todas as sessões de ${b.dataset.name}? Essa pessoa precisará entrar novamente.`))return;
    b.disabled=true;

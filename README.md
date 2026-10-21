@@ -129,3 +129,12 @@ A entrada é `renderJourney`, com uma única ação Continuar minha trilha, cont
 `readPages` guarda páginas confirmadas explicitamente, deduplicadas e validadas de 1 a 817. Abrir, ouvir ou consultar uma página não registra leitura automaticamente. Contas antigas não recebem leituras presumidas a partir do marcador `bookPage`. Reler não duplica contagens. Conclusões anteriores de exercícios são respeitadas; XP exibido na jornada considera apenas seus exercícios SRE. Leitura e exercício têm o mesmo peso na porcentagem combinada, com contadores independentes. O mapa indica avanço na sequência, não certificação de domínio.
 
 A confirmação de leitura conduz à atividade pendente; concluir a atividade permite continuar a leitura. As respostas abertas mantêm autoavaliação e os comandos mantêm os critérios do laboratório. A conta salva leituras, rascunhos e conclusões; os testes cobrem persistência, deduplicação, retomada, bloqueio no checkpoint e conclusão da trilha.
+
+
+## Entrada e reset administrativo
+
+Visitantes veem uma landing page com entrada para login; a área da trilha permanece oculta desde o HTML inicial até a sessão ser validada. Sair da conta retorna à landing. O cabeçalho autenticado mantém somente o botão com o nome, sem o avatar fixo EU. O leitor verifica a sessão antes de abrir. As APIs de progresso e administração exigem autenticação no servidor.
+
+O painel administrativo oferece Zerar progresso para qualquer conta, inclusive a própria. A confirmação identifica nome e e-mail e explica a remoção de leituras, conclusões, XP, revisões e rascunhos. `reset-progress` exige admin no servidor, valida origem, confere a permissão novamente na transação e registra `reset_progress` na auditoria. A linha de progresso é zerada com incremento de versão; não é excluída, para impedir que uma aba antiga recrie os dados apagados. Usuários afetados devem atualizar a página. Conta, senha e papel administrativo permanecem intactos.
+
+`node --env-file=.env.local tests/admin-integration.mjs` valida reset de aluno e do próprio admin, auditoria, alvo inexistente, CSRF, rejeição de gravação antiga e preservação de autenticação. Os testes usam apenas contas fictícias e as removem no final.
