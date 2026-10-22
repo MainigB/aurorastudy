@@ -4,7 +4,7 @@ const json=p=>JSON.parse(readFileSync(new URL(p,import.meta.url)));
 const lessons=[...json('../public/curriculum.json').lessons,...json('../public/linux.json')].map(l=>({...l,formation:'SRE'}));
 test('bookmark and audio playback alone never count pages as read',()=>{
  const s={bookPage:688,done:{}};assert.equal(journey.progress(s,lessons).read,0);assert.deepEqual(journey.progress(s,lessons).next,{kind:'reading',page:1});
- journey.markRead(s,1);journey.markRead(s,1);assert.equal(journey.progress(s,lessons).read,1);assert.equal(journey.progress(s,lessons).next.page,2);
+ journey.markRead(s,1);journey.markRead(s,1);assert.equal(journey.progress(s,lessons).read,1);assert.equal(journey.progress(s,lessons).next.page,29);
 });
 test('reading leads to its activity and cannot skip an unfinished checkpoint',()=>{
  const first=journey.checkpoints(lessons)[0];const s={done:{},readPages:Array.from({length:first.page},(_,i)=>i+1)};
@@ -20,4 +20,15 @@ test('single SRE path includes 168 book exercises and 18 labs without DEV XP',()
 test('server preserves confirmed pages, deduplicates and never turns them into XP',()=>{
  const s=cleanState({readPages:[1,1,2,817,818,-1,'3',4.5],bookPage:200});assert.deepEqual(s.readPages,[1,2,817]);assert.equal(s.xp,0);
  assert.deepEqual(cleanState({bookPage:300}).readPages,[]);assert.throws(()=>cleanState({readPages:{1:true}}));
+});
+
+test('printed indexes are skipped in both directions and never count as reading',()=>{
+ assert.equal(journey.totalPages,790);
+ for(let n=2;n<=28;n++){assert.equal(journey.isReadingPage(n),false);assert.equal(journey.resolvePage(n),29)}
+ assert.equal(journey.nextPage(1),29);assert.equal(journey.previousPage(29),1);
+ assert.equal(journey.previousPage(1),null);assert.equal(journey.nextPage(817),null);
+ const s={done:{},readPages:Array.from({length:28},(_,i)=>i+1)};
+ const p=journey.progress(s,lessons);assert.equal(p.read,1);assert.equal(p.next.page,29);
+ journey.markRead(s,8);assert.deepEqual(journey.readings(s),[1]);
+ assert.equal(journey.resolvePage(34),34);
 });
