@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "better-auth": "^1.7.10",
+    "mammoth": "1.13.0",
+    "pdfjs-dist": "6.4.299",
     "pg": "^8.23.1",
     "sql.js": "1.15.0"
   }

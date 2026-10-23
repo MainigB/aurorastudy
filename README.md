@@ -150,3 +150,9 @@ Administradores podem alternar a navegação livre no topo da trilha. A opção 
 ## Restauração de login
 A sessão é consultada enquanto o catálogo carrega. O progresso retorna também o perfil administrativo confirmado no banco, eliminando uma chamada sequencial. Falhas transitórias de leitura têm uma tentativa adicional; a landing permite restaurar a sessão sem redigitar credenciais. Cookies de sessão permanecem HttpOnly/SameSite e passam a ter validade de 30 dias, com renovação diária durante o uso. Nenhum token ou progresso de conta é armazenado em localStorage para simular autenticação.
 
+
+## Comparação de currículo
+A aba Comparar currículo é acessível a todas as contas logadas. PDF.js e Mammoth são servidos pelo próprio Aurora, carregados sob demanda e extraem texto localmente; nenhum currículo ou descrição é enviado às APIs ou persistido. O DOCX é processado em worker com limite de tempo. Limites: 10 MB, 30 páginas PDF, 200 mil caracteres de currículo e 50 mil de vaga. PDF escaneado requer OCR externo; há texto editável como alternativa.
+A pontuação é a proporção de termos únicos reconhecidos na vaga que aparecem no currículo, com pesos iguais e aliases explícitos. Catálogo: 506 verbetes do livro mais tecnologias de TI. Termos personalizados só contam se presentes na vaga. A análise não interpreta negações, anos de experiência, obrigatoriedade ou qualidade semântica e não estima contratação. Dados são descartados ao fechar ou sair da conta.
+Validação: tests/ats.test.mjs cobre pontuação, aliases, limites de palavras, catálogo, ausência de termos e extração DOCX com fixture fictícia. PDF foi conferido no navegador com tests/fixtures/resume.pdf.
+

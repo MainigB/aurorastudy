@@ -27,7 +27,9 @@ Promise.all(['curriculum.json','linux.json','company.json','resources.json'].map
  curriculum={company,resources,tracks:[...sre.tracks.sort((a,b)=>company.order.indexOf(a.id)-company.order.indexOf(b.id)).map(t=>({...t,formation:'SRE'}))],lessons:[...sre.lessons.map(l=>({...l,formation:'SRE'}))]};
  all=[...[...linux,...sre.lessons].sort((a,b)=>company.order.indexOf(a.track)-company.order.indexOf(b.track)||company.missions[a.id].sequence-company.missions[b.id].sequence).map(l=>({...l,formation:'SRE'}))];all.push(...AuroraAnsible.lessons);curriculum.lessons.push(...AuroraAnsible.lessons);
  for(const [i,l] of AuroraAnsible.lessons.entries())company.missions[l.id]={...company.missions.u184,ticket:'AUR-ANS-'+String(i+1).padStart(3,'0'),sequence:100+i,request:l.scenario};render();
- window.AuroraAccount.init((next,{resetStudy=false}={})=>{state=next;if(resetStudy){if($('#lesson-dialog').open)$('#lesson-dialog').close();document.querySelector('#dictionary-dialog')?.close()}render()},()=>state);
+ window.AuroraAccount.init((next,{resetStudy=false}={})=>{state=next;if(resetStudy){if($('#lesson-dialog').open)$('#lesson-dialog').close();document.querySelector('#dictionary-dialog')?.close();document.querySelector('#ats-dialog')?.close()}render()},()=>state);
 }).catch(()=>{$('#tracks').innerHTML='<div class="empty">Não foi possível carregar as formações. Atualize a página para tentar novamente.</div>'});
 
 $('#dictionary-nav').onclick=openDictionary;
+
+$('#ats-nav').onclick=openATS;
