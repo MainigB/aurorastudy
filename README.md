@@ -138,3 +138,7 @@ Visitantes veem uma landing page com entrada para login; a área da trilha perma
 O painel administrativo oferece Zerar progresso para qualquer conta, inclusive a própria. A confirmação identifica nome e e-mail e explica a remoção de leituras, conclusões, XP, revisões e rascunhos. `reset-progress` exige admin no servidor, valida origem, confere a permissão novamente na transação e registra `reset_progress` na auditoria. A linha de progresso é zerada com incremento de versão; não é excluída, para impedir que uma aba antiga recrie os dados apagados. Usuários afetados devem atualizar a página. Conta, senha e papel administrativo permanecem intactos.
 
 `node --env-file=.env.local tests/admin-integration.mjs` valida reset de aluno e do próprio admin, auditoria, alvo inexistente, CSRF, rejeição de gravação antiga e preservação de autenticação. Os testes usam apenas contas fictícias e as removem no final.
+
+## Complemento Ansible
+Três aulas em public/ansible.js entram depois da página 396 (IaC), antes de Kubernetes. Incluem leitura com áudio, seis decisões com feedback e três conclusões persistidas (ansible-01 a ansible-03). O exemplo local é opcional: o site não executa Ansible nem certifica execução real. As páginas originais do livro permanecem inalteradas. Testes em tests/ansible.test.mjs verificam sequência, correção, persistência válida e ausência de XP duplicado.
+
