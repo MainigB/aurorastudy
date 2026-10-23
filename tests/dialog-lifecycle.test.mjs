@@ -42,7 +42,7 @@ test('application keeps study dialog and draft intact on state hydration but clo
  const app=readFileSync(new URL('../public/app.js',import.meta.url),'utf8');
  const registration=app.split('\n').find(line=>line.includes('window.AuroraAccount.init('));
  let callback,renderCount=0;const dialog={open:true,answer:'unsaved working text',close(){this.open=false}};
- const context={state:{},window:{AuroraAccount:{init(fn){callback=fn}}},$:()=>dialog,render(){renderCount++}};
+ const context={document:{querySelector:()=>null},state:{},window:{AuroraAccount:{init(fn){callback=fn}}},$:()=>dialog,render(){renderCount++}};
  vm.runInNewContext(registration,context);
  callback({bookPage:36},{resetStudy:false});assert.equal(dialog.open,true);assert.equal(dialog.answer,'unsaved working text');assert.equal(renderCount,1);
  callback({bookPage:37});assert.equal(dialog.open,true);
