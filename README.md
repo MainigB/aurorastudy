@@ -142,3 +142,7 @@ O painel administrativo oferece Zerar progresso para qualquer conta, inclusive a
 ## Complemento Ansible
 Três aulas em public/ansible.js entram depois da página 396 (IaC), antes de Kubernetes. Incluem leitura com áudio, seis decisões com feedback e três conclusões persistidas (ansible-01 a ansible-03). O exemplo local é opcional: o site não executa Ansible nem certifica execução real. As páginas originais do livro permanecem inalteradas. Testes em tests/ansible.test.mjs verificam sequência, correção, persistência válida e ausência de XP duplicado.
 
+
+## Navegação livre administrativa
+Administradores podem alternar a navegação livre no topo da trilha. A opção vale só na sessão atual e na própria conta, sendo reiniciada ao trocar de conta ou perder a permissão. Cada etapa permite abrir leituras e exercícios diretamente. Explorar páginas não confirma leitura; desligar o modo retoma a sequência normal. Exercícios concluídos explicitamente continuam registrando XP.
+

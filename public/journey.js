@@ -1,5 +1,16 @@
 function renderLanding(){document.body.classList.add('signed-out');}
 function journeyProgress(){return AuroraJourney.progress(state,all)}
+function canBrowseJourney(){return AuroraAccount.isReady()&&AuroraAccount.freeNavigation?.()===true}
+function openJourneyStage(start,end,title){
+ if(!canBrowseJourney())return;
+ const readings=all.filter(l=>l.formation==='SRE'&&/^u\d{3}$/.test(l.id)&&l.page>=start&&l.page<=end);
+ const exercises=AuroraJourney.checkpoints(all).filter(c=>c.page>=start&&c.page<=end);
+ show(`<div class="book-reader"><button class="text-button" id="stage-back">← Minha trilha</button><p class="eyebrow">NAVEGAÇÃO LIVRE</p><h2>${esc(title)}</h2><p>Abrir um conteúdo não marca leitura nem conclui atividades.</p><button class="primary" id="stage-start">Ler desde o início da etapa →</button><h3>Leituras</h3>${readings.map(l=>`<p><button class="text-button" data-stage-page="${l.page}">${esc(l.bookTitle||l.title)} · página ${l.page}</button></p>`).join('')||'<p>Use o botão acima para ler esta etapa.</p>'}<h3>Atividades</h3>${exercises.map(c=>`<p><button class="outline" data-stage-exercise="${esc(c.id)}">${state.done[c.id]?'✓ ':''}${esc(c.lesson.title)}</button></p>`).join('')||'<p>Esta etapa contém somente leitura.</p>'}</div>`);
+ $('#stage-back').onclick=()=>$('#lesson-dialog').close();
+ $('#stage-start').onclick=()=>{if(canBrowseJourney())openCompletePage(start)};
+ document.querySelectorAll('[data-stage-page]').forEach(b=>b.onclick=()=>{if(canBrowseJourney())openCompletePage(Number(b.dataset.stagePage))});
+ document.querySelectorAll('[data-stage-exercise]').forEach(b=>b.onclick=()=>{if(canBrowseJourney())openJourneyExercise(b.dataset.stageExercise)});
+}
 function renderJourney(){
  document.body.classList.remove('signed-out');formation='SRE';view='catalog';document.body.classList.add('journey-only');
  const p=journeyProgress(),next=p.next;
@@ -12,6 +23,8 @@ function renderJourney(){
  const lesson=next.id?all.find(l=>l.id===next.id):null;
  $('#tracks').innerHTML=`<section class="journey-hero"><div class="journey-emblem" aria-hidden="true">✦</div><div><span class="eyebrow">TRILHA ÚNICA · SRE</span><h2>${next.kind==='finished'?'Jornada concluída!':stages[current].name}</h2><p>${next.kind==='exercise'?`Hora de praticar: ${esc(lesson.title)}`:next.kind==='finished'?'Você concluiu as leituras e atividades desta trilha.':'Seu próximo passo: ler ou ouvir a página '+next.page+'.'}</p><button class="primary" id="journey-follow">${next.kind==='finished'?'Revisitar a trilha':p.read||p.done?'Continuar minha trilha':'Começar minha trilha'} →</button></div><div class="journey-percent"><strong>${p.percent}%</strong><span>da jornada</span></div></section><div class="journey-progress" role="progressbar" aria-label="Progresso da jornada" aria-valuenow="${p.percent}" aria-valuemin="0" aria-valuemax="100"><i style="width:${p.percent}%"></i></div><section class="journey-stats" aria-label="Seu progresso"><div><strong>${p.read}<small> / ${p.totalPages}</small></strong><span>páginas lidas</span></div><div><strong>${p.done}<small> / ${p.total}</small></strong><span>exercícios concluídos</span></div><div><strong>${p.xp}</strong><span>XP conquistados</span></div></section><p class="journey-note">Confirme cada página após ler ou ouvir. Abrir uma página não conta como leitura.${AuroraAccount.isReady()?' Seu progresso fica salvo na conta.':' Entre na sua conta ao começar para salvar seu avanço.'}</p><div class="journey-map-heading"><h3>Seu caminho</h3><span>Etapa ${current+1} de ${stages.length}</span></div><ol class="journey-map">${stages.map((t,i)=>`<li class="${i<current?'passed':i===current?'current':'upcoming'}" ${i===current?'aria-current="step"':''}><span class="journey-node">${i<current?'✓':i+1}</span><div><strong>${esc(t.name)}</strong><small>${i<current?'Etapa concluída':i===current?'Você está aqui':'Mais adiante'} · página ${t.page}</small></div>${i===current?'<span class="journey-here">AGORA</span>':''}</li>`).join('')}</ol>`;
  $('#journey-follow').onclick=followJourney;
+ if(AuroraAccount.isAdmin?.()){const panel=document.createElement('section');panel.className='journey-reader-note';panel.innerHTML='<label><input type="checkbox" id="journey-free" '+(canBrowseJourney()?'checked':'')+'> Navegação livre do administrador</label><p>Explore qualquer etapa. Esta opção vale apenas para sua conta nesta sessão e não altera o acesso dos alunos.</p>';$('#tracks').prepend(panel);$('#journey-free').onchange=e=>{AuroraAccount.setFreeNavigation(e.target.checked);renderJourney()}}
+ if(canBrowseJourney())document.querySelectorAll('.journey-map li').forEach((row,i)=>{const button=document.createElement('button');button.className='outline';button.textContent='Explorar etapa';button.onclick=()=>openJourneyStage(stages[i].page,(stages[i+1]?.page||818)-1,stages[i].name);row.append(button)});
  document.querySelector('.shell footer').innerHTML='aurora · Sua jornada em SRE <span>Leitura → prática → próximo passo</span>';
  const home=document.querySelector('[data-view="catalog"]');home.innerHTML='<span>◉</span> Minha trilha';home.classList.add('active');
 }
@@ -22,6 +35,7 @@ function followJourney(){
 }
 function mountJourneyPage(number){
  const p=journeyProgress(),next=p.next,read=AuroraJourney.readings(state).includes(number);
+ const free=canBrowseJourney();
  // Consultation remains available inside the reader, but never skips the next learning step.
  $('#complete-index').textContent='← Minha trilha';$('#complete-index').onclick=()=>$('#lesson-dialog').close();
  document.querySelector('.book-top>span').textContent=`${p.read}/${p.totalPages} PÁGINAS · ${p.done}/${p.total} EXERCÍCIOS`;
@@ -31,6 +45,7 @@ function mountJourneyPage(number){
  $('#journey-previous').onclick=()=>openCompletePage(AuroraJourney.previousPage(number));
  $('#journey-page-next').onclick=()=>{
   if(!AuroraAccount.isReady()){AuroraAccount.open();return}
+  if(canBrowseJourney()){const following=AuroraJourney.nextPage(number);following?openCompletePage(following):$('#lesson-dialog').close();return}
   if(next.kind==='finished'){number<817?openCompletePage(AuroraJourney.nextPage(number)):$('#lesson-dialog').close();return}
   if(!read&&next.kind==='reading'&&next.page===number){AuroraJourney.markRead(state,number);save();toast(number%10===0?`${AuroraJourney.readings(state).length} páginas confirmadas. Continue assim!`:'Leitura registrada ✓')}
   followJourney();
@@ -39,6 +54,7 @@ function mountJourneyPage(number){
  $('#complete-jump')?.remove();
  const label=document.createElement('p');label.className='journey-reader-note';label.textContent=read?'Página já lida. Reler não altera sua contagem.':next.kind==='reading'&&number===next.page?'Leia ou ouça com atenção. Ao confirmar, você seguirá para a leitura ou atividade seguinte.':'Página de consulta. Use “Seguir a trilha” para voltar ao seu ponto atual.';controls.before(label);
  if(!read&&(next.kind!=='reading'||next.page!==number))$('#journey-page-next').textContent='Seguir a trilha →';
+ if(free){$('#journey-page-next').textContent=number<817?'Próxima página →':'Voltar à trilha';label.textContent='Navegação livre: explorar páginas não altera seu progresso. Desative este modo para retomar a sequência e confirmar leituras.'}
 }
 function openJourneyExercise(id){
  const l=all.find(l=>l.id===id);if(!l||!AuroraAccount.isReady())return;

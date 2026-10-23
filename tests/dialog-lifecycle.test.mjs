@@ -10,6 +10,21 @@ function harness(){
  vm.runInNewContext(accountSource,context);
  return {api:window.AuroraAccount,dialog,requests,elements};
 }
+
+async function loginHarness(h,id,isAdmin,reload=false){
+ const pending=reload?h.api.reload():h.api.init(()=>{},()=>({}));
+ h.requests.shift()({user:{id,name:'Teste',email:'teste@example.test'}});
+ await new Promise(setImmediate);h.requests.shift()({state:{},version:0});
+ await new Promise(setImmediate);h.requests.shift()({isAdmin});await pending;
+}
+test('free navigation is opt-in for an authenticated admin and resets on account change or revocation',async()=>{
+ const h=harness();assert.equal(h.api.setFreeNavigation(true),false);
+ await loginHarness(h,'admin',true);assert.equal(h.api.freeNavigation(),false);
+ assert.equal(h.api.setFreeNavigation(true),true);assert.equal(h.api.freeNavigation(),true);
+ h.api.setFreeNavigation(false);assert.equal(h.api.freeNavigation(),false);
+ h.api.setFreeNavigation(true);await loginHarness(h,'other-admin',true,true);assert.equal(h.api.freeNavigation(),false);
+ h.api.setFreeNavigation(true);await loginHarness(h,'other-admin',false,true);assert.equal(h.api.freeNavigation(),false);assert.equal(h.api.setFreeNavigation(true),false);
+});
 test('anonymous startup leaves the landing page without forcing a login popup',async()=>{
  const h=harness(),init=h.api.init(()=>{},()=>({}));h.requests.shift()(null);await init;
  assert.equal(h.dialog.open,false);assert.equal(h.api.isReady(),false);assert.equal(h.dialog.writes,0);

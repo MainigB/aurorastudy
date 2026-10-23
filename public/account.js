@@ -1,5 +1,5 @@
 (function(){
-let isAdmin=false;
+let isAdmin=false,freeNavigation=false;
 let user=null,version=0,pending=null,sending=false,timer=null,conflict=false,ready=false;
 const empty=()=>({done:{},xp:0,days:{},review:[],drafts:{},last:null,bookPage:1,readPages:[]});
 const el=s=>document.querySelector(s);
@@ -42,7 +42,7 @@ async function loadSession(){
  if(!session?.user){user=null;isAdmin=false;identity();onState(empty(),{resetStudy:!!previousUser});return}
  const progress=await api('/api/progress','GET',undefined,session.user.id);
  const access=await api('/api/admin?action=capabilities','GET',undefined,session.user.id);
- isAdmin=access.isAdmin===true;user=session.user;version=progress.version;pending=null;conflict=false;ready=true;
+ if(!access.isAdmin||previousUser!==session.user.id)freeNavigation=false;isAdmin=access.isAdmin===true;user=session.user;version=progress.version;pending=null;conflict=false;ready=true;
  onState({...empty(),...progress.state},{resetStudy:!!previousUser&&previousUser!==user.id});identity();setStatus('Progresso sincronizado');
 }
 async function flush(){
@@ -77,5 +77,5 @@ accountButton.onclick=settings;
 window.addEventListener('online',flush);
 window.addEventListener('beforeunload',e=>{if(pending||sending){e.preventDefault();e.returnValue=''}});
 document.querySelectorAll('[data-login]').forEach(button=>button.onclick=()=>showAuth());
-window.AuroraAccount={reload:async()=>{clearTimeout(timer);pending=null;await loadSession()},open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;identity();const revision=dialogRevision;try{await loadSession()}catch{ready=false;onState(getState(),{resetStudy:true});if(dialogRevision!==revision)return;const target=el('#account-error')||el('#landing-status');if(target)target.textContent='Não foi possível conectar. Tente entrar novamente.'}},isReady:()=>ready};
+window.AuroraAccount={isAdmin:()=>ready&&isAdmin,freeNavigation:()=>ready&&isAdmin&&freeNavigation,setFreeNavigation:enabled=>{if(!ready||!isAdmin)return false;freeNavigation=enabled===true;return true},reload:async()=>{clearTimeout(timer);pending=null;await loadSession()},open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;identity();const revision=dialogRevision;try{await loadSession()}catch{ready=false;onState(getState(),{resetStudy:true});if(dialogRevision!==revision)return;const target=el('#account-error')||el('#landing-status');if(target)target.textContent='Não foi possível conectar. Tente entrar novamente.'}},isReady:()=>ready};
 })();
