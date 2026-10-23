@@ -12,8 +12,11 @@ export default async function handler(req,res){
   if(req.headers['x-aurora-user']&&req.headers['x-aurora-user']!==session.user.id)return reply(res,401,{error:'A conta foi alterada em outra aba. Recarregue antes de continuar.'});
   const db=getPool(),id=session.user.id;
   if(req.method==='GET'){
-   const {rows}=await db.query('SELECT state, version FROM aurora_progress WHERE user_id=$1',[id]);
-   return reply(res,200,rows[0]||{state:emptyState(),version:0});
+   const {rows}=await db.query(`SELECT p.state,p.version,
+    EXISTS(SELECT 1 FROM aurora_admins WHERE user_id=$1) AS is_admin
+    FROM (SELECT $1::text AS id) account
+    LEFT JOIN aurora_progress p ON p.user_id=account.id`,[id]);
+   return reply(res,200,{state:rows[0]?.state||emptyState(),version:rows[0]?.version||0,isAdmin:rows[0]?.is_admin===true});
   }
   let body,next;
   try{body=await readBody(req);next=cleanState(body.state);if(!Number.isInteger(body.version)||body.version<0)throw Error();}catch{return reply(res,400,{error:'Progresso inválido ou muito grande.'});}

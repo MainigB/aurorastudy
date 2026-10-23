@@ -5,6 +5,7 @@ const empty=()=>({done:{},xp:0,days:{},review:[],drafts:{},last:null,bookPage:1,
 const el=s=>document.querySelector(s);
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let onState=()=>{},getState=empty,dialogRevision=0;
+let restoreGeneration=0,initialized=false;
 const dialog=document.createElement('dialog');dialog.id='account-dialog';document.body.append(dialog);
 dialog.addEventListener('close',()=>{dialogRevision++});
 const accountButton=document.createElement('button');accountButton.className='account-button';accountButton.textContent='Minha conta';document.querySelector('.header-stats').append(accountButton);
@@ -36,13 +37,33 @@ function showAuth(mode='login'){
   try{await api('/api/auth/'+(signup?'sign-up/email':'sign-in/email'),'POST',{email:values.email.trim(),password:values.password,...(signup?{name:values.name.trim()}:{} )});await loadSession();if(user&&form.isConnected){form.reset();if(dialog.open)dialog.close()}}catch(err){el('#account-error').textContent=message(err)}finally{button.disabled=false}
  };
 }
-async function loadSession(){
- const previousUser=user?.id,revision=dialogRevision;
- ready=false;const session=await api('/api/auth/get-session');
- if(!session?.user){user=null;isAdmin=false;identity();onState(empty(),{resetStudy:!!previousUser});return}
+async function bootstrap(){
+ const session=await api('/api/auth/get-session','GET',undefined,null);
+ if(!session?.user)return {session};
  const progress=await api('/api/progress','GET',undefined,session.user.id);
- const access=await api('/api/admin?action=capabilities','GET',undefined,session.user.id);
- if(!access.isAdmin||previousUser!==session.user.id)freeNavigation=false;isAdmin=access.isAdmin===true;user=session.user;version=progress.version;pending=null;conflict=false;ready=true;
+ return {session,progress};
+}
+async function readBootstrap(){
+ try{return await bootstrap()}catch(error){
+  // Retry only reads and transient failures; never retry invalid credentials or writes.
+  if(error.status&&error.status<500)throw error;
+  return bootstrap();
+ }
+}
+// Begin while the curriculum downloads. Errors are consumed when the app initializes.
+let initialRestore=readBootstrap().then(value=>({value}),error=>({error}));
+if(el('#landing-status'))el('#landing-status').textContent='Verificando sua sessão…';
+async function loadSession(initial=false){
+ const generation=++restoreGeneration,previousUser=user?.id;
+ const prefetched=initial?initialRestore:null;initialRestore=null;
+ ready=false;
+ const result=prefetched?await prefetched:await readBootstrap().then(value=>({value}),error=>({error}));
+ if(generation!==restoreGeneration)return;
+ if(result.error)throw result.error;
+ const {session,progress}=result.value;
+ if(el('#landing-status'))el('#landing-status').textContent='';
+ if(!session?.user){user=null;isAdmin=false;identity();onState(empty(),{resetStudy:!!previousUser});return}
+ if(!progress.isAdmin||previousUser!==session.user.id)freeNavigation=false;isAdmin=progress.isAdmin===true;user=session.user;version=progress.version;pending=null;conflict=false;ready=true;
  onState({...empty(),...progress.state},{resetStudy:!!previousUser&&previousUser!==user.id});identity();setStatus('Progresso sincronizado');
 }
 async function flush(){
@@ -69,13 +90,20 @@ function settings(){
  el('#password-form').onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,b=f.querySelector('button'),v=Object.fromEntries(new FormData(f));if(v.newPassword!==v.confirm){el('#account-error').textContent='As senhas não coincidem.';return}b.disabled=true;try{await api('/api/auth/change-password','POST',{currentPassword:v.currentPassword,newPassword:v.newPassword,revokeOtherSessions:true});f.reset();el('#account-error').textContent='Senha alterada. As outras sessões foram encerradas.'}catch(err){el('#account-error').textContent=message(err)}finally{b.disabled=false}};
  el('#sign-out').onclick=async()=>{
   await flush();if(sending||pending){el('#account-error').textContent='Há alterações não sincronizadas. Exporte uma cópia ou aguarde a sincronização antes de sair.';return}
-  try{await api('/api/auth/sign-out','POST',{});clearTimeout(timer);user=null;isAdmin=false;ready=false;version=0;onState(empty(),{resetStudy:true});identity();setStatus('');dialog.close()}catch(e){el('#account-error').textContent=message(e)}
+  try{await api('/api/auth/sign-out','POST',{});restoreGeneration++;initialRestore=null;clearTimeout(timer);user=null;isAdmin=false;ready=false;version=0;onState(empty(),{resetStudy:true});identity();setStatus('');dialog.close()}catch(e){el('#account-error').textContent=message(e)}
  };
 }
 
 accountButton.onclick=settings;
-window.addEventListener('online',flush);
+function restoreFailed(){
+ ready=false;onState(getState(),{resetStudy:true});
+ const target=el('#landing-status');if(!target)return;
+ target.textContent='Não foi possível restaurar sua sessão. Você pode tentar novamente sem digitar sua senha.';
+ const retry=document.createElement('button');retry.className='text-button';retry.textContent='Tentar restaurar sessão';target.append(retry);
+ retry.onclick=async()=>{retry.disabled=true;try{await loadSession()}catch{restoreFailed()}};
+}
+window.addEventListener('online',()=>{if(initialized&&!ready&&!pending&&!sending)loadSession().catch(restoreFailed);else flush()});
 window.addEventListener('beforeunload',e=>{if(pending||sending){e.preventDefault();e.returnValue=''}});
 document.querySelectorAll('[data-login]').forEach(button=>button.onclick=()=>showAuth());
-window.AuroraAccount={isAdmin:()=>ready&&isAdmin,freeNavigation:()=>ready&&isAdmin&&freeNavigation,setFreeNavigation:enabled=>{if(!ready||!isAdmin)return false;freeNavigation=enabled===true;return true},reload:async()=>{clearTimeout(timer);pending=null;await loadSession()},open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;identity();const revision=dialogRevision;try{await loadSession()}catch{ready=false;onState(getState(),{resetStudy:true});if(dialogRevision!==revision)return;const target=el('#account-error')||el('#landing-status');if(target)target.textContent='Não foi possível conectar. Tente entrar novamente.'}},isReady:()=>ready};
+window.AuroraAccount={isAdmin:()=>ready&&isAdmin,freeNavigation:()=>ready&&isAdmin&&freeNavigation,setFreeNavigation:enabled=>{if(!ready||!isAdmin)return false;freeNavigation=enabled===true;return true},reload:async()=>{clearTimeout(timer);pending=null;await loadSession()},open:()=>showAuth(),save:saveState,async init(change,get){onState=change;getState=get;initialized=true;identity();try{await loadSession(true)}catch{restoreFailed()}},isReady:()=>ready};
 })();

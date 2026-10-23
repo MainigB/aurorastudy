@@ -13,7 +13,7 @@ try{
  await req('/api/auth/update-user','POST',{role:'admin',isAdmin:true},a.cookie);
  assert.equal((await req('/api/admin?action=capabilities','GET',null,a.cookie)).data.isAdmin,false);
  await getPool().query('INSERT INTO aurora_admins(user_id) VALUES($1)',[ids[0]]);
- assert.equal((await req('/api/admin?action=capabilities','GET',null,a.cookie)).data.isAdmin,true);
+ assert.equal((await req('/api/admin?action=capabilities','GET',null,a.cookie)).data.isAdmin,true);assert.equal((await req('/api/progress','GET',null,a.cookie)).data.isAdmin,true);assert.equal((await req('/api/progress','GET',null,b.cookie)).data.isAdmin,false);
  const listed=await req('/api/admin?q='+encodeURIComponent(suffix),'GET',null,a.cookie);assert.equal(listed.status,200);assert.equal(listed.data.users.length,2);assert.ok(listed.data.users.every(u=>!('password' in u)&&!('state' in u)));
  assert.equal((await req('/api/admin','POST',{action:'revoke-sessions',userId:ids[1]},a.cookie,'https://attacker.invalid')).status,403);
  const original={done:{u002:{date:'2026-10-21'}},readPages:[1,2,3],bookPage:4,drafts:{u002:'Resposta de teste'},review:['u002']};

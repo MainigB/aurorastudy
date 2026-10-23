@@ -9,6 +9,7 @@ try{
  assert.equal((await request('/api/progress','GET',null,b.cookie,base,aid)).status,401);
  assert.equal((await request('/api/auth/sign-out','POST',{},b.cookie,base,aid)).status,401);
  assert.equal((await request('/api/auth/sign-in/email','POST',{email:emails[0],password:'incorrect-password'})).status,401);
+ assert.ok(a.rawCookies.some(cookie=>/Max-Age=2592000/i.test(cookie)),'Session cookie should persist for 30 days');
  const initial=await request('/api/progress','GET',null,a.cookie);assert.equal(initial.data.version,0);
  const progress={done:{'linux-0':{date:'2026-10-15'}},drafts:{u001:'Resposta de teste persistida.','practice-pre':JSON.stringify({evidence:'Health 200; ready 503 antes, 200 depois.',repeat:'Porta 8766 testada.',review:'Revisão própria.',criteria:[true,true,true],reviewed:true})},review:['u002'],last:'u001',bookPage:688,readPages:[1,2,2,3],xp:999,days:{}};
  const saved=await request('/api/progress','PUT',{state:progress,version:0},a.cookie);assert.equal(saved.status,200,JSON.stringify(saved.data));

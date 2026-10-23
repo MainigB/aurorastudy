@@ -146,3 +146,7 @@ Três aulas em public/ansible.js entram depois da página 396 (IaC), antes de Ku
 ## Navegação livre administrativa
 Administradores podem alternar a navegação livre no topo da trilha. A opção vale só na sessão atual e na própria conta, sendo reiniciada ao trocar de conta ou perder a permissão. Cada etapa permite abrir leituras e exercícios diretamente. Explorar páginas não confirma leitura; desligar o modo retoma a sequência normal. Exercícios concluídos explicitamente continuam registrando XP.
 
+
+## Restauração de login
+A sessão é consultada enquanto o catálogo carrega. O progresso retorna também o perfil administrativo confirmado no banco, eliminando uma chamada sequencial. Falhas transitórias de leitura têm uma tentativa adicional; a landing permite restaurar a sessão sem redigitar credenciais. Cookies de sessão permanecem HttpOnly/SameSite e passam a ter validade de 30 dias, com renovação diária durante o uso. Nenhum token ou progresso de conta é armazenado em localStorage para simular autenticação.
+
